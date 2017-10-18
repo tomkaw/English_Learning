@@ -43,9 +43,9 @@ $(function () {
                         console.log(user_name);
                         return GetURL(iframe_url, 'DB_USER', 'view');
                     })
+                    .then(injectIframe)
+                    .then(ChangeSort)
             })
-            .then(injectIframe)
-            .then(ChangeSort)
             .then(function () {
                 return GetURL(iframe_url, 'DB_USER', 'view');
             })
