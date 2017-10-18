@@ -50,7 +50,7 @@ $(function () {
                 return GetURL(iframe_url, 'DB_USER', 'view');
             })
             .then(injectIframe)
-            .then(function () {
+            .then(function (iframe) {
                 return GetUserData(iframe, user_name);
             })
             .then(function (mydata) {
