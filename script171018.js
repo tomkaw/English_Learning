@@ -33,6 +33,7 @@ $(function () {
 
     // インスタンス作成に成功すると実行される
     peer.on('open', function () {
+    	// MoodleのURLを取得
         getCourseURL()    
             .then(function (url) {
                 iframe_url = url;
