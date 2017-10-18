@@ -33,7 +33,6 @@ $(function () {
 
     // インスタンス作成に成功すると実行される
     peer.on('open', function () {
-    	// MoodleのURLを取得
         getCourseURL()    
             .then(function (url) {
                 iframe_url = url;
@@ -68,6 +67,7 @@ $(function () {
                     // 登録されていた場合
                     user_score = mydata['score'];
                 }
+                console.log(user_score);
                 // 画面表示
                 $('#token_user_name').text(user_name);
                 $('#token_user_score').text(user_score);
