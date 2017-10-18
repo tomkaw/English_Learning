@@ -33,7 +33,11 @@ $(function () {
 
     // インスタンス作成に成功すると実行される
     peer.on('open', function () {
-        getCourseURL()    
+        FunctionIframe1();
+    });
+
+    function FunctionIframe1() {
+        getCourseURL()
             .then(function (url) {
                 iframe_url = url;
                 injectIframe(iframe_url)
@@ -58,11 +62,11 @@ $(function () {
                     // 自身の学習者情報が登録されていなかった場合
                     user_score = 15000;
                     // データの登録
-                //    GetURL(iframe_url, 'DB_USER', 'edit')
-                //    .then(injectIframe)
-                //    .then(function (iframe2) {
-                //        RegistUserData(iframe2, token_user_name, token_user_score);
-                //    });
+                    //    GetURL(iframe_url, 'DB_USER', 'edit')
+                    //    .then(injectIframe)
+                    //    .then(function (iframe2) {
+                    //        RegistUserData(iframe2, token_user_name, token_user_score);
+                    //    });
                 } else {
                     // 登録されていた場合
                     user_score = mydata['score'];
@@ -73,7 +77,7 @@ $(function () {
                 $('#token_user_name').text(user_name);
                 $('#token_user_score').text(user_score);
             })
-    });
+    }    
 
 ////// iframe関数 //////
     // Moodleのコース名を取得
