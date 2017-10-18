@@ -56,7 +56,7 @@ $(function () {
             .then(function (mydata) {
                 if (mydata['name'] == undefined || mydata['score'] == undefined) {
                     // ©g‚ÌŠwKÒî•ñ‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚©‚Á‚½ê‡
-                    user_score = 1500;
+                    user_score = 15000;
                     // ƒf[ƒ^‚Ì“o˜^
                 //    GetURL(iframe_url, 'DB_USER', 'edit')
                 //    .then(injectIframe)
@@ -69,9 +69,9 @@ $(function () {
                 }
                 console.log(user_score);
                 // ‰æ–Ê•\¦
+                $('#myData').removeClass('hidden');
                 $('#token_user_name').text(user_name);
                 $('#token_user_score').text(user_score);
-                $('#myData').removeClass('hidden');
             })
     });
 
