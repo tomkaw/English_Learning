@@ -84,7 +84,7 @@ $(function () {
             .then(injectIframe)
             .then(ChangeSort)
             .then(function () {
-                return GetURL(token_url, 'DB_INFO', 'edit');
+                return GetURL(iframe_url, 'DB_INFO', 'edit');
             })
             .then(injectIframe)
             .then(GetStudyInfo)
