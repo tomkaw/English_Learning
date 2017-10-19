@@ -79,21 +79,20 @@ $(function () {
                 $('#token_user_score').text(user_score);
             })
             .then(function () {
-                return GetURL(iframe_url, 'DB_INFO', 'view');
+                return GetURL(token_url, 'DB_INFO', 'view');
             })
-            .then(function (url) {
-                injectIframe(url)
-                    .then(ChangeSort)
-                    .then(function () {
-                    injectIframe(url)
-                    })
-                    .then(GetStudyInfo)
-                    .then(function (info) {
-                        room_id = info['ID'];
-                        question_id = info['Question'];
-                        $('#questiondata').removeClass('hidden');
-                        $('#token_question').text(question_id);
-                })
+            .then(injectIframe)
+            .then(ChangeSort)
+            .then(function () {
+                return GetURL(token_url, 'DB_INFO', 'edit');
+            })
+            .then(injectIframe)
+            .then(GetStudyInfo)
+            .then(function (info) {
+                room_id = info['ID'];
+                question_id = info['Question'];
+                $('#questiondata').removeClass('hidden');
+                $('#token_question').text(question_id);
             })
     }
 
