@@ -1,7 +1,8 @@
 $(function () {
     // 変数定義
     var peer_id, conn;	// ピアID、接続
-    var user_name, user_score;  // 自分の名前、スコア
+    var user_name, user_score, room_id;  // 自分の名前、スコア
+    var question_id
     // 配列定義
     var messages = [];	// メッセージを格納
     // iframe用変数
@@ -77,7 +78,28 @@ $(function () {
                 $('#token_user_name').text(user_name);
                 $('#token_user_score').text(user_score);
             })
-    }    
+            .then(function () {
+                return GetURL(token_url, 'DB_INFO', 'view');
+            })
+            .then(function (url) {
+                injectIframe(url)
+                    .then(ChangeSort)
+                    .then(function () {
+                    injectIframe(url)
+                    })
+                    .then(GetStudyInfo)
+                    .then(function (info) {
+                        room_id = info['ID'];
+                        question_id = info['Question'];
+                        $('#questiondata').removeClass('hidden');
+                        $('#token_question').text(question_id);
+                })
+            })
+    }
+
+    function FunctionIframe2() {
+
+    }
 
 ////// iframe関数 //////
     // Moodleのコース名を取得
@@ -204,4 +226,23 @@ $(function () {
             resolve(entry);
         });
     }
+
+    function GetStudyInfo(iframe) {
+        return new Promise(function (resolve) {
+            var doc = iframe.contentDocument;
+            var list_div = doc.getElementsByTagName('div');
+            var info = new Array();
+            for (item_div of list_div) {
+                if (item_div.textContent.match(/^ID\:/)) {
+                    //console.log('data_header:\n'+item_div.textContent);
+                    fields = item_div.textContent.split(';');
+                    info['ID'] = fields[0].split(':')[1];
+                    info['Question'] = fields[1].split(':')[1];
+                }
+            }
+            removeElement(iframe);
+            resolve(info);
+        });
+    }
+
 });
