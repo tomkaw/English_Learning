@@ -91,6 +91,7 @@ $(function () {
             .then(function (info) {
                 room_id = info['ID'];
                 question_id = info['Question'];
+                console.log(info);
                 $('#questiondata').removeClass('hidden');
                 $('#token_question').text(question_id);
             })
