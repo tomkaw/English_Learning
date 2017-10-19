@@ -79,7 +79,7 @@ $(function () {
                 $('#token_user_score').text(user_score);
             })
             .then(function () {
-                return GetURL(token_url, 'DB_INFO', 'view');
+                return GetURL(iframe_url, 'DB_INFO', 'view');
             })
             .then(injectIframe)
             .then(ChangeSort)
