@@ -14,10 +14,10 @@ $(function () {
     // 新規PeerJSインスタンス
     var peer = new Peer({
         // APIキー
-        //key: '3cbz326wgxlgnwmi',
-        host: '10.159.13.70',
-        port: 9000,
-        path: './peerjs',
+        key: '3cbz326wgxlgnwmi',
+        //host: '10.159.13.70',
+        //port: 9000,
+        //path: './peerjs',
         //デバッグモードの冗長性
         debug: 3,
         // ICEサーバ
