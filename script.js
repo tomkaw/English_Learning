@@ -20,23 +20,19 @@ $(function () {
 
     var array_skippedUser = new Array();
 
-    // Amazon Polly
-    $.getJSON("./credential.json", function (data) {
-        AWS.config.update({ accessKeyId: data[0].accessKeyId, secretAccessKey: data[0].secretAccessKey, region: data[0].region });
-    });
     var audioElement = $('#speech_audio');
-    // 0だと音声ファイルを使用、1だとPollyを使用
-    var pollyFlag = 0;
 
     //////// PeerJS初期設定 ////////
     // 新規PeerJSインスタンス
     var peer = new Peer({
         // APIキー
-        key: '3cbz326wgxlgnwmi',
-        // 
+        //key: '3cbz326wgxlgnwmi',
+	key: '900d7a23-6264-4afe-8896-15f0d020ca61',
+        turn: false,
         //host: '10.159.13.70',
-        //port: 9000,
-        //path: './peerjs',
+        //port: 443,
+        //path: '/peerjs',
+        //secure: true,
         //デバッグモードの冗長性
         debug: 3,
         // ICEサーバ
@@ -604,41 +600,11 @@ $(function () {
 
     //////// Amazon Polly ////////
     function polly_create() {
-        if (pollyFlag == 1) {
-            //console.log("speech:" + array_question[0]);
-            val = array_question[1];
-            var params = {
-                OutputFormat: "mp3",
-                SampleRate: "22050",
-                Text: val,
-                TextType: "text",  // 通常の入力
-                //TextType: "ssml",     // SSMLを利用
-                VoiceId: "Joanna"
-            };
-
-            var polly = new AWS.Polly();
-            polly.synthesizeSpeech(params, function (err, data) {
-                if (err)
-                    alert("err:" + err);
-                else {
-                    // レスポンスされたデータをaudioタグで再生できるように変換
-                    var uInt8Array = new Uint8Array(data.AudioStream);
-                    var arrayBuffer = uInt8Array.buffer;
-                    var blob = new Blob([arrayBuffer], { "type": "audio/mp3" });
-                    var url = URL.createObjectURL(blob);
-                    // 再生ファイルの設定
-                    audioElement[0].src = url;
-                    // 音声の再生
-                    audioElement[0].play();
-                }
-            });
-        } else {
-            var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/"+array_question[0]+".mp3";
-            // 再生ファイルの設定
-            audioElement[0].src = url;
-            // 音声の再生
-            audioElement[0].play();
-        }
+        var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/"+array_question[0]+".mp3";
+        // 再生ファイルの設定
+        audioElement[0].src = url;
+        // 音声の再生
+        audioElement[0].play();
     }
 
     //$('#play_sound').click(function () {
