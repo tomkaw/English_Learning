@@ -545,7 +545,7 @@ $(function () {
 
     function advanceLearning() {
         learn_mistake = 0;
-        var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/gi);
+        var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
         learn_progress++;
         while (reg.test(array_strings[learn_progress])) {
             learn_progress++;
