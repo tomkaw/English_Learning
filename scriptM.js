@@ -1,29 +1,24 @@
 $(function () {
-    //////// •Ï”’è‹` ////////
-    // PeerJS—p•Ï”
+    //////// å¤‰æ•°å®šç¾© ////////
+    // PeerJSç”¨å¤‰æ•°
     var conn;
-    // ƒZƒŒƒNƒgƒ{ƒbƒNƒX‚Ì‰Šú’l
+    // ã‚»ãƒ¬ã‚¯ãƒˆãƒœãƒƒã‚¯ã‚¹ã®åˆæœŸå€¤
     var var_question = 0, var_selectbox = 2;
-    // ”z—ñ’è‹`
+    // é…åˆ—å®šç¾©
     var array_question = new Array();
     var array_entries = new Array();
-    // –â‘èƒtƒ@ƒCƒ‹–¼
+    // å•é¡Œãƒ•ã‚¡ã‚¤ãƒ«å
     var TSVFILE = 'https://rawgit.com/tomkaw/English_Learning/master/resource/question.tsv';
 
-    ////// PeerJS‰Šúİ’è //////
-    // V‹KPeerJSƒCƒ“ƒXƒ^ƒ“ƒX
+    ////// PeerJSåˆæœŸè¨­å®š //////
+    // æ–°è¦PeerJSã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
     var peer = new Peer({
-        // APIƒL[
-        //key: '3cbz326wgxlgnwmi',
+        // APIã‚­ãƒ¼
 	key: '900d7a23-6264-4afe-8896-15f0d020ca61',
         turn: false,
-        //host: '10.159.13.70',
-        //port: 443,
-        //path: '/peerjs',
-        //secure: true,
-        //ƒfƒoƒbƒOƒ‚[ƒh‚Ìç’·«
+        //ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰ã®å†—é•·æ€§
         debug: 3,
-        // ICEƒT[ƒo
+        // ICEã‚µãƒ¼ãƒ
         config: {
             'iceServers': [
                 { url: 'stun:stun1.l.google.com:19302' },
@@ -34,12 +29,12 @@ $(function () {
         }
     });
 
-    // g—pƒuƒ‰ƒEƒU‚ğ•Ô‚·
+    // ä½¿ç”¨ãƒ–ãƒ©ã‚¦ã‚¶ã‚’è¿”ã™
     navigator.getUserMedia = navigator.getUserMedia ||
         navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia;
 
-    // ƒCƒ“ƒXƒ^ƒ“ƒXì¬‚É¬Œ÷‚·‚é‚ÆÀs‚³‚ê‚é
+    // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆã«æˆåŠŸã™ã‚‹ã¨å®Ÿè¡Œã•ã‚Œã‚‹
     peer.on('open', function () {
         if (peer.id == null) {
             console.log("Connection is closed.")
@@ -49,7 +44,7 @@ $(function () {
         }
     });
 
-    //////// –â‘èDB‚Ì“Ç‚İ‚İ ////////
+    //////// å•é¡ŒDBã®èª­ã¿è¾¼ã¿ ////////
     function GetTSV() {
         d3.tsv(TSVFILE, function (error, data) {
             $('#wrapper_learning').removeClass('hidden');
@@ -60,7 +55,7 @@ $(function () {
         });
     }
 
-    //////// ŠÇ—Òƒf[ƒ^‚ÌXV ////////
+    //////// ç®¡ç†è€…ãƒ‡ãƒ¼ã‚¿ã®æ›´æ–° ////////
     function IframeSetting() {
         getCourseURL()
             .then(function (url) {
@@ -77,11 +72,11 @@ $(function () {
 
     //////// PeerJS ////////
     peer.on('connection', function (connection) {
-        // ŠwKÒ‚Ìƒf[ƒ^‚ğ”z—ñ‚ÉŠi”[
+        // å­¦ç¿’è€…ã®ãƒ‡ãƒ¼ã‚¿ã‚’é…åˆ—ã«æ ¼ç´
         array_entries[array_entries.length] = [connection.metadata.score, connection.peer];
         $('#token_registed').text(array_entries.length);
         changeStartBtn();
-        // Ø’f‚³‚ê‚½‚Ìˆ—
+        // åˆ‡æ–­ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
         connection.on('close', function () {
             for (var i = 0; i < array_entries.length; i++) {
                 if (array_entries[i][1] == connection.peer) {
@@ -93,7 +88,7 @@ $(function () {
         });
     });
 
-    // ŠwKƒ`[ƒ€‚Ìl”‚ª•ÏX‚³‚ê‚½‚ÌŠÖ”
+    // å­¦ç¿’ãƒãƒ¼ãƒ ã®äººæ•°ãŒå¤‰æ›´ã•ã‚ŒãŸæ™‚ã®é–¢æ•°
     $('#select_team').change(function () {
         var_selectbox = $(this).val();
         changeStartBtn()
@@ -107,11 +102,11 @@ $(function () {
         }
     }
 
-    // ŠwK‚ğŠJn‚·‚é‚½‚ß‚ÌŠÖ”
+    // å­¦ç¿’ã‚’é–‹å§‹ã™ã‚‹ãŸã‚ã®é–¢æ•°
     $('#send-start').click(Start);
 
     function Start() {
-        // ƒZƒŒƒNƒgƒ{ƒbƒNƒX‚Ìƒf[ƒ^‚ğæ“¾
+        // ã‚»ãƒ¬ã‚¯ãƒˆãƒœãƒƒã‚¯ã‚¹ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
         if ($("#select_question").val() != '0') {
             var_question = parseInt($("#select_question").val()) - 1;
         } else {
@@ -119,7 +114,7 @@ $(function () {
         }
         console.log(var_question);
 
-        // ƒXƒRƒA‚Ì~‡‚Éƒ\[ƒg
+        // ã‚¹ã‚³ã‚¢ã®é™é †ã«ã‚½ãƒ¼ãƒˆ
         array_entries.sort(function (a, b) {
             return a - b;
             // if (a[0] < b[0]) {
@@ -129,48 +124,48 @@ $(function () {
             // }
         });
 
-        // ƒsƒAID‚ğƒyƒAƒŠƒ“ƒO‚µA”z—ñ‚ÉŠi”[
+        // ãƒ”ã‚¢IDã‚’ãƒšã‚¢ãƒªãƒ³ã‚°ã—ã€é…åˆ—ã«æ ¼ç´
         var tmp_student = parseInt($("#select_team").val());
         var tmp_array_team = new Array();
-        // —]‚èˆ—‚Ì‚½‚ß‚ÉA‚»‚Ì‘ÎÛ‚Æ‚È‚él”‚ğ’è‹`
+        // ä½™ã‚Šå‡¦ç†ã®ãŸã‚ã«ã€ãã®å¯¾è±¡ã¨ãªã‚‹äººæ•°ã‚’å®šç¾©
         var tmp_pairing_adjust = 0;
         switch (array_entries.length % tmp_student) {
             case 0:
-            // ‘Sƒpƒ^[ƒ“F‚ ‚Ü‚è‚È‚µ
+            // å…¨ãƒ‘ã‚¿ãƒ¼ãƒ³ï¼šã‚ã¾ã‚Šãªã—
                 tmp_pairing_adjust = 0;
                 break;
             case 1:
-            // ‘Sƒpƒ^[ƒ“F‚ ‚Ü‚è1
+            // å…¨ãƒ‘ã‚¿ãƒ¼ãƒ³ï¼šã‚ã¾ã‚Š1
                 tmp_pairing_adjust = tmp_student + 1;
                 break;
             case 2:
                 if (tmp_student <= 3) {
-                    // 3lF‚ ‚Ü‚è2
+                    // 3äººï¼šã‚ã¾ã‚Š2
                     tmp_pairing_adjust = 2;
                 } else {
-                    // 4lF‚ ‚Ü‚è2
+                    // 4äººï¼šã‚ã¾ã‚Š2
                     tmp_pairing_adjust = 6;
                 }
                 break;
             case 3:
-            // 4lF‚ ‚Ü‚è3
+            // 4äººï¼šã‚ã¾ã‚Š3
                 tmp_pairing_adjust = 3;
                 break;
         }
-        // Šî–{ƒyƒAƒŠƒ“ƒO
+        // åŸºæœ¬ãƒšã‚¢ãƒªãƒ³ã‚°
         for (var i = 0; i < array_entries.length - tmp_pairing_adjust; i += tmp_student) {
             tmp_array_team[tmp_array_team.length] = [];
             for (var j = 0; j < tmp_student; j++) {
                 tmp_array_team[tmp_array_team.length - 1].push(array_entries[i + j][1]);
             }
         }
-        // —]‚èˆ—‚PF’²ß‚³‚ê‚éƒ`[ƒ€‚Íˆê‚Â
+        // ä½™ã‚Šå‡¦ç†ï¼‘ï¼šèª¿ç¯€ã•ã‚Œã‚‹ãƒãƒ¼ãƒ ã¯ä¸€ã¤
         if (0 < tmp_pairing_adjust && tmp_pairing_adjust <= 4) {
             tmp_array_team[tmp_array_team.length] = [];
             for (var x = tmp_pairing_adjust; x > 0; x--) {
                 tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - x][1]);
             }
-        // —]‚èˆ—‚QF’²ß‚³‚ê‚éƒ`[ƒ€‚Í“ñ‚Â
+        // ä½™ã‚Šå‡¦ç†ï¼’ï¼šèª¿ç¯€ã•ã‚Œã‚‹ãƒãƒ¼ãƒ ã¯äºŒã¤
         } else if (tmp_pairing_adjust >= 5) {
             for (var y = tmp_pairing_adjust; y > 0; y -= 3) {
                 tmp_array_team[tmp_array_team.length] = [];
@@ -181,13 +176,13 @@ $(function () {
             }
         }
 
-        // ŠwKÒ‚Ö‘—M
+        // å­¦ç¿’è€…ã¸é€ä¿¡
         for (var k = 0; k < tmp_array_team.length; k++) {
             console.log(tmp_array_team);
             for (var l = 0; l < tmp_array_team[k].length; l++) {
                 conn = peer.connect(tmp_array_team[k][l], {
                     metadata: {
-                        // •Ï”i–¼‘Oj‚ğƒƒ^ƒf[ƒ^‚Æ‚µ‚Ä‘—M
+                        // å¤‰æ•°ï¼ˆåå‰ï¼‰ã‚’ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã¨ã—ã¦é€ä¿¡
                         'flag': 0,
                         'order': l,
                         'question': array_question[var_question],
@@ -199,14 +194,14 @@ $(function () {
             }
         }
 
-        // ƒŠƒZƒbƒg
+        // ãƒªã‚»ãƒƒãƒˆ
         array_entries.length = 0;
         $('#token_registed').text(array_entries.length);
         $('#send-start').prop('disabled', true);
     }
 
-    //////// iframeŠÖ” ////////
-    // Moodle‚ÌƒR[ƒX–¼‚ğæ“¾
+    //////// iframeé–¢æ•° ////////
+    // Moodleã®ã‚³ãƒ¼ã‚¹åã‚’å–å¾—
     function getCourseURL() {
         return new Promise(function (resolve, reject) {
             if (!getCourseURL.cache) {
@@ -222,13 +217,13 @@ $(function () {
         });
     }
 
-    // iframeŒ^ƒIƒuƒWƒFƒNƒg‚ğíœ
+    // iframeå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤
     function removeElement(e) {
         e.parentNode.removeChild(e);
         return e;
     }
 
-    // iframeŒ^ƒIƒuƒWƒFƒNƒg‚ğì¬
+    // iframeå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆ
     function injectIframe(url) {
         return new Promise(function (resolve, reject) {
             var timeout = true;
@@ -249,7 +244,7 @@ $(function () {
         });
     }
 
-    // URL‚ğæ“¾
+    // URLã‚’å–å¾—
     function GetURL(course_url, pattern, page) {
         return new Promise(function (resolve, reject) {
             injectIframe(course_url).then(function (iframe) {
@@ -272,7 +267,7 @@ $(function () {
         });
     }
 
-    // ŠÇ—Òî•ñ‚Ì•ÏX
+    // ç®¡ç†è€…æƒ…å ±ã®å¤‰æ›´
     function ChangeInfo(iframe, APIKey) {
         return new Promise(function (resolve) {
             var doc = iframe.contentDocument;
@@ -289,7 +284,7 @@ $(function () {
         });
     }
 
-    // ÀÛ‚É•ÏXˆ—‚ğs‚¤ŠÖ”
+    // å®Ÿéš›ã«å¤‰æ›´å‡¦ç†ã‚’è¡Œã†é–¢æ•°
     function EditAct(iframe, APIKey) {
         var ary_data = [APIKey, 1, 1, 1];
         var doc = iframe.contentDocument;
