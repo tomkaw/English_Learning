@@ -489,7 +489,11 @@ $(function () {
     // メッセージの受信
     function handleMessage(data) {
         var displayJudge = 'Right!';
-        if (data.text.toLowerCase() == array_strings[learn_progress].toLowerCase()) {
+        var sended = array_strings[learn_progress].toLowerCase();
+        sended = sended.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
+        var answer = data.text.toLowerCase();
+        answer = answer.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
+        if (sended == answer) {
             advanceLearning();
         } else {
             displayJudge = 'Miss!';
