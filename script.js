@@ -536,16 +536,16 @@ $(function () {
     function displayTimer() {
         $('#token_timer').text('');
         for (var i = 0; i < learn_timer; i++) {
-            $('#token_timer').append('¡');
+            $('#token_timer').append('|');
         }
         for (var j = learn_timer; j < learn_timer_limit - 1; j++) {
-            $('#token_timer').append(' ');
+            $('#token_timer').append('_');
         }
     }
 
     function advanceLearning() {
         learn_mistake = 0;
-        var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g);
+        var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/gi);
         learn_progress++;
         while (reg.test(array_strings[learn_progress])) {
             learn_progress++;
