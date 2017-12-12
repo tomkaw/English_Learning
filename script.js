@@ -26,13 +26,8 @@ $(function () {
     // 新規PeerJSインスタンス
     var peer = new Peer({
         // APIキー
-        //key: '3cbz326wgxlgnwmi',
-	key: '900d7a23-6264-4afe-8896-15f0d020ca61',
+        key: '900d7a23-6264-4afe-8896-15f0d020ca61',
         turn: false,
-        //host: '10.159.13.70',
-        //port: 443,
-        //path: '/peerjs',
-        //secure: true,
         //デバッグモードの冗長性
         debug: 3,
         // ICEサーバ
@@ -88,7 +83,7 @@ $(function () {
                     // 自身の学習者情報が登録されていなかった場合
                     user_score = 1000;
                     // データの登録
-                        GetURL(iframe_url, 'DB_USER', 'edit')
+                    GetURL(iframe_url, 'DB_USER', 'edit')
                         .then(injectIframe)
                         .then(function (iframe) {
                             RegistUserData(iframe, user_name, user_score);
@@ -195,10 +190,10 @@ $(function () {
                     }
                 }
                 // 学習順番の再検討
-            if (learn_flow % array_partnerKey.length == connection.metadata.flag) { }
+                if (learn_flow % array_partnerKey.length == connection.metadata.flag) { }
                 skippedUserCheck();
                 if (learn_flow % array_partnerKey.length == learn_order) {
-                $('#send-message').prop('disabled', false);
+                    $('#send-message').prop('disabled', false);
                     learn_timer = 0;
                     timer1();
                 }
@@ -529,7 +524,7 @@ $(function () {
     function timer2() {
         console.log('timer:' + learn_timer);
         displayTimer();
-        learn_timer ++
+        learn_timer++
         sTo_time = setTimeout(timer2, 1000);
         if (learn_timer >= learn_timer_limit) {
             clearTimeout(sTo_time);
@@ -555,7 +550,7 @@ $(function () {
             learn_progress++;
         }
     }
-    
+
     // メッセージの送信
     function sendMessage() {
         clearTimeout(sTo_time);
@@ -590,21 +585,26 @@ $(function () {
     // メッセージの送信はキーコード13（エンターキー）を入力することで実行される
     $('#message').keypress(function (e) {
         if (e.which == 13) {
-            if ($('#message').val() != null) {
+            if ($('#message').val() != null && $('#message').val() != "") {
                 sendMessage();
             }
+        } else if (e.which == 32) {
+            audioElement[0].play();
+            var tmptxt = $('#message').val();
+            tmptxt = tmptxt.replace(/ /g, "");
+            $('#message').val(tmptxt);
         }
     });
     // HTMLのボタンsend-messageをクリックすることでも実行される
     $('#send-message').click(function () {
-        if ($('#message').val() != null) {
+        if ($('#message').val() != null && $('#message').val() != "") {
             sendMessage();
         }
     });
 
     //////// Amazon Polly ////////
     function polly_create() {
-        var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/"+array_question[0]+".mp3";
+        var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3";
         // 再生ファイルの設定
         audioElement[0].src = url;
         // 音声の再生
