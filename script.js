@@ -1,36 +1,36 @@
 $(function () {
-    //////// •Ï”’è‹` ////////
-    // ’ÊM—p•Ï”
-    var conn, user_name, user_score, myPeerID;	// Ú‘±, ©•ª‚Ì–¼‘O, ©•ª‚ÌƒXƒRƒA
+    //////// å¤‰æ•°å®šç¾© ////////
+    // é€šä¿¡ç”¨å¤‰æ•°
+    var conn, user_name, user_score, myPeerID;	// æ¥ç¶š, è‡ªåˆ†ã®åå‰, è‡ªåˆ†ã®ã‚¹ã‚³ã‚¢
     var conn1, conn2, conn3, peerID1, peerID2, peerID3, masterPeerID;
-    // iframe—p•Ï”
+    // iframeç”¨å¤‰æ•°
     var iframe_url; // URL
 
-    // ŠwK—p•Ï”
-    var learn_order, learn_number;  // ©•ª‚Ì‡”Ô, l”
-    var learn_flow = 0, learn_progress = 0, learn_mistake = 0; // ‘S‘Ì‚Ì‰ğ“š‰ñ”, ‘S‘Ì‚Ì³‰ğ‰ñ”, ¸”s‰ñ”
-    var learn_timer = 0, sTo_time; // ƒ‹[ƒvˆ——p•Ï”, ŠÖ”
-    // ƒoƒ‰ƒ“ƒX’²®—p
+    // å­¦ç¿’ç”¨å¤‰æ•°
+    var learn_order, learn_number;  // è‡ªåˆ†ã®é †ç•ª, äººæ•°
+    var learn_flow = 0, learn_progress = 0, learn_mistake = 0; // å…¨ä½“ã®è§£ç­”å›æ•°, å…¨ä½“ã®æ­£è§£å›æ•°, å¤±æ•—å›æ•°
+    var learn_timer = 0, sTo_time; // ãƒ«ãƒ¼ãƒ—å‡¦ç†ç”¨å¤‰æ•°, é–¢æ•°
+    // ãƒãƒ©ãƒ³ã‚¹èª¿æ•´ç”¨
     var learn_timer_limit = 16, mistakeBorder = 3
 
-    // ŠwK—p”z—ñ
-    var array_question = new Array();   // –â‘è‚Ì‘Sƒf[ƒ^
-    var array_strings = new Array();    // –â‘è‚Ì‰p•¶‚ğ•ªŠ„
+    // å­¦ç¿’ç”¨é…åˆ—
+    var array_question = new Array();   // å•é¡Œã®å…¨ãƒ‡ãƒ¼ã‚¿
+    var array_strings = new Array();    // å•é¡Œã®è‹±æ–‡ã‚’åˆ†å‰²
     var array_partnerKey = new Array();
 
     var array_skippedUser = new Array();
 
     var audioElement = $('#speech_audio');
 
-    //////// PeerJS‰Šúİ’è ////////
-    // V‹KPeerJSƒCƒ“ƒXƒ^ƒ“ƒX
+    //////// PeerJSåˆæœŸè¨­å®š ////////
+    // æ–°è¦PeerJSã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
     var peer = new Peer({
-        // APIƒL[
+        // APIã‚­ãƒ¼
         key: '900d7a23-6264-4afe-8896-15f0d020ca61',
         turn: false,
-        //ƒfƒoƒbƒOƒ‚[ƒh‚Ìç’·«
+        //ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰ã®å†—é•·æ€§
         debug: 3,
-        // ICEƒT[ƒo
+        // ICEã‚µãƒ¼ãƒ
         config: {
             'iceServers': [
                 { url: 'stun:stun1.l.google.com:19302' },
@@ -41,12 +41,12 @@ $(function () {
         }
     });
 
-    // g—pƒuƒ‰ƒEƒU‚ğ•Ô‚·
+    // ä½¿ç”¨ãƒ–ãƒ©ã‚¦ã‚¶ã‚’è¿”ã™
     navigator.getUserMedia = navigator.getUserMedia ||
         navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia;
 
-    // ƒCƒ“ƒXƒ^ƒ“ƒXì¬‚É¬Œ÷‚·‚é‚Æˆ—‚ªŠJn‚³‚ê‚é
+    // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆã«æˆåŠŸã™ã‚‹ã¨å‡¦ç†ãŒé–‹å§‹ã•ã‚Œã‚‹
     peer.on('open', function () {
         if (peer.id == null) {
             alert("Connection is closed.");
@@ -57,7 +57,7 @@ $(function () {
         }
     });
 
-    //////// ©g‚Ìƒf[ƒ^‚ğæ“¾AŠÇ—Ò‚ÌƒsƒAID‚ğæ“¾AŠÇ—Ò‚ÉÚ‘± ////////
+    //////// è‡ªèº«ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã€ç®¡ç†è€…ã®ãƒ”ã‚¢IDã‚’å–å¾—ã€ç®¡ç†è€…ã«æ¥ç¶š ////////
     function FunctionIframe() {
         getCourseURL()
             .then(function (url) {
@@ -80,19 +80,19 @@ $(function () {
             })
             .then(function (mydata) {
                 if (mydata['name'] == undefined || mydata['score'] == undefined) {
-                    // ©g‚ÌŠwKÒî•ñ‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚©‚Á‚½ê‡
+                    // è‡ªèº«ã®å­¦ç¿’è€…æƒ…å ±ãŒç™»éŒ²ã•ã‚Œã¦ã„ãªã‹ã£ãŸå ´åˆ
                     user_score = 1000;
-                    // ƒf[ƒ^‚Ì“o˜^
+                    // ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²
                     GetURL(iframe_url, 'DB_USER', 'edit')
                         .then(injectIframe)
                         .then(function (iframe) {
                             RegistUserData(iframe, user_name, user_score);
                         });
                 } else {
-                    // “o˜^‚³‚ê‚Ä‚¢‚½ê‡
+                    // ç™»éŒ²ã•ã‚Œã¦ã„ãŸå ´åˆ
                     user_score = mydata['score'];
                 }
-                // ‰æ–Ê•\¦
+                // ç”»é¢è¡¨ç¤º
                 $('#myData').removeClass('hidden');
                 $('#token_user_name').text(user_name + ' ' + peer.id);
                 $('#token_user_score').text(user_score);
@@ -109,7 +109,7 @@ $(function () {
             })
     }
 
-    //////// ŠÇ—Ò‚ÉÚ‘± ////////
+    //////// ç®¡ç†è€…ã«æ¥ç¶š ////////
     function Peer4Master(peerID) {
         masterPeerID = peerID;
         conn = peer.connect(peerID, {
@@ -119,16 +119,16 @@ $(function () {
         });
     }
 
-    ////////// P2PÚ‘±‚ÌƒŠƒNƒGƒXƒg‚ğó‚¯‚½ê‡‚Ìˆ— //////////
+    ////////// P2Pæ¥ç¶šã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ã‘ãŸå ´åˆã®å‡¦ç† //////////
     peer.on('connection', function (connection) {
         console.log(connection.metadata);
         if (connection.peer == masterPeerID) {
-            // ŠwK—p‚Ìƒf[ƒ^‚ğ•Û‘¶
+            // å­¦ç¿’ç”¨ã®ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜
             learn_order = parseInt(connection.metadata.order);
             array_question = $.extend(true, [], connection.metadata.question)
             array_strings = array_question[1].split(" ");
             array_partnerKey = $.extend(true, [], connection.metadata.partnerKEYs);
-            // –â‘èŠÖ˜Aƒf[ƒ^‚ğ‰æ–Ê‚É•\¦
+            // å•é¡Œé–¢é€£ãƒ‡ãƒ¼ã‚¿ã‚’ç”»é¢ã«è¡¨ç¤º
             $('#questiondata').removeClass('hidden');
             //$('#token_question').text(array_question[0]);
             $('#questionstring').removeClass('hidden');
@@ -136,11 +136,11 @@ $(function () {
             DisplayString();
             polly_create();
             //$('#token_sound').html("<audio id='sentence' controls='controls' preload='auto'>can't play...<source src='https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3' type='audio/mp3'>");
-            // ŠwKÒ“¯m‚Å‚Ì’ÊM
+            // å­¦ç¿’è€…åŒå£«ã§ã®é€šä¿¡
             Peer4Student();
         } else {
             $('#partnerdata').removeClass('hidden');
-            // ‘—M‚³‚ê‚½PeerÚ‘±‚Ì’†g‚ğ‚»‚Ì‚Ü‚ÜŠi”[
+            // é€ä¿¡ã•ã‚ŒãŸPeeræ¥ç¶šã®ä¸­èº«ã‚’ãã®ã¾ã¾æ ¼ç´
             if (connection.peer == peerID1) {
                 console.log('receive p1');
                 conn1 = connection;
@@ -170,7 +170,7 @@ $(function () {
         connection.on('close', function () {
             if (connection.peer != masterPeerID) {
                 $('#messages').text('Disconnected from ' + connection.metadata.username + ' (' + connection.peer + ')');
-                // c‚è3lA2l‚Ìê‡
+                // æ®‹ã‚Š3äººã€2äººã®å ´åˆ
                 array_skippedUser.push(connection.metadata.flag);
                 array_skippedUser.sort(function (a, b) {
                     return a - b;
@@ -189,7 +189,7 @@ $(function () {
                         conn3 = void 0;
                     }
                 }
-                // ŠwK‡”Ô‚ÌÄŒŸ“¢
+                // å­¦ç¿’é †ç•ªã®å†æ¤œè¨
                 if (learn_flow % array_partnerKey.length == connection.metadata.flag) { }
                 skippedUserCheck();
                 if (learn_flow % array_partnerKey.length == learn_order) {
@@ -215,7 +215,7 @@ $(function () {
         }
     }
 
-    ////////// ‹¤“¯ŠwKÒ‚ÉÚ‘± //////////
+    ////////// å…±åŒå­¦ç¿’è€…ã«æ¥ç¶š //////////
     function Peer4Student() {
         for (var i in array_partnerKey) {
             if (array_partnerKey[i] != myPeerID) {
@@ -251,8 +251,8 @@ $(function () {
         }
     }
 
-    //////// iframeŠÖ” ////////
-    // Moodle‚ÌƒR[ƒX–¼‚ğæ“¾
+    //////// iframeé–¢æ•° ////////
+    // Moodleã®ã‚³ãƒ¼ã‚¹åã‚’å–å¾—
     function getCourseURL() {
         return new Promise(function (resolve, reject) {
             if (!getCourseURL.cache) {
@@ -268,13 +268,13 @@ $(function () {
         });
     }
 
-    // iframeŒ^ƒIƒuƒWƒFƒNƒg‚ğíœ
+    // iframeå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤
     function removeElement(e) {
         e.parentNode.removeChild(e);
         return e;
     }
 
-    // iframeŒ^ƒIƒuƒWƒFƒNƒg‚ğì¬
+    // iframeå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆ
     function injectIframe(url) {
         return new Promise(function (resolve, reject) {
             var timeout = true;
@@ -329,7 +329,7 @@ $(function () {
         });
     }
 
-    // ƒ\[ƒgğŒ‚Ì•ÏX
+    // ã‚½ãƒ¼ãƒˆæ¡ä»¶ã®å¤‰æ›´
     function ChangeSort(iframe) {
         var doc = iframe.contentDocument;
         var form = Array.prototype.reduce.call(doc.forms, function (r, e) {
@@ -481,7 +481,7 @@ $(function () {
         }
     }
 
-    // ƒƒbƒZ[ƒW‚ÌóM
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡
     function handleMessage(data) {
         var displayJudge = 'Right!';
         var sended = array_strings[learn_progress].toLowerCase();
@@ -535,10 +535,10 @@ $(function () {
     function displayTimer() {
         $('#token_timer').text('');
         for (var i = 0; i < learn_timer; i++) {
-            $('#token_timer').append('|');
+            $('#token_timer').append('â– ');
         }
         for (var j = learn_timer; j < learn_timer_limit - 1; j++) {
-            $('#token_timer').append('_');
+            $('#token_timer').append('â–¡');
         }
     }
 
@@ -551,19 +551,19 @@ $(function () {
         }
     }
 
-    // ƒƒbƒZ[ƒW‚Ì‘—M
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡
     function sendMessage() {
         clearTimeout(sTo_time);
-        // HTML‚Ìid=sendmessageƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚·‚é‚ÆÀs
+        // HTMLã®id=sendmessageãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨å®Ÿè¡Œ
         var text = $('#message').val();
-        // “ü—Í•¶š—ñnameAtext‚ğæ“¾
+        // å…¥åŠ›æ–‡å­—åˆ—nameã€textã‚’å–å¾—
         var data = { 'from': user_name, 'text': text };
         if (data.text == array_strings[learn_progress]) {
             operateScore(5);
         } else {
             operateScore(-5);
         }
-        // Ú‘±conn‚ğg‚Á‚Ä‘—M
+        // æ¥ç¶šconnã‚’ä½¿ã£ã¦é€ä¿¡
         if (conn1 != undefined) {
             console.log('send1');
             conn1.send(data);
@@ -576,13 +576,19 @@ $(function () {
             console.log('send3');
             conn3.send(data);
         }
-        // ƒƒbƒZ[ƒW‚ğó‚¯æ‚è•\¦‚·‚éŠÖ”
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ã‘å–ã‚Šè¡¨ç¤ºã™ã‚‹é–¢æ•°
         handleMessage(data);
-        // “ü—Í•¶š—ñtext‚ğ‰Šú‰»
+        // å…¥åŠ›æ–‡å­—åˆ—textã‚’åˆæœŸåŒ–
         $('#message').val('');
     }
 
-    // ƒƒbƒZ[ƒW‚Ì‘—M‚ÍƒL[ƒR[ƒh13iƒGƒ“ƒ^[ƒL[j‚ğ“ü—Í‚·‚é‚±‚Æ‚ÅÀs‚³‚ê‚é
+    $('#message').keyup(function (e) {
+        var tmptxt = $('#message').val();
+        tmptxt = tmptxt.replace(/ /g, "");
+        $('#message').val(tmptxt); 
+    });
+
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã¯ã‚­ãƒ¼ã‚³ãƒ¼ãƒ‰13ï¼ˆã‚¨ãƒ³ã‚¿ãƒ¼ã‚­ãƒ¼ï¼‰ã‚’å…¥åŠ›ã™ã‚‹ã“ã¨ã§å®Ÿè¡Œã•ã‚Œã‚‹
     $('#message').keypress(function (e) {
         if (e.which == 13) {
             if ($('#message').val() != null && $('#message').val() != "") {
@@ -590,12 +596,9 @@ $(function () {
             }
         } else if (e.which == 32) {
             audioElement[0].play();
-            var tmptxt = $('#message').val();
-            tmptxt = tmptxt.replace(/ /g, "");
-            $('#message').val(tmptxt);
         }
     });
-    // HTML‚Ìƒ{ƒ^ƒ“send-message‚ğƒNƒŠƒbƒN‚·‚é‚±‚Æ‚Å‚àÀs‚³‚ê‚é
+    // HTMLã®ãƒœã‚¿ãƒ³send-messageã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã“ã¨ã§ã‚‚å®Ÿè¡Œã•ã‚Œã‚‹
     $('#send-message').click(function () {
         if ($('#message').val() != null && $('#message').val() != "") {
             sendMessage();
@@ -605,9 +608,9 @@ $(function () {
     //////// Amazon Polly ////////
     function polly_create() {
         var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3";
-        // Ä¶ƒtƒ@ƒCƒ‹‚Ìİ’è
+        // å†ç”Ÿãƒ•ã‚¡ã‚¤ãƒ«ã®è¨­å®š
         audioElement[0].src = url;
-        // ‰¹º‚ÌÄ¶
+        // éŸ³å£°ã®å†ç”Ÿ
         audioElement[0].play();
     }
 
