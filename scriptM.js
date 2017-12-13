@@ -7,14 +7,17 @@ $(function () {
     // 配列定義
     var array_question = new Array();
     var array_entries = new Array();
+    var array_changeUser = new Array();
     // 問題ファイル名
     var TSVFILE = 'https://rawgit.com/tomkaw/English_Learning/master/resource/question.tsv';
+    //
+    var iframe_url, token_changeuser = 0;
 
     ////// PeerJS初期設定 //////
     // 新規PeerJSインスタンス
     var peer = new Peer({
         // APIキー
-	key: '900d7a23-6264-4afe-8896-15f0d020ca61',
+        key: '900d7a23-6264-4afe-8896-15f0d020ca61',
         turn: false,
         //デバッグモードの冗長性
         debug: 3,
@@ -59,7 +62,8 @@ $(function () {
     function IframeSetting() {
         getCourseURL()
             .then(function (url) {
-                GetURL(url, 'DB_REGIST', 'view')
+                iframe_url = url;
+                GetURL(iframe_url, 'DB_REGIST', 'view')
                     .then(injectIframe)
                     .then(function (iframe) {
                         ChangeInfo(iframe, peer.id);
@@ -72,20 +76,39 @@ $(function () {
 
     //////// PeerJS ////////
     peer.on('connection', function (connection) {
-        // 学習者のデータを配列に格納
-        array_entries[array_entries.length] = [connection.metadata.score, connection.peer];
-        $('#token_registed').text(array_entries.length);
-        changeStartBtn();
-        // 切断された時の処理
-        connection.on('close', function () {
-            for (var i = 0; i < array_entries.length; i++) {
-                if (array_entries[i][1] == connection.peer) {
-                    array_entries.splice(i, 1);
-                    $('#token_registed').text(array_entries.length);
-                    changeStartBtn()
-                }
+        // 
+        if (connection.metadata.token == 1) {
+            GetURL(iframe_url, 'DB_USER', 'edit')
+                .then(injectIframe)
+                .then(function (iframe) {
+                    RegistUserData(iframe, connection.metadata.name, connection.metadata.score);
+                });
+        } else if (connection.metadata.token == 2) {
+            array_changeUser[array_changeUser.length] = [connection.metadata.name, connection.metadata.score];
+            if (token_changeuser == 0) {
+                changeUserPool();
             }
-        });
+            // GetURL(iframe_url, 'DB_USER', 'view')
+            //     .then(injectIframe)
+            //     .then(function (iframe) {
+            //         ChangeUserData(iframe, connection.metadata.name, connection.metadata.score);
+            //     });
+        } else {
+            // 学習者のデータを配列に格納
+            array_entries[array_entries.length] = [connection.metadata.score, connection.peer];
+            $('#token_registed').text(array_entries.length);
+            changeStartBtn();
+            // 切断された時の処理
+            connection.on('close', function () {
+                for (var i = 0; i < array_entries.length; i++) {
+                    if (array_entries[i][1] == connection.peer) {
+                        array_entries.splice(i, 1);
+                        $('#token_registed').text(array_entries.length);
+                        changeStartBtn()
+                    }
+                }
+            });
+        }
     });
 
     // 学習チームの人数が変更された時の関数
@@ -117,11 +140,6 @@ $(function () {
         // スコアの降順にソート
         array_entries.sort(function (a, b) {
             return a - b;
-            // if (a[0] < b[0]) {
-            //     return -1;
-            // } else {
-            //     return 1;
-            // }
         });
 
         // ピアIDをペアリングし、配列に格納
@@ -131,11 +149,11 @@ $(function () {
         var tmp_pairing_adjust = 0;
         switch (array_entries.length % tmp_student) {
             case 0:
-            // 全パターン：あまりなし
+                // 全パターン：あまりなし
                 tmp_pairing_adjust = 0;
                 break;
             case 1:
-            // 全パターン：あまり1
+                // 全パターン：あまり1
                 tmp_pairing_adjust = tmp_student + 1;
                 break;
             case 2:
@@ -148,7 +166,7 @@ $(function () {
                 }
                 break;
             case 3:
-            // 4人：あまり3
+                // 4人：あまり3
                 tmp_pairing_adjust = 3;
                 break;
         }
@@ -165,7 +183,7 @@ $(function () {
             for (var x = tmp_pairing_adjust; x > 0; x--) {
                 tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - x][1]);
             }
-        // 余り処理２：調節されるチームは二つ
+            // 余り処理２：調節されるチームは二つ
         } else if (tmp_pairing_adjust >= 5) {
             for (var y = tmp_pairing_adjust; y > 0; y -= 3) {
                 tmp_array_team[tmp_array_team.length] = [];
@@ -189,7 +207,7 @@ $(function () {
                         'partnerKEYs': tmp_array_team[k]
                     }
                 });
-                conn.close();
+                //conn.close();
                 console.log('sended to ' + tmp_array_team[k][l]);
             }
         }
@@ -307,4 +325,91 @@ $(function () {
             form.submit();
         });
     }
+
+    function RegistUserData(iframe, name, score) {
+        var ary_data = [score, name];
+        var doc = iframe.contentDocument;
+        var form = Array.prototype.reduce.call(doc.forms, function (r, e) {
+            if (("" + e.action).match(/edit.php/)) r.push(e);
+            return r;
+        }, [])[0];
+        for (key in form) {
+            if (isNaN(key) == false && form[key].id.match(/field_/)) {
+                form[form[key].id].value = ary_data.pop();
+            }
+        }
+        return new Promise(function (resolve, reject) {
+            iframe.onload = function (e) {
+                resolve(iframe);
+            }
+            setTimeout(function () {
+                //reject("submitNewdiscussion: timeout: over " + injectIframe.timeout + "ms: " + + iframe.src + ": " + form.action);
+            }, injectIframe.timeout);
+            form.submit();
+        });
+    }
+
+    function changeUserPool() {
+        console.log("manage");
+        token_changeuser = 1;
+        GetURL(iframe_url, 'DB_USER', 'view')
+            .then(injectIframe)
+            .then(function (iframe) {
+                for (var i = 0; i < array_changeUser.length; i ++) {
+                    ChangeUserData(iframe, array_changeUser[i][0], array_changeUser[i][1]);                   
+                }
+            })
+            .then(function () {
+                array_changeUser.length = 0;
+                token_changeuser = 0;
+            });
+
+    }
+
+    function ChangeUserData(iframe, name, score) {
+        reg = new RegExp('^name:' + name);
+        return new Promise(function (resolve) {
+            var doc = iframe.contentDocument;
+            var list_div = doc.getElementsByTagName('div');
+            for (item_div of list_div) {
+                if (item_div.textContent.match(reg)) {
+                    console.log(item_div);
+                    var list_a = item_div.getElementsByTagName('a');
+                    for (item_a of list_a) {
+                        if (item_a.href.match(/rid\=/)) {
+                            var editPage = item_a.href;
+                            injectIframe(editPage)
+                                .then(function (iframe2) {
+                                    EditActUser(iframe2, name, score);
+                                });
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function EditActUser(iframe, name, score) {
+        var ary_data = [score, name];
+        var doc = iframe.contentDocument;
+        var form = Array.prototype.reduce.call(doc.forms, function (r, e) {
+            if (("" + e.action).match(/edit.php/)) r.push(e);
+            return r;
+        }, [])[0];
+        for (key in form) {
+            if (isNaN(key) == false && form[key].id.match(/field_/)) {
+                form[form[key].id].value = ary_data.pop();
+            }
+        }
+        return new Promise(function (resolve, reject) {
+            iframe.onload = function (e) {
+                resolve(iframe);
+            }
+            setTimeout(function () {
+                //reject("submitNewdiscussion: timeout: over " + injectIframe.timeout + "ms: " + + iframe.src + ": " + form.action);
+            }, injectIframe.timeout);
+            form.submit();
+        });
+    }
+
 });

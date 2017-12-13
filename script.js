@@ -3,6 +3,7 @@ $(function () {
     // 通信用変数
     var conn, user_name, user_score, myPeerID;	// 接続, 自分の名前, 自分のスコア
     var conn1, conn2, conn3, peerID1, peerID2, peerID3, masterPeerID;
+    var registeredUser = 0;
     // iframe用変数
     var iframe_url; // URL
 
@@ -72,32 +73,6 @@ $(function () {
                     .then(ChangeSort)
             })
             .then(function () {
-                return GetURL(iframe_url, 'DB_USER', 'view');
-            })
-            .then(injectIframe)
-            .then(function (iframe) {
-                return GetUserData(iframe, user_name);
-            })
-            .then(function (mydata) {
-                if (mydata['name'] == undefined || mydata['score'] == undefined) {
-                    // 自身の学習者情報が登録されていなかった場合
-                    user_score = 1000;
-                    // データの登録
-                    GetURL(iframe_url, 'DB_USER', 'edit')
-                        .then(injectIframe)
-                        .then(function (iframe) {
-                            RegistUserData(iframe, user_name, user_score);
-                        });
-                } else {
-                    // 登録されていた場合
-                    user_score = mydata['score'];
-                }
-                // 画面表示
-                $('#myData').removeClass('hidden');
-                $('#token_user_name').text(user_name + ' ' + peer.id);
-                $('#token_user_score').text(user_score);
-            })
-            .then(function () {
                 return GetURL(iframe_url, 'DB_REGIST', 'view');
             })
             .then(injectIframe)
@@ -107,6 +82,33 @@ $(function () {
             .then(function (userData) {
                 Peer4Master(userData[0]['peerID']);
             })
+            .then(function () {
+                return GetURL(iframe_url, 'DB_USER', 'view');
+            })
+            .then(injectIframe)
+            .then(function (iframe) {
+                return GetUserData(iframe, user_name);
+            })
+            .then(function (mydata) {
+                if (mydata['name'] == undefined || mydata['score'] == undefined) {
+                    registeredUser = 1;
+                    user_score = 1000;
+                    conn = peer.connect(masterPeerID, {
+                        metadata: {
+                            'name': user_name,
+                            'score': user_score,
+                            'token': registeredUser
+                        }
+                    });
+                } else {
+                    registeredUser = 0;
+                    user_score = mydata['score'];
+                }
+                // 画面表示
+                $('#myData').removeClass('hidden');
+                $('#token_user_name').text(user_name + ' ' + peer.id);
+                $('#token_user_score').text(user_score);
+            })
     }
 
     //////// 管理者に接続 ////////
@@ -114,7 +116,8 @@ $(function () {
         masterPeerID = peerID;
         conn = peer.connect(peerID, {
             metadata: {
-                'score': user_score
+                'name': user_name,
+                'token': 0
             }
         });
     }
@@ -130,12 +133,10 @@ $(function () {
             array_partnerKey = $.extend(true, [], connection.metadata.partnerKEYs);
             // 問題関連データを画面に表示
             $('#questiondata').removeClass('hidden');
-            //$('#token_question').text(array_question[0]);
             $('#questionstring').removeClass('hidden');
             $('#token_sound').removeClass('hidden');
             DisplayString();
             polly_create();
-            //$('#token_sound').html("<audio id='sentence' controls='controls' preload='auto'>can't play...<source src='https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3' type='audio/mp3'>");
             // 学習者同士での通信
             Peer4Student();
         } else {
@@ -356,29 +357,6 @@ $(function () {
         });
     }
 
-    function RegistUserData(iframe, name, score) {
-        var ary_data = [score, name];
-        var doc = iframe.contentDocument;
-        var form = Array.prototype.reduce.call(doc.forms, function (r, e) {
-            if (("" + e.action).match(/edit.php/)) r.push(e);
-            return r;
-        }, [])[0];
-        for (key in form) {
-            if (isNaN(key) == false && form[key].id.match(/field_/)) {
-                form[form[key].id].value = ary_data.pop();
-            }
-        }
-        return new Promise(function (resolve, reject) {
-            iframe.onload = function (e) {
-                resolve(iframe);
-            }
-            setTimeout(function () {
-                //reject("submitNewdiscussion: timeout: over " + injectIframe.timeout + "ms: " + + iframe.src + ": " + form.action);
-            }, injectIframe.timeout);
-            form.submit();
-        });
-    }
-
     function GetUserData(iframe, name) {
         reg = new RegExp('^name:' + name);
         return new Promise(function (resolve) {
@@ -419,50 +397,16 @@ $(function () {
         });
     }
 
-    function ChangeMyData(iframe) {
-        return new Promise(function (resolve) {
-            var doc = iframe.contentDocument;
-            var list_a = doc.getElementsByTagName('a');
-            for (item_a of list_a) {
-                if (item_a.href.match(/rid\=/)) {
-                    injectIframe(item_a.href)
-                        .then(function (iframe2) {
-                            EditAct(iframe2);
-                        });
-                }
-            }
-        });
-    }
-
-    function EditAct(iframe) {
-        var ary_data = [user_score, user_name];
-        var doc = iframe.contentDocument;
-        var form = Array.prototype.reduce.call(doc.forms, function (r, e) {
-            if (("" + e.action).match(/edit.php/)) r.push(e);
-            return r;
-        }, [])[0];
-        for (key in form) {
-            if (isNaN(key) == false && form[key].id.match(/field_/)) {
-                form[form[key].id].value = ary_data.pop();
-            }
-        }
-        return new Promise(function (resolve, reject) {
-            iframe.onload = function (e) {
-                resolve(iframe);
-            }
-            setTimeout(function () {
-                //reject("submitNewdiscussion: timeout: over " + injectIframe.timeout + "ms: " + + iframe.src + ": " + form.action);
-            }, injectIframe.timeout);
-            form.submit();
-        });
-    }
-
     function operateScore(value) {
         user_score = parseInt(user_score) + value;
         $('#token_user_score').text(user_score);
-        GetURL(iframe_url, 'DB_USER', 'view')
-            .then(injectIframe)
-            .then(ChangeMyData)
+        conn = peer.connect(masterPeerID, {
+            metadata: {
+                'name': user_name,
+                'score': user_score,
+                'token': 2
+            }
+        });
     }
 
     //////////  //////////
@@ -585,7 +529,7 @@ $(function () {
     $('#message').keyup(function (e) {
         var tmptxt = $('#message').val();
         tmptxt = tmptxt.replace(/ /g, "");
-        $('#message').val(tmptxt); 
+        $('#message').val(tmptxt);
     });
 
     // メッセージの送信はキーコード13（エンターキー）を入力することで実行される
@@ -605,7 +549,6 @@ $(function () {
         }
     });
 
-    //////// Amazon Polly ////////
     function polly_create() {
         var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3";
         // 再生ファイルの設定
@@ -613,9 +556,5 @@ $(function () {
         // 音声の再生
         audioElement[0].play();
     }
-
-    //$('#play_sound').click(function () {
-    //    audioElement[0].play();
-    //});
 
 });
