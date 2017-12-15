@@ -1,9 +1,9 @@
 $(function () {
     //////// 変数定義 ////////
     // 通信用変数
-    var conn, user_name, user_score, myPeerID;	// 接続, 自分の名前, 自分のスコア
+    var conn, user_name, user_score, myPeerID, display_name;	// 接続, 自分の名前, 自分のスコア
     var conn1, conn2, conn3, peerID1, peerID2, peerID3, masterPeerID;
-    var registeredUser = 0;
+    var registeredUser = 0, btn_disabled = 1, style = '';
     // iframe用変数
     var iframe_url; // URL
 
@@ -12,7 +12,7 @@ $(function () {
     var learn_flow = 0, learn_progress = 0, learn_mistake = 0; // 全体の解答回数, 全体の正解回数, 失敗回数
     var learn_timer = 0, sTo_time; // ループ処理用変数, 関数
     // バランス調整用
-    var learn_timer_limit = 16, mistakeBorder = 3
+    var learn_timer_limit = 16, mistakeBorder = 3;
 
     // 学習用配列
     var array_question = new Array();   // 問題の全データ
@@ -22,6 +22,7 @@ $(function () {
     var array_skippedUser = new Array();
 
     var audioElement = $('#speech_audio');
+    var seElement = $('#id_se1');
 
     //////// PeerJS初期設定 ////////
     // 新規PeerJSインスタンス
@@ -67,6 +68,7 @@ $(function () {
                     .then(GetName)
                     .then(function (name) {
                         user_name = name;
+                        display_name = name.substring(name.indexOf(" ") + 1, name.length);
                         return GetURL(iframe_url, 'DB_USER', 'view');
                     })
                     .then(injectIframe)
@@ -105,9 +107,11 @@ $(function () {
                     user_score = mydata['score'];
                 }
                 // 画面表示
-                $('#myData').removeClass('hidden');
-                $('#token_user_name').text(user_name + ' ' + peer.id);
-                $('#token_user_score').text(user_score);
+                $('#mydata').removeClass('hidden');
+                $('#mydata_name').text(display_name + ' (' + peer.id + ')');
+                $('#mydata_score').text(user_score);
+                $('#expo').removeClass('hidden');
+                $('#expo_limit').text('制限時間（' + (learn_timer_limit - 1) +'秒）を超えてしまうと相手の番になります');
             })
     }
 
@@ -132,7 +136,7 @@ $(function () {
             array_strings = array_question[1].split(" ");
             array_partnerKey = $.extend(true, [], connection.metadata.partnerKEYs);
             // 問題関連データを画面に表示
-            $('#questiondata').removeClass('hidden');
+            //$('#questiondata').removeClass('hidden');
             $('#questionstring').removeClass('hidden');
             $('#token_sound').removeClass('hidden');
             DisplayString();
@@ -156,21 +160,28 @@ $(function () {
                 conn3.on('data', handleMessage);
             }
 
-            $('#token_partner_name').append(connection.metadata.username + ' ');
-
-            $('#chat').removeClass('hidden');
+            $('#partnerdata_name').append(connection.metadata.username + ' ');
+            $('#ELmessage').removeClass('hidden');
+            $('#ELtext').removeClass('hidden');
+            $('#order').removeClass('hidden');
             if (learn_order != 0) {
+                $('#order_latest').text("ではありません");
                 $('#send-message').prop('disabled', true);
                 displayTimer();
             } else {
+                $('#order_latest').text("です");
+                seElement[0].play();
+                btn_disabled = 0;
                 setTimeout(timer1(), 1000);
             }
             $('#loading').addClass('hidden');
             $('#questiontimer').removeClass('hidden');
         }
         connection.on('close', function () {
-            if (connection.peer != masterPeerID) {
-                $('#messages').text('Disconnected from ' + connection.metadata.username + ' (' + connection.peer + ')');
+            if (connection.peer != masterPeerID && array_strings.length > learn_progress) {
+                var disconnectedmessage = timestamp() + connection.metadata.username + ' (' + connection.peer + ') さんとの通信が切断されました';
+                $('#ELmessage').prepend('<ul>' + disconnectedmessage + '</ul>');
+                //$('#display-message').append(timestamp() + 'Disconnected from ' + connection.metadata.username + ' (' + connection.peer + ')');
                 // 残り3人、2人の場合
                 array_skippedUser.push(connection.metadata.flag);
                 array_skippedUser.sort(function (a, b) {
@@ -194,9 +205,7 @@ $(function () {
                 if (learn_flow % array_partnerKey.length == connection.metadata.flag) { }
                 skippedUserCheck();
                 if (learn_flow % array_partnerKey.length == learn_order) {
-                    $('#send-message').prop('disabled', false);
-                    learn_timer = 0;
-                    timer1();
+                    func_order(0);
                 }
             }
         });
@@ -225,7 +234,7 @@ $(function () {
                     conn1 = peer.connect(array_partnerKey[i], {
                         metadata: {
                             'flag': learn_order,
-                            'username': user_name
+                            'username': display_name
                         }
                     });
                     conn1.on('data', handleMessage);
@@ -234,7 +243,7 @@ $(function () {
                     conn2 = peer.connect(array_partnerKey[i], {
                         metadata: {
                             'flag': learn_order,
-                            'username': user_name
+                            'username': display_name
                         }
                     });
                     conn2.on('data', handleMessage);
@@ -243,7 +252,7 @@ $(function () {
                     conn3 = peer.connect(array_partnerKey[i], {
                         metadata: {
                             'flag': learn_order,
-                            'username': user_name
+                            'username': display_name
                         }
                     });
                     conn3.on('data', handleMessage);
@@ -399,7 +408,7 @@ $(function () {
 
     function operateScore(value) {
         user_score = parseInt(user_score) + value;
-        $('#token_user_score').text(user_score);
+        $('#mydata_score').text(user_score);
         conn = peer.connect(masterPeerID, {
             metadata: {
                 'name': user_name,
@@ -412,22 +421,22 @@ $(function () {
     //////////  //////////
 
     function DisplayString() {
-        $('#questionstring').text('');
+        $('#questionstring_value').text('');
         for (var i = 0; i < learn_progress; i++) {
-            $('#questionstring').append(array_strings[i]);
-            $('#questionstring').append(' ');
+            $('#questionstring_value').append(array_strings[i]);
+            $('#questionstring_value').append(' ');
         }
         for (i = learn_progress; i < array_strings.length; i++) {
             for (var j = 0; j < array_strings[i].length; j++) {
-                $('#questionstring').append("*");
+                $('#questionstring_value').append("*");
             }
-            $('#questionstring').append(' ');
+            $('#questionstring_value').append(' ');
         }
     }
 
     // メッセージの受信
     function handleMessage(data) {
-        var displayJudge = 'Right!';
+        var displayJudge = '';
         var sended = array_strings[learn_progress].toLowerCase();
         sended = sended.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
         var answer = data.text.toLowerCase();
@@ -435,7 +444,7 @@ $(function () {
         if (sended == answer) {
             advanceLearning();
         } else {
-            displayJudge = 'Miss!';
+            displayJudge = '不';
             learn_mistake++;
             if (learn_mistake >= mistakeBorder) {
                 advanceLearning();
@@ -445,17 +454,20 @@ $(function () {
         learn_flow++;
         skippedUserCheck();
         if (array_strings.length <= learn_progress) {
-            $('#send-message').prop('disabled', true);
+            func_order(1);
         } else if (learn_flow % array_partnerKey.length == learn_order) {
-            $('#send-message').prop('disabled', false);
-            learn_timer = 0;
-            timer1();
+            func_order(0);
         } else {
-            $('#send-message').prop('disabled', true);
+            func_order(1);
         }
 
-        var displayMessage = data.from + '\'s answer : ' + data.text + '. It\'s ' + displayJudge;
-        $('#messages').text(displayMessage);
+        var answereduser;
+        if (data.from == user_name) { answereduser = 'あなた'; style = 'blue'}
+        else { answereduser = '学習パートナー'; style = 'black'}
+        if(data.time == 0) { var displayMessage = timestamp() + answereduser + ' が' + displayJudge + '正解の英単語 ' + data.text + ' を入力しました'; }
+        else { var displayMessage = timestamp() + answereduser + ' が時間切れになりました'}
+        $('#ELmessage').prepend('<ul><span style=\"color: ' + style + ';\">' + displayMessage + '</span></ul>');
+        //$('#display-message').append(displayMessage);
 
         DisplayString();
     }
@@ -472,17 +484,17 @@ $(function () {
         sTo_time = setTimeout(timer2, 1000);
         if (learn_timer >= learn_timer_limit) {
             clearTimeout(sTo_time);
-            sendMessage();
+            sendMessage(1);
         }
     }
 
     function displayTimer() {
-        $('#token_timer').text('');
+        $('#questiontimer_value').text('(' + ('000'+(learn_timer_limit - 1 - learn_timer)).slice(-2) +'秒):');
         for (var i = 0; i < learn_timer; i++) {
-            $('#token_timer').append('■');
+            $('#questiontimer_value').append('□');
         }
         for (var j = learn_timer; j < learn_timer_limit - 1; j++) {
-            $('#token_timer').append('□');
+            $('#questiontimer_value').append('■');
         }
     }
 
@@ -496,12 +508,12 @@ $(function () {
     }
 
     // メッセージの送信
-    function sendMessage() {
+    function sendMessage(timelimit) {
         clearTimeout(sTo_time);
         // HTMLのid=sendmessageボタンをクリックすると実行
         var text = $('#message').val();
         // 入力文字列name、textを取得
-        var data = { 'from': user_name, 'text': text };
+        var data = { 'from': user_name, 'text': text , 'time': timelimit};
         if (data.text == array_strings[learn_progress]) {
             operateScore(5);
         } else {
@@ -535,8 +547,8 @@ $(function () {
     // メッセージの送信はキーコード13（エンターキー）を入力することで実行される
     $('#message').keypress(function (e) {
         if (e.which == 13) {
-            if ($('#message').val() != null && $('#message').val() != "") {
-                sendMessage();
+            if ($('#message').val() != null && $('#message').val() != "" && btn_disabled == 0) {
+                sendMessage(0);
             }
         } else if (e.which == 32) {
             audioElement[0].play();
@@ -545,7 +557,7 @@ $(function () {
     // HTMLのボタンsend-messageをクリックすることでも実行される
     $('#send-message').click(function () {
         if ($('#message').val() != null && $('#message').val() != "") {
-            sendMessage();
+            sendMessage(0);
         }
     });
 
@@ -555,6 +567,40 @@ $(function () {
         audioElement[0].src = url;
         // 音声の再生
         audioElement[0].play();
+    }
+
+    function func_order(val) {
+        if (val == 0) {
+            $('#order_latest').text("です");
+            $('#send-message').prop('disabled', false);
+            seElement[0].play();
+            btn_disabled = 0;
+            learn_timer = 0;
+            timer1();
+        } else {
+            $('#order_latest').text("ではありません");
+            $('#send-message').prop('disabled', true);
+            btn_disabled = 1;
+        }
+    }
+
+    function timestamp() {
+        var now = new Date();
+        var year = now.getYear();
+        var month = now.getMonth() + 1; // 月
+        var day = now.getDate(); // 日
+        var hour = now.getHours(); // 時
+        var min = now.getMinutes(); // 分
+        var sec = now.getSeconds(); // 秒
+
+        if (year < 2000) { year += 1900; }
+        if (month < 10) { month = "0" + month; }
+        if (day < 10) { day = "0" + day; }
+        if (hour < 10) { hour = "0" + hour; }
+        if (min < 10) { min = "0" + min; }
+        if (sec < 10) { sec = "0" + sec; }
+
+        return '[' + year + '\/' + month + '\/' + day + ' ' + hour + ':' + min + ':' + sec + ']';
     }
 
 });
