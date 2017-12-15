@@ -454,7 +454,7 @@ $(function () {
         learn_flow++;
         skippedUserCheck();
         if (array_strings.length <= learn_progress) {
-            func_order(1);
+            func_order(2);
         } else if (learn_flow % array_partnerKey.length == learn_order) {
             func_order(0);
         } else {
@@ -571,14 +571,18 @@ $(function () {
 
     function func_order(val) {
         if (val == 0) {
-            $('#order_latest').text("です");
+            $('#order_latest').text("現在、あなたは回答者です");
             $('#send-message').prop('disabled', false);
             seElement[0].play();
             btn_disabled = 0;
             learn_timer = 0;
             timer1();
+        } else if(val == 1) {
+            $('#order_latest').text("現在、あなたは回答者ではありません");
+            $('#send-message').prop('disabled', true);
+            btn_disabled = 1;
         } else {
-            $('#order_latest').text("ではありません");
+            $('#order_latest').text("学習は終了しました");
             $('#send-message').prop('disabled', true);
             btn_disabled = 1;
         }
