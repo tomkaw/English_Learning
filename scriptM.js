@@ -5,13 +5,15 @@ $(function () {
     // セレクトボックスの初期値
     var var_question = 0, var_selectbox = 2;
     // 配列定義
-    var array_question = new Array();
-    var array_entries = new Array();
-    var array_changeUser = new Array();
-    // 問題ファイル名
+    var array_question = new Array();   // 問題情報を格納
+    var array_entries = new Array();    // 待機学習者を格納
+    var array_changeUser = new Array(); // スコアが更新される学習者を格納
+    // 問題格納ファイル
     var TSVFILE = 'https://rawgit.com/tomkaw/English_Learning/master/resource/question.tsv';
-    //
-    var iframe_url, token_changeuser = 0;
+    // Iframe用変数
+    var iframe_url;
+    // トークン
+    var token_changeuser = 0; // スコア更新関数の管理
 
     ////// PeerJS初期設定 //////
     // 新規PeerJSインスタンス
@@ -67,33 +69,30 @@ $(function () {
                     .then(injectIframe)
                     .then(function (iframe) {
                         ChangeInfo(iframe, peer.id);
-                        $('#registeduser').removeClass('hidden');
                         $('#button_container').removeClass('hidden');
-                        $('#token_registed').text('0');
+                        $('#registeduser').removeClass('hidden');
+                        $('#token_registed').text(array_entries.length);
                     })
             })
     }
 
     //////// PeerJS ////////
     peer.on('connection', function (connection) {
-        // 
         if (connection.metadata.token == 1) {
+            // 学習者情報を追加する
             GetURL(iframe_url, 'DB_USER', 'edit')
                 .then(injectIframe)
                 .then(function (iframe) {
                     RegistUserData(iframe, connection.metadata.name, connection.metadata.score);
                 });
         } else if (connection.metadata.token == 2) {
+            // 学習者情報を更新する
             array_changeUser[array_changeUser.length] = [connection.metadata.name, connection.metadata.score];
             if (token_changeuser == 0) {
                 changeUserPool();
             }
-            // GetURL(iframe_url, 'DB_USER', 'view')
-            //     .then(injectIframe)
-            //     .then(function (iframe) {
-            //         ChangeUserData(iframe, connection.metadata.name, connection.metadata.score);
-            //     });
         } else {
+            console.log(connection.metadata.score);
             // 学習者のデータを配列に格納
             array_entries[array_entries.length] = [connection.metadata.score, connection.peer];
             $('#token_registed').text(array_entries.length);
@@ -111,12 +110,13 @@ $(function () {
         }
     });
 
+//////////  //////////
     // 学習チームの人数が変更された時の関数
     $('#select_team').change(function () {
         var_selectbox = $(this).val();
-        changeStartBtn()
+        changeStartBtn();
     });
-
+    // 開始ボタンの活性非活性を切り替え
     function changeStartBtn() {
         if (array_entries.length < var_selectbox) {
             $('#send-start').prop('disabled', true);
@@ -125,22 +125,27 @@ $(function () {
         }
     }
 
+////////  ////////
     // 学習を開始するための関数
     $('#send-start').click(Start);
 
     function Start() {
         // セレクトボックスのデータを取得
+        console.log(array_question);
+        console.log(array_entries);
         if ($("#select_question").val() != '0') {
             var_question = parseInt($("#select_question").val()) - 1;
         } else {
             var_question = Math.floor(Math.random() * (array_question.length));
         }
-        console.log(var_question);
-
+        //console.log(var_question);
+        console.log(array_entries);
         // スコアの降順にソート
         array_entries.sort(function (a, b) {
-            return a - b;
+            console.log(a[0]);
+            return a[0] - b[0];
         });
+        console.log(array_entries);
 
         // ピアIDをペアリングし、配列に格納
         var tmp_student = parseInt($("#select_team").val());
@@ -177,14 +182,14 @@ $(function () {
                 tmp_array_team[tmp_array_team.length - 1].push(array_entries[i + j][1]);
             }
         }
-        // 余り処理１：調節されるチームは一つ
         if (0 < tmp_pairing_adjust && tmp_pairing_adjust <= 4) {
+            // 余り処理１：調節されるチームは一つ
             tmp_array_team[tmp_array_team.length] = [];
             for (var x = tmp_pairing_adjust; x > 0; x--) {
                 tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - x][1]);
             }
-            // 余り処理２：調節されるチームは二つ
         } else if (tmp_pairing_adjust >= 5) {
+            // 余り処理２：調節されるチームは二つ
             for (var y = tmp_pairing_adjust; y > 0; y -= 3) {
                 tmp_array_team[tmp_array_team.length] = [];
                 for (var z = 0; z < y && z < 3; z++) {
@@ -194,9 +199,11 @@ $(function () {
             }
         }
 
+        $('#displayStudent').text('');
         // 学習者へ送信
         for (var k = 0; k < tmp_array_team.length; k++) {
-            console.log(tmp_array_team);
+            //console.log(tmp_array_team);
+            $('#displayStudent').append('<ul>');
             for (var l = 0; l < tmp_array_team[k].length; l++) {
                 conn = peer.connect(tmp_array_team[k][l], {
                     metadata: {
@@ -209,7 +216,9 @@ $(function () {
                 });
                 //conn.close();
                 console.log('sended to ' + tmp_array_team[k][l]);
+                $('#displayStudent').append(tmp_array_team[k][l] + ' ');
             }
+            $('#displayStudent').append('</ul>');
         }
 
         // リセット
@@ -355,8 +364,8 @@ $(function () {
         GetURL(iframe_url, 'DB_USER', 'view')
             .then(injectIframe)
             .then(function (iframe) {
-                for (var i = 0; i < array_changeUser.length; i ++) {
-                    ChangeUserData(iframe, array_changeUser[i][0], array_changeUser[i][1]);                   
+                for (var i = 0; i < array_changeUser.length; i++) {
+                    ChangeUserData(iframe, array_changeUser[i][0], array_changeUser[i][1]);
                 }
             })
             .then(function () {

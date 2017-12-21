@@ -3,7 +3,7 @@ $(function () {
     // 通信用変数
     var conn, user_name, user_score, myPeerID, display_name;	// 接続, 自分の名前, 自分のスコア
     var conn1, conn2, conn3, peerID1, peerID2, peerID3, masterPeerID;
-    var registeredUser = 0, btn_disabled = 1, style = '';
+    var registeredUser = 0, btn_disabled = 1, style = '', waituser = 0;
     // iframe用変数
     var iframe_url; // URL
 
@@ -12,7 +12,7 @@ $(function () {
     var learn_flow = 0, learn_progress = 0, learn_mistake = 0; // 全体の解答回数, 全体の正解回数, 失敗回数
     var learn_timer = 0, sTo_time; // ループ処理用変数, 関数
     // バランス調整用
-    var learn_timer_limit = 16, mistakeBorder = 3;
+    var learn_timer_limit = 20, mistakeBorder = 3;
 
     // 学習用配列
     var array_question = new Array();   // 問題の全データ
@@ -54,7 +54,6 @@ $(function () {
             alert("Connection is closed.");
         } else {
             myPeerID = peer.id;
-            //GetTSV();
             FunctionIframe();
         }
     });
@@ -82,7 +81,8 @@ $(function () {
                 return GetRegistedData(iframe);
             })
             .then(function (userData) {
-                Peer4Master(userData[0]['peerID']);
+                //Peer4Master(userData[0]['peerID']);
+                masterPeerID = userData[0]['peerID'];
             })
             .then(function () {
                 return GetURL(iframe_url, 'DB_USER', 'view');
@@ -94,7 +94,7 @@ $(function () {
             .then(function (mydata) {
                 if (mydata['name'] == undefined || mydata['score'] == undefined) {
                     registeredUser = 1;
-                    user_score = 1000;
+                    user_score = 500;
                     conn = peer.connect(masterPeerID, {
                         metadata: {
                             'name': user_name,
@@ -106,21 +106,26 @@ $(function () {
                     registeredUser = 0;
                     user_score = mydata['score'];
                 }
+                Peer4Master(masterPeerID);
+            })
+            .then(function () {
                 // 画面表示
                 $('#mydata').removeClass('hidden');
                 $('#mydata_name').text(display_name + ' (' + peer.id + ')');
                 $('#mydata_score').text(user_score);
                 $('#expo').removeClass('hidden');
-                $('#expo_limit').text('制限時間（' + (learn_timer_limit - 1) +'秒）を超えてしまうと相手の番になります');
+                $('#expo_limit').text('制限時間（' + (learn_timer_limit) +'秒）を超えてしまうと相手の番になります');
+            //})
             })
     }
 
     //////// 管理者に接続 ////////
     function Peer4Master(peerID) {
-        masterPeerID = peerID;
+        //masterPeerID = peerID;
         conn = peer.connect(peerID, {
             metadata: {
                 'name': user_name,
+                'score': user_score,
                 'token': 0
             }
         });
@@ -146,6 +151,7 @@ $(function () {
         } else {
             $('#partnerdata').removeClass('hidden');
             // 送信されたPeer接続の中身をそのまま格納
+            //conn.on('data', handleMessage);
             if (connection.peer == peerID1) {
                 console.log('receive p1');
                 conn1 = connection;
@@ -159,23 +165,12 @@ $(function () {
                 conn3 = connection;
                 conn3.on('data', handleMessage);
             }
-
             $('#partnerdata_name').append(connection.metadata.username + ' ');
-            $('#ELmessage').removeClass('hidden');
-            $('#ELtext').removeClass('hidden');
-            $('#order').removeClass('hidden');
-            if (learn_order != 0) {
-                $('#order_latest').text("ではありません");
-                $('#send-message').prop('disabled', true);
-                displayTimer();
-            } else {
-                $('#order_latest').text("です");
-                seElement[0].play();
-                btn_disabled = 0;
-                setTimeout(timer1(), 1000);
+
+            waituser++;
+            if (waituser == array_partnerKey.length - 1) {
+                learningStart();
             }
-            $('#loading').addClass('hidden');
-            $('#questiontimer').removeClass('hidden');
         }
         connection.on('close', function () {
             if (connection.peer != masterPeerID && array_strings.length > learn_progress) {
@@ -184,26 +179,30 @@ $(function () {
                 //$('#display-message').append(timestamp() + 'Disconnected from ' + connection.metadata.username + ' (' + connection.peer + ')');
                 // 残り3人、2人の場合
                 array_skippedUser.push(connection.metadata.flag);
-                array_skippedUser.sort(function (a, b) {
-                    return a - b;
-                });
-                console.log(array_skippedUser);
-                if (conn1) {
-                    if (connection.peer == conn1.peer) {
+                //array_skippedUser.sort(function (a, b) {
+                //    return b - a;
+                //});
+                //console.log(array_skippedUser);
+                //if (conn1) {
+                    if (connection.peer == peerID1) {
+                        peerID1 = '';
                         conn1 = void 0;
                     }
-                } else if (conn2) {
-                    if (connection.peer == conn2.peer) {
+                //} else if (conn2) {
+                    if (connection.peer == peerID2) {
+                        peerID2 = '';
                         conn2 = void 0;
                     }
-                } else if (conn3) {
-                    if (connection.peer == conn3.peer) {
+                //} else if (conn3) {
+                    if (connection.peer == peerID3) {
+                        peerID3 = '';
                         conn3 = void 0;
                     }
-                }
+                //}
                 // 学習順番の再検討
-                if (learn_flow % array_partnerKey.length == connection.metadata.flag) { }
-                skippedUserCheck();
+                if (learn_flow % array_partnerKey.length == connection.metadata.flag) {
+                    skippedUserCheck();
+                }
                 if (learn_flow % array_partnerKey.length == learn_order) {
                     func_order(0);
                 }
@@ -211,13 +210,31 @@ $(function () {
         });
         connection.on('error', function (error) {
             alert(error);
-            console.log(error);
+            //console.log(error);
         });
     });
 
+    function learningStart() {
+        $('#ELmessage').removeClass('hidden');
+        $('#ELtext').removeClass('hidden');
+        $('#order').removeClass('hidden');
+        if (learn_order != 0) {
+            $('#order_latest').text("現在、あなたは回答者ではありません");
+            $('#send-message').prop('disabled', true);
+            displayTimer();
+        } else {
+            $('#order_latest').text("現在、あなたは回答者です");
+            seElement[0].play();
+            btn_disabled = 0;
+            setTimeout(timer1(), 1000);
+        }
+        $('#loading').addClass('hidden');
+        $('#questiontimer').removeClass('hidden');
+    }
+
     function skippedUserCheck() {
         for (var i = 0; i < array_skippedUser.length; i++) {
-            console.log(learn_flow + ':' + array_skippedUser[i]);
+            //console.log(learn_flow + ':' + array_skippedUser[i]);
             if (learn_flow % array_partnerKey.length == array_skippedUser[i]) {
                 i = -1;
                 learn_flow++;
@@ -462,7 +479,7 @@ $(function () {
         }
 
         var answereduser;
-        if (data.from == user_name) { answereduser = 'あなた'; style = 'blue'}
+        if (data.peerid == myPeerID) { answereduser = 'あなた'; style = 'blue'}
         else { answereduser = '学習パートナー'; style = 'black'}
         if(data.time == 0) { var displayMessage = timestamp() + answereduser + ' が' + displayJudge + '正解の英単語 ' + data.text + ' を入力しました'; }
         else { var displayMessage = timestamp() + answereduser + ' が時間切れになりました'}
@@ -478,22 +495,22 @@ $(function () {
     }
 
     function timer2() {
-        console.log('timer:' + learn_timer);
+        //console.log('timer:' + learn_timer);
         displayTimer();
         learn_timer++
         sTo_time = setTimeout(timer2, 1000);
-        if (learn_timer >= learn_timer_limit) {
+        if (learn_timer > learn_timer_limit) {
             clearTimeout(sTo_time);
             sendMessage(1);
         }
     }
 
     function displayTimer() {
-        $('#questiontimer_value').text('(' + ('000'+(learn_timer_limit - 1 - learn_timer)).slice(-2) +'秒):');
+        $('#questiontimer_value').text('(' + ('000'+(learn_timer_limit - learn_timer)).slice(-2) +'秒):');
         for (var i = 0; i < learn_timer; i++) {
             $('#questiontimer_value').append('□');
         }
-        for (var j = learn_timer; j < learn_timer_limit - 1; j++) {
+        for (var j = learn_timer; j < learn_timer_limit; j++) {
             $('#questiontimer_value').append('■');
         }
     }
@@ -513,22 +530,22 @@ $(function () {
         // HTMLのid=sendmessageボタンをクリックすると実行
         var text = $('#message').val();
         // 入力文字列name、textを取得
-        var data = { 'from': user_name, 'text': text , 'time': timelimit};
+        var data = { 'from': user_name, 'text': text, 'time': timelimit, 'peerid': myPeerID};
         if (data.text == array_strings[learn_progress]) {
             operateScore(5);
         } else {
             operateScore(-5);
         }
         // 接続connを使って送信
-        if (conn1 != undefined) {
+        if (conn1 != undefined && peerID1 != '') {
             console.log('send1');
             conn1.send(data);
         }
-        if (conn2 != undefined) {
+        if (conn2 != undefined && peerID2 != '') {
             console.log('send2');
             conn2.send(data);
         }
-        if (conn3 != undefined) {
+        if (conn3 != undefined && peerID3 != '') {
             console.log('send3');
             conn3.send(data);
         }
@@ -590,10 +607,10 @@ $(function () {
 
     function timestamp() {
         var now = new Date();
-        var year = now.getYear();
+        var year = now.getYear();   // 年
         var month = now.getMonth() + 1; // 月
-        var day = now.getDate(); // 日
-        var hour = now.getHours(); // 時
+        var day = now.getDate();    // 日
+        var hour = now.getHours();  // 時
         var min = now.getMinutes(); // 分
         var sec = now.getSeconds(); // 秒
 
