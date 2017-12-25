@@ -1,25 +1,25 @@
 $(function () {
     //////// 変数定義 ////////
     // 通信用変数
-    var conn, user_name, user_score, myPeerID, display_name;	// 接続, 自分の名前, 自分のスコア
-    var conn1, conn2, conn3, peerID1, peerID2, peerID3, masterPeerID;
-    var registeredUser = 0, btn_disabled = 1, style = '', waituser = 0;
+    var data_username, data_score, data_peerID, data_displayname;	// 接続, 自分の名前, 自分のスコア
+    var conn_master, conn_1, conn_2, conn_3, peerID_master, peerID_1 = 'default', peerID_2 = 'default', peerID_3 = 'default';
+    var token_btnDisabled = 1, token_style = '', token_waitOtherStudent = 0, token_start = 0;
     // iframe用変数
     var iframe_url; // URL
 
     // 学習用変数
-    var learn_order, learn_number;  // 自分の順番, 人数
-    var learn_flow = 0, learn_progress = 0, learn_mistake = 0; // 全体の解答回数, 全体の正解回数, 失敗回数
-    var learn_timer = 0, sTo_time; // ループ処理用変数, 関数
+    var learnValue_order;  // 自分の順番, 人数
+    var learnValue_flow = 0, learnValue_progress = 0, learnValue_mistake = 0; // 全体の解答回数, 全体の正解回数, 失敗回数
+    var learnValue_timer = 0, setTimeout_timer; // ループ処理用変数, 関数
     // バランス調整用
-    var learn_timer_limit = 20, mistakeBorder = 3;
+    var define_timerLimit = 20, define_mistakeLimit = 3, define_countBeforeStart = 5;
 
     // 学習用配列
-    var array_question = new Array();   // 問題の全データ
-    var array_strings = new Array();    // 問題の英文を分割
-    var array_partnerKey = new Array();
-
-    var array_skippedUser = new Array();
+    var array_question = new Array();       // 問題の全データ
+    var array_strings = new Array();        // 問題の英文を分割
+    var array_partnerKey = new Array();     // 共同学習者のピアID
+    var array_skippedUser = new Array();    // 切断した共同学習者
+    var array_connection = new Array();
 
     var audioElement = $('#speech_audio');
     var seElement = $('#id_se1');
@@ -53,7 +53,7 @@ $(function () {
         if (peer.id == null) {
             alert("Connection is closed.");
         } else {
-            myPeerID = peer.id;
+            data_peerID = peer.id;
             FunctionIframe();
         }
     });
@@ -63,219 +63,513 @@ $(function () {
         getCourseURL()
             .then(function (url) {
                 iframe_url = url;
-                injectIframe(iframe_url)
+                injectIframe(url)
                     .then(GetName)
                     .then(function (name) {
-                        user_name = name;
-                        display_name = name.substring(name.indexOf(" ") + 1, name.length);
+                        data_username = name;
+                        data_displayname = name.substring(name.indexOf(" ") + 1, name.length);
+                    })
+                    .then(function () {
+                        return GetURL(iframe_url, 'DB_REGIST', 'view');
+                    })
+                    .then(injectIframe)
+                    .then(GetRegistedData)
+                    .then(function (userData) {
+                        peerID_master = userData[0]['peerID'];
                         return GetURL(iframe_url, 'DB_USER', 'view');
                     })
                     .then(injectIframe)
                     .then(ChangeSort)
-            })
-            .then(function () {
-                return GetURL(iframe_url, 'DB_REGIST', 'view');
-            })
-            .then(injectIframe)
-            .then(function (iframe) {
-                return GetRegistedData(iframe);
-            })
-            .then(function (userData) {
-                //Peer4Master(userData[0]['peerID']);
-                masterPeerID = userData[0]['peerID'];
-            })
-            .then(function () {
-                return GetURL(iframe_url, 'DB_USER', 'view');
-            })
-            .then(injectIframe)
-            .then(function (iframe) {
-                return GetUserData(iframe, user_name);
-            })
-            .then(function (mydata) {
-                if (mydata['name'] == undefined || mydata['score'] == undefined) {
-                    registeredUser = 1;
-                    user_score = 500;
-                    conn = peer.connect(masterPeerID, {
-                        metadata: {
-                            'name': user_name,
-                            'score': user_score,
-                            'token': registeredUser
+                    .then(function () {
+                        return GetURL(iframe_url, 'DB_USER', 'view');
+                    })
+                    .then(injectIframe)
+                    .then(function (iframe) {
+                        return GetUserData(iframe, data_username);
+                    })
+                    .then(function (data) {
+                        if (data['name'] == undefined || data['score'] == undefined) {
+                            data_score = 500;
+                            conn_master = peer.connect(peerID_master, {
+                                metadata: {
+                                    'name': data_username,
+                                    'score': data_score,
+                                    'token': 1
+                                }
+                            });
+                        } else {
+                            data_score = data['score'];
                         }
+                        Peer4Master(peerID_master);
+                    })
+                    .then(function () {
+                        // 画面表示
+                        $('#mydata').removeClass('hidden');
+                        $('#mydata_name').text(data_displayname + ' (' + peer.id + ')');
+                        $('#mydata_score').text(data_score);
+                        $('#expo').removeClass('hidden');
+                        $('#expo_limit').text('制限時間（' + (define_timerLimit) + '秒）を超えてしまうと相手の番になります');
                     });
-                } else {
-                    registeredUser = 0;
-                    user_score = mydata['score'];
-                }
-                Peer4Master(masterPeerID);
-            })
-            .then(function () {
-                // 画面表示
-                $('#mydata').removeClass('hidden');
-                $('#mydata_name').text(display_name + ' (' + peer.id + ')');
-                $('#mydata_score').text(user_score);
-                $('#expo').removeClass('hidden');
-                $('#expo_limit').text('制限時間（' + (learn_timer_limit) +'秒）を超えてしまうと相手の番になります');
-            //})
-            })
+            });
     }
 
     //////// 管理者に接続 ////////
     function Peer4Master(peerID) {
-        //masterPeerID = peerID;
-        conn = peer.connect(peerID, {
+        //peerID_master = peerID;
+        conn_master = peer.connect(peerID, {
             metadata: {
-                'name': user_name,
-                'score': user_score,
+                'name': data_username,
+                'score': data_score,
                 'token': 0
             }
         });
+        //console.log(conn_master);
     }
 
     ////////// P2P接続のリクエストを受けた場合の処理 //////////
-    peer.on('connection', function (connection) {
-        console.log(connection.metadata);
-        if (connection.peer == masterPeerID) {
+    peer.on('connection', function (conn) {
+        console.log(conn.peer);
+        if (conn.peer == peerID_master) {
             // 学習用のデータを保存
-            learn_order = parseInt(connection.metadata.order);
-            array_question = $.extend(true, [], connection.metadata.question)
-            array_strings = array_question[1].split(" ");
-            array_partnerKey = $.extend(true, [], connection.metadata.partnerKEYs);
-            // 問題関連データを画面に表示
-            //$('#questiondata').removeClass('hidden');
-            $('#questionstring').removeClass('hidden');
-            $('#token_sound').removeClass('hidden');
-            DisplayString();
-            polly_create();
-            // 学習者同士での通信
-            Peer4Student();
+            P4MgetLearnData(conn.metadata)
+                .then(function (question) {
+                    array_strings = question.split(" ");
+                    stragePeerID();
+                })
+                .then(function () {
+                    // 問題関連データを画面に表示
+                    DisplayString();
+                    getSoundData();
+                })
+                .then(function () {
+                    // 学習者同士での通信
+                    Peer4Student();
+                });
         } else {
-            $('#partnerdata').removeClass('hidden');
-            // 送信されたPeer接続の中身をそのまま格納
-            //conn.on('data', handleMessage);
-            if (connection.peer == peerID1) {
-                console.log('receive p1');
-                conn1 = connection;
-                conn1.on('data', handleMessage);
-            } else if (connection.peer == peerID2) {
-                console.log('receive p2');
-                conn2 = connection;
-                conn2.on('data', handleMessage);
-            } else if (connection.peer == peerID3) {
-                console.log('receive p3');
-                conn3 = connection;
-                conn3.on('data', handleMessage);
-            }
-            $('#partnerdata_name').append(connection.metadata.username + ' ');
-
-            waituser++;
-            if (waituser == array_partnerKey.length - 1) {
-                learningStart();
-            }
+            waitGetStudent();
+            P4SgetPeerData(conn)
+                .then(function () {
+                    token_waitOtherStudent++;
+                    if (token_waitOtherStudent >= array_partnerKey.length - 1) {
+                        startCountdown();
+                    }
+                });
         }
-        connection.on('close', function () {
-            if (connection.peer != masterPeerID && array_strings.length > learn_progress) {
-                var disconnectedmessage = timestamp() + connection.metadata.username + ' (' + connection.peer + ') さんとの通信が切断されました';
+        conn.on('close', function () {
+            if (conn.peer != peerID_master && array_strings.length > learnValue_progress) {
+                var disconnectedmessage = timestamp() + conn.metadata.username + ' (' + conn.peer + ') さんとの通信が切断されました';
                 $('#ELmessage').prepend('<ul>' + disconnectedmessage + '</ul>');
-                //$('#display-message').append(timestamp() + 'Disconnected from ' + connection.metadata.username + ' (' + connection.peer + ')');
                 // 残り3人、2人の場合
-                array_skippedUser.push(connection.metadata.flag);
-                //array_skippedUser.sort(function (a, b) {
-                //    return b - a;
-                //});
-                //console.log(array_skippedUser);
-                //if (conn1) {
-                    if (connection.peer == peerID1) {
-                        peerID1 = '';
-                        conn1 = void 0;
-                    }
-                //} else if (conn2) {
-                    if (connection.peer == peerID2) {
-                        peerID2 = '';
-                        conn2 = void 0;
-                    }
-                //} else if (conn3) {
-                    if (connection.peer == peerID3) {
-                        peerID3 = '';
-                        conn3 = void 0;
-                    }
-                //}
-                // 学習順番の再検討
-                if (learn_flow % array_partnerKey.length == connection.metadata.flag) {
-                    skippedUserCheck();
+                array_skippedUser.push(conn.metadata.flag);
+                if (conn.peer == peerID_1) {
+                    peerID_1 = 'default';
                 }
-                if (learn_flow % array_partnerKey.length == learn_order) {
-                    func_order(0);
+                if (conn.peer == peerID_2) {
+                    peerID_2 = 'default';
+                }
+                if (conn.peer == peerID_3) {
+                    peerID_3 = 'default';
+                }
+                if (token_start != 0) {
+                    // 学習順番の再検討
+                    if (learnValue_flow % array_partnerKey.length == conn.metadata.flag) {
+                        skippedUserCheck();
+                    }
+                    if (learnValue_flow % array_partnerKey.length == learnValue_order) {
+                        func_order(0);
+                    }
                 }
             }
         });
-        connection.on('error', function (error) {
+        conn.on('error', function (error) {
             alert(error);
             //console.log(error);
         });
     });
 
-    function learningStart() {
-        $('#ELmessage').removeClass('hidden');
-        $('#ELtext').removeClass('hidden');
-        $('#order').removeClass('hidden');
-        if (learn_order != 0) {
-            $('#order_latest').text("現在、あなたは回答者ではありません");
-            $('#send-message').prop('disabled', true);
-            displayTimer();
-        } else {
-            $('#order_latest').text("現在、あなたは回答者です");
-            seElement[0].play();
-            btn_disabled = 0;
-            setTimeout(timer1(), 1000);
-        }
-        $('#loading').addClass('hidden');
-        $('#questiontimer').removeClass('hidden');
+    function P4MgetLearnData(metadata) {
+        return new Promise(function (resolve, reject) {
+            learnValue_order = parseInt(metadata.order);
+            array_question = $.extend(true, [], metadata.question);
+            array_partnerKey = $.extend(true, [], metadata.partnerKEYs);
+            $('#questionstring').removeClass('hidden');
+            $('#token_sound').removeClass('hidden');
+            resolve(array_question[1]);
+        });
     }
 
-    function skippedUserCheck() {
-        for (var i = 0; i < array_skippedUser.length; i++) {
-            //console.log(learn_flow + ':' + array_skippedUser[i]);
-            if (learn_flow % array_partnerKey.length == array_skippedUser[i]) {
-                i = -1;
-                learn_flow++;
+    function stragePeerID() {
+        return new Promise(function (resolve, reject) {
+            for (var i in array_partnerKey) {
+                if (array_partnerKey[i] != data_peerID) {
+                    if (peerID_1 == 'default' || peerID_1 == undefined) {
+                        peerID_1 = array_partnerKey[i];
+                        console.log('conn1');
+                    } else if (peerID_2 == 'default' || peerID_2 == undefined) {
+                        peerID_2 = array_partnerKey[i];
+                        console.log('conn2');
+                    } else {
+                        peerID_3 = array_partnerKey[i];
+                        console.log('conn3');
+                    }
+                }
+            }
+            console.log(peerID_1);
+            resolve(1);
+        });
+    }
+
+    function P4SgetPeerData(conn) {
+        return new Promise(function (resolve, reject) {
+            // 送信されたPeer接続の中身をそのまま格納
+            if (conn.peer == peerID_1) {
+                console.log('receive p1');
+                conn_1 = conn;
+                conn_1.on('data', handleMessage);
+                console.log(conn_1);
+            } else if (conn.peer == peerID_2) {
+                console.log('receive p2');
+                conn_2 = conn;
+                conn_2.on('data', handleMessage);
+            } else if (conn.peer == peerID_3) {
+                console.log('receive p3');
+                conn_3 = conn;
+                conn_3.on('data', handleMessage);
+            }
+            $('#partnerdata').removeClass('hidden');
+            $('#partnerdata_name').append(conn.metadata.username + ' ');
+            resolve(1);
+        });
+    }
+
+    function waitGetStudent() {
+        var nestCount_wgs = function () {
+            console.log("waiting connect to master.");
+            var tmp_wgs = setTimeout(nestCount_wgs, 1000);
+            if (array_partnerKey.length != 0) {
+                clearTimeout(tmp_wgs);
             }
         }
+        nestCount_wgs();
+    }
+
+    function startCountdown() {
+        var tmp_countdown = 0;
+        var nestCount = function () {
+            $('#order_latest').text(define_countBeforeStart - tmp_countdown);
+            tmp_countdown++;
+            var tmp_scd = setTimeout(nestCount, 1000);
+            if (define_countBeforeStart - tmp_countdown < 0) {
+                clearTimeout(tmp_scd);
+                learningStart();
+            }
+        }
+        $('#order').removeClass('hidden');
+        $('#ELmessage').removeClass('hidden');
+        nestCount();
+    }
+
+    function learningStart() {
+        skippedUserCheck()
+            .then(function () {
+                token_start = 1;
+                $('#ELtext').removeClass('hidden');
+                $('#questiontimer').removeClass('hidden');
+            })
+            .then(function () {
+                if (learnValue_order != learnValue_flow) {
+                    $('#order_latest').text("現在、あなたは解答者ではありません");
+                    $('#send-message').prop('disabled', true);
+                    displayTimer();
+                } else {
+                    $('#order_latest').text("現在、あなたは解答者です");
+                    seElement[0].play();
+                    token_btnDisabled = 0;
+                    setTimeout(countdown_timer(), 1000);
+                }
+            })
+            .then(function () {
+                $('#loading').addClass('hidden');
+            });
+    }
+    
+    function skippedUserCheck() {
+        return new Promise(function (resolve, reject) {
+            for (var i = 0; i < array_skippedUser.length; i++) {
+                if (learnValue_flow % array_partnerKey.length == array_skippedUser[i]) {
+                    i = -1;
+                    learnValue_flow++;
+                }
+            }
+            resolve(1);
+        });    
     }
 
     ////////// 共同学習者に接続 //////////
     function Peer4Student() {
-        for (var i in array_partnerKey) {
-            if (array_partnerKey[i] != myPeerID) {
-                if (conn1 == undefined) {
-                    peerID1 = array_partnerKey[i];
-                    conn1 = peer.connect(array_partnerKey[i], {
-                        metadata: {
-                            'flag': learn_order,
-                            'username': display_name
-                        }
-                    });
-                    conn1.on('data', handleMessage);
-                } else if (conn2 == undefined) {
-                    peerID2 = array_partnerKey[i];
-                    conn2 = peer.connect(array_partnerKey[i], {
-                        metadata: {
-                            'flag': learn_order,
-                            'username': display_name
-                        }
-                    });
-                    conn2.on('data', handleMessage);
-                } else {
-                    peerID3 = array_partnerKey[i];
-                    conn3 = peer.connect(array_partnerKey[i], {
-                        metadata: {
-                            'flag': learn_order,
-                            'username': display_name
-                        }
-                    });
-                    conn3.on('data', handleMessage);
+        console.log("conn1:" + peerID_1);
+        conn_1 = peer.connect(peerID_1, {
+            metadata: {
+                'flag': learnValue_order,
+                'username': data_displayname
+            }
+        });
+        conn_1.on('data', handleMessage);
+        if (peerID_2 != 'default') {
+            conn_2 = peer.connect(peerID_2, {
+                metadata: {
+                    'flag': learnValue_order,
+                    'username': data_displayname
                 }
+            });
+            conn_2.on('data', handleMessage);
+        }
+        if (peerID_3 != 'default') {
+            conn_3 = peer.connect(peerID_3, {
+                metadata: {
+                    'flag': learnValue_order,
+                    'username': data_displayname
+                }
+            });
+            conn_3.on('data', handleMessage);
+        }            
+        // for (var i in array_partnerKey) {
+        //     if (array_partnerKey[i] != data_peerID) {
+        //         if (peerID_1 == '') {
+        //             peerID_1 = array_partnerKey[i];
+        //             conn_1 = peer.connect(array_partnerKey[i], {
+        //                 metadata: {
+        //                     'flag': learnValue_order,
+        //                     'username': data_displayname
+        //                 }
+        //             });
+        //             conn_1.on('data', handleMessage);
+        //         } else if (peerID_2 == '') {
+        //             peerID_2 = array_partnerKey[i];
+        //             conn_2 = peer.connect(array_partnerKey[i], {
+        //                 metadata: {
+        //                     'flag': learnValue_order,
+        //                     'username': data_displayname
+        //                 }
+        //             });
+        //             conn_2.on('data', handleMessage);
+        //         } else {
+        //             peerID_3 = array_partnerKey[i];
+        //             conn_3 = peer.connect(array_partnerKey[i], {
+        //                 metadata: {
+        //                     'flag': learnValue_order,
+        //                     'username': data_displayname
+        //                 }
+        //             });
+        //             conn_3.on('data', handleMessage);
+        //         }
+        //     }
+        // }
+    }
+
+    //////////  //////////
+    function DisplayString() {
+        return new Promise(function (resolve, reject) {
+            $('#questionstring_value').text('');
+            for (var i = 0; i < learnValue_progress; i++) {
+                $('#questionstring_value').append(array_strings[i]);
+                $('#questionstring_value').append(' ');
+            }
+            for (i = learnValue_progress; i < array_strings.length; i++) {
+                for (var j = 0; j < array_strings[i].length; j++) {
+                    $('#questionstring_value').append("*");
+                }
+                $('#questionstring_value').append(' ');
+            }
+            resolve(1);
+        });
+    }
+
+    // メッセージの受信
+    function handleMessage(data) {
+        var displayJudge = '';
+        var sended = array_strings[learnValue_progress].toLowerCase();
+        sended = sended.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
+        var answer = data.text.toLowerCase();
+        answer = answer.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
+        if (sended == answer) {
+            advanceLearning();
+        } else {
+            displayJudge = '不';
+            learnValue_mistake++;
+            if (learnValue_mistake >= define_mistakeLimit) {
+                advanceLearning();
             }
         }
+
+        learnValue_flow++;
+        skippedUserCheck();
+        if (array_strings.length <= learnValue_progress) {
+            func_order(2);
+        } else if (learnValue_flow % array_partnerKey.length == learnValue_order) {
+            func_order(0);
+        } else {
+            func_order(1);
+        }
+
+        var answereduser;
+        if (data.peerid == data_peerID) { answereduser = 'あなた'; token_style = 'blue'}
+        else { answereduser = '学習パートナー'; token_style = 'black'}
+        if(data.time == 0) { var displayMessage = timestamp() + answereduser + ' が' + displayJudge + '正解の英単語 ' + data.text + ' を入力しました'; }
+        else { var displayMessage = timestamp() + answereduser + ' が時間切れになりました'}
+        $('#ELmessage').prepend('<ul><span style=\"color: ' + token_style + ';\">' + displayMessage + '</span></ul>');
+        //$('#display-message').append(displayMessage);
+
+        DisplayString();
+    }
+
+    function countdown_timer() {
+        clearTimeout(setTimeout_timer);
+        var funcCount_timer = function () {
+            displayTimer();
+            learnValue_timer++;
+            setTimeout_timer = setTimeout(funcCount_timer, 1000);
+            if (learnValue_timer > define_timerLimit) {
+                clearTimeout(setTimeout_timer);
+                sendMessage(1);
+            }
+        }
+        funcCount_timer();
+    }
+
+    function displayTimer() {
+        $('#questiontimer_value').text('(' + ('000'+(define_timerLimit - learnValue_timer)).slice(-2) +'秒):');
+        for (var i = 0; i < learnValue_timer; i++) {
+            $('#questiontimer_value').append('□');
+        }
+        for (var j = learnValue_timer; j < define_timerLimit; j++) {
+            $('#questiontimer_value').append('■');
+        }
+    }
+
+    function advanceLearning() {
+        learnValue_mistake = 0;
+        var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
+        learnValue_progress++;
+        while (reg.test(array_strings[learnValue_progress])) {
+            learnValue_progress++;
+        }
+    }
+
+    // メッセージの送信
+    function sendMessage(timelimit) {
+        clearTimeout(setTimeout_timer);
+        sendMessage_getText()
+            .then(function (text) {
+                // 入力文字列name、textを取得
+                var data = { 'from': data_username, 'text': text, 'time': timelimit, 'peerid': data_peerID };
+                return data;
+            })
+            .then(function (data) {
+                // 接続connを使って送信
+                if (peerID_1 != 'default') {
+                    console.log('send1');
+                    conn_1.send(data);
+                }
+                if (peerID_2 != 'default') {
+                    console.log('send2');
+                    console.log(peerID_2);
+                    conn_2.send(data);
+                }
+                if (peerID_3 != 'default') {
+                    console.log('send3');
+                    conn_3.send(data);
+                }
+                // メッセージを受け取り表示する関数
+                handleMessage(data);
+                // 入力文字列textを初期化
+                $('#message').val('');
+            });
+    }
+
+    function sendMessage_getText() {
+        return new Promise(function (resolve, reject) {
+            // HTMLのid=sendmessageボタンをクリックすると実行
+            var text = $('#message').val();
+            if (text == array_strings[learnValue_progress]) {
+                operateScore(5);
+            } else {
+                operateScore(-5);
+            }
+            resolve(text);
+        });
+    }
+
+    $('#message').keyup(function (e) {
+        var tmptxt = $('#message').val();
+        tmptxt = tmptxt.replace(/ /g, "");
+        $('#message').val(tmptxt);
+    });
+
+    // メッセージの送信はキーコード13（エンターキー）を入力することで実行される
+    $('#message').keypress(function (e) {
+        if (e.which == 13) {
+            if ($('#message').val() != null && $('#message').val() != "" && token_btnDisabled == 0) {
+                sendMessage(0);
+            }
+        } else if (e.which == 32) {
+            audioElement[0].play();
+        }
+    });
+    // HTMLのボタンsend-messageをクリックすることでも実行される
+    $('#send-message').click(function () {
+        if ($('#message').val() != null && $('#message').val() != "") {
+            sendMessage(0);
+        }
+    });
+
+    function getSoundData() {
+        return new Promise(function (resolve, reject) {
+            var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3";
+            // 再生ファイルの設定
+            audioElement[0].src = url;
+            // 音声の再生
+            audioElement[0].play();
+            resolve(1);
+        });    
+    }
+
+    function func_order(val) {
+        if (val == 0) {
+            $('#order_latest').text("現在、あなたは解答者です");
+            $('#send-message').prop('disabled', false);
+            seElement[0].play();
+            token_btnDisabled = 0;
+            learnValue_timer = 0;
+            countdown_timer();
+        } else if(val == 1) {
+            $('#order_latest').text("現在、あなたは解答者ではありません");
+            $('#send-message').prop('disabled', true);
+            token_btnDisabled = 1;
+        } else {
+            $('#order_latest').text("学習は終了しました");
+            $('#send-message').prop('disabled', true);
+            token_btnDisabled = 1;
+        }
+    }
+
+    function timestamp() {
+        var now = new Date();
+        var year = now.getYear();   // 年
+        var month = now.getMonth() + 1; // 月
+        var day = now.getDate();    // 日
+        var hour = now.getHours();  // 時
+        var min = now.getMinutes(); // 分
+        var sec = now.getSeconds(); // 秒
+
+        if (year < 2000) { year += 1900; }
+        if (month < 10) { month = "0" + month; }
+        if (day < 10) { day = "0" + day; }
+        if (hour < 10) { hour = "0" + hour; }
+        if (min < 10) { min = "0" + min; }
+        if (sec < 10) { sec = "0" + sec; }
+
+        return '[' + year + '\/' + month + '\/' + day + ' ' + hour + ':' + min + ':' + sec + ']';
     }
 
     //////// iframe関数 ////////
@@ -424,204 +718,15 @@ $(function () {
     }
 
     function operateScore(value) {
-        user_score = parseInt(user_score) + value;
-        $('#mydata_score').text(user_score);
-        conn = peer.connect(masterPeerID, {
+        data_score = parseInt(data_score) + value;
+        $('#mydata_score').text(data_score);
+        conn_master = peer.connect(peerID_master, {
             metadata: {
-                'name': user_name,
-                'score': user_score,
+                'name': data_username,
+                'score': data_score,
                 'token': 2
             }
         });
-    }
-
-    //////////  //////////
-
-    function DisplayString() {
-        $('#questionstring_value').text('');
-        for (var i = 0; i < learn_progress; i++) {
-            $('#questionstring_value').append(array_strings[i]);
-            $('#questionstring_value').append(' ');
-        }
-        for (i = learn_progress; i < array_strings.length; i++) {
-            for (var j = 0; j < array_strings[i].length; j++) {
-                $('#questionstring_value').append("*");
-            }
-            $('#questionstring_value').append(' ');
-        }
-    }
-
-    // メッセージの受信
-    function handleMessage(data) {
-        var displayJudge = '';
-        var sended = array_strings[learn_progress].toLowerCase();
-        sended = sended.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
-        var answer = data.text.toLowerCase();
-        answer = answer.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
-        if (sended == answer) {
-            advanceLearning();
-        } else {
-            displayJudge = '不';
-            learn_mistake++;
-            if (learn_mistake >= mistakeBorder) {
-                advanceLearning();
-            }
-        }
-
-        learn_flow++;
-        skippedUserCheck();
-        if (array_strings.length <= learn_progress) {
-            func_order(2);
-        } else if (learn_flow % array_partnerKey.length == learn_order) {
-            func_order(0);
-        } else {
-            func_order(1);
-        }
-
-        var answereduser;
-        if (data.peerid == myPeerID) { answereduser = 'あなた'; style = 'blue'}
-        else { answereduser = '学習パートナー'; style = 'black'}
-        if(data.time == 0) { var displayMessage = timestamp() + answereduser + ' が' + displayJudge + '正解の英単語 ' + data.text + ' を入力しました'; }
-        else { var displayMessage = timestamp() + answereduser + ' が時間切れになりました'}
-        $('#ELmessage').prepend('<ul><span style=\"color: ' + style + ';\">' + displayMessage + '</span></ul>');
-        //$('#display-message').append(displayMessage);
-
-        DisplayString();
-    }
-
-    function timer1() {
-        clearTimeout(sTo_time);
-        timer2();
-    }
-
-    function timer2() {
-        //console.log('timer:' + learn_timer);
-        displayTimer();
-        learn_timer++
-        sTo_time = setTimeout(timer2, 1000);
-        if (learn_timer > learn_timer_limit) {
-            clearTimeout(sTo_time);
-            sendMessage(1);
-        }
-    }
-
-    function displayTimer() {
-        $('#questiontimer_value').text('(' + ('000'+(learn_timer_limit - learn_timer)).slice(-2) +'秒):');
-        for (var i = 0; i < learn_timer; i++) {
-            $('#questiontimer_value').append('□');
-        }
-        for (var j = learn_timer; j < learn_timer_limit; j++) {
-            $('#questiontimer_value').append('■');
-        }
-    }
-
-    function advanceLearning() {
-        learn_mistake = 0;
-        var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
-        learn_progress++;
-        while (reg.test(array_strings[learn_progress])) {
-            learn_progress++;
-        }
-    }
-
-    // メッセージの送信
-    function sendMessage(timelimit) {
-        clearTimeout(sTo_time);
-        // HTMLのid=sendmessageボタンをクリックすると実行
-        var text = $('#message').val();
-        // 入力文字列name、textを取得
-        var data = { 'from': user_name, 'text': text, 'time': timelimit, 'peerid': myPeerID};
-        if (data.text == array_strings[learn_progress]) {
-            operateScore(5);
-        } else {
-            operateScore(-5);
-        }
-        // 接続connを使って送信
-        if (conn1 != undefined && peerID1 != '') {
-            console.log('send1');
-            conn1.send(data);
-        }
-        if (conn2 != undefined && peerID2 != '') {
-            console.log('send2');
-            conn2.send(data);
-        }
-        if (conn3 != undefined && peerID3 != '') {
-            console.log('send3');
-            conn3.send(data);
-        }
-        // メッセージを受け取り表示する関数
-        handleMessage(data);
-        // 入力文字列textを初期化
-        $('#message').val('');
-    }
-
-    $('#message').keyup(function (e) {
-        var tmptxt = $('#message').val();
-        tmptxt = tmptxt.replace(/ /g, "");
-        $('#message').val(tmptxt);
-    });
-
-    // メッセージの送信はキーコード13（エンターキー）を入力することで実行される
-    $('#message').keypress(function (e) {
-        if (e.which == 13) {
-            if ($('#message').val() != null && $('#message').val() != "" && btn_disabled == 0) {
-                sendMessage(0);
-            }
-        } else if (e.which == 32) {
-            audioElement[0].play();
-        }
-    });
-    // HTMLのボタンsend-messageをクリックすることでも実行される
-    $('#send-message').click(function () {
-        if ($('#message').val() != null && $('#message').val() != "") {
-            sendMessage(0);
-        }
-    });
-
-    function polly_create() {
-        var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3";
-        // 再生ファイルの設定
-        audioElement[0].src = url;
-        // 音声の再生
-        audioElement[0].play();
-    }
-
-    function func_order(val) {
-        if (val == 0) {
-            $('#order_latest').text("現在、あなたは回答者です");
-            $('#send-message').prop('disabled', false);
-            seElement[0].play();
-            btn_disabled = 0;
-            learn_timer = 0;
-            timer1();
-        } else if(val == 1) {
-            $('#order_latest').text("現在、あなたは回答者ではありません");
-            $('#send-message').prop('disabled', true);
-            btn_disabled = 1;
-        } else {
-            $('#order_latest').text("学習は終了しました");
-            $('#send-message').prop('disabled', true);
-            btn_disabled = 1;
-        }
-    }
-
-    function timestamp() {
-        var now = new Date();
-        var year = now.getYear();   // 年
-        var month = now.getMonth() + 1; // 月
-        var day = now.getDate();    // 日
-        var hour = now.getHours();  // 時
-        var min = now.getMinutes(); // 分
-        var sec = now.getSeconds(); // 秒
-
-        if (year < 2000) { year += 1900; }
-        if (month < 10) { month = "0" + month; }
-        if (day < 10) { day = "0" + day; }
-        if (hour < 10) { hour = "0" + hour; }
-        if (min < 10) { min = "0" + min; }
-        if (sec < 10) { sec = "0" + sec; }
-
-        return '[' + year + '\/' + month + '\/' + day + ' ' + hour + ':' + min + ':' + sec + ']';
     }
 
 });
