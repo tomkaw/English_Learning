@@ -170,8 +170,9 @@
                         tmp_pairing_adjust = 3;
                         break;
                 }
+                return tmp_pairing_adjust;
             })
-            .then(function () {
+            .then(function (tmp_pairing_adjust) {
                 // 基本ペアリング
                 for (var i = 0; i < array_entries.length - tmp_pairing_adjust; i += tmp_student) {
                     tmp_array_team[tmp_array_team.length] = [];
