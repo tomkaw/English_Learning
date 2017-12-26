@@ -170,11 +170,11 @@ $(function () {
                 if (conn.peer == peerID_3) {
                     peerID_3 = 'default';
                 }
+                // 学習順番の再検討
+                if (learnValue_flow % array_partnerKey.length == conn.metadata.flag) {
+                    skippedUserCheck();
+                }
                 if (token_start != 0) {
-                    // 学習順番の再検討
-                    if (learnValue_flow % array_partnerKey.length == conn.metadata.flag) {
-                        skippedUserCheck();
-                    }
                     if (learnValue_flow % array_partnerKey.length == learnValue_order) {
                         func_order(0);
                     }
@@ -256,7 +256,12 @@ $(function () {
     function startCountdown() {
         var tmp_countdown = 0;
         var nestCount = function () {
-            $('#order_latest').text(define_countBeforeStart - tmp_countdown);
+            if (learnValue_order != learnValue_flow) {
+                $('#order_latest').text("現在、あなたは解答者ではありません");
+            } else {
+                $('#order_latest').text("現在、あなたは解答者です");
+            }
+            $('#questiontimer_value').text(define_countBeforeStart - tmp_countdown);
             tmp_countdown++;
             var tmp_scd = setTimeout(nestCount, 1000);
             if (define_countBeforeStart - tmp_countdown < 0) {
@@ -266,6 +271,7 @@ $(function () {
         }
         $('#order').removeClass('hidden');
         $('#ELmessage').removeClass('hidden');
+        $('#questiontimer').removeClass('hidden');
         nestCount();
     }
 
@@ -274,7 +280,6 @@ $(function () {
             .then(function () {
                 token_start = 1;
                 $('#ELtext').removeClass('hidden');
-                $('#questiontimer').removeClass('hidden');
             })
             .then(function () {
                 if (learnValue_order != learnValue_flow) {
@@ -438,7 +443,7 @@ $(function () {
     }
 
     function displayTimer() {
-        $('#questiontimer_value').text('(' + ('000'+(define_timerLimit - learnValue_timer)).slice(-2) +'秒):');
+        $('#questiontimer_value').text('残り時間 (' + ('000'+(define_timerLimit - learnValue_timer)).slice(-2) +'秒):');
         for (var i = 0; i < learnValue_timer; i++) {
             $('#questiontimer_value').append('□');
         }
