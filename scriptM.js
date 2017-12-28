@@ -8,6 +8,7 @@
     var array_question = new Array();   // 問題情報を格納
     var array_entries = new Array();    // 待機学習者を格納
     var array_changeUser = new Array(); // スコアが更新される学習者を格納
+    var array_teamAprogress = new Array();
     // 問題格納ファイル
     var TSVFILE = 'https://rawgit.com/tomkaw/English_Learning/master/resource/question.tsv';
     // Iframe用変数
@@ -17,6 +18,7 @@
 
     var tmp_student = 0;
     var tmp_array_team = new Array();
+    var tmp_last_question = new Array();
 
     ////// PeerJS初期設定 //////
     // 新規PeerJSインスタンス
@@ -89,31 +91,29 @@
                     RegistUserData(iframe, connection.metadata.name, connection.metadata.score);
                 });
         } else if (connection.metadata.token == 2) {
-            // 学習者情報を更新する
-            array_changeUser[array_changeUser.length] = [connection.metadata.name, connection.metadata.score];
-            if (token_changeuser == 0) {
-                changeUserPool();
-            }
+            //operateScore(connection.metadata);
         } else {
             console.log(connection.metadata.score);
             // 学習者のデータを配列に格納
-            array_entries[array_entries.length] = [connection.metadata.score, connection.peer];
+            array_entries[array_entries.length] = [connection.metadata.name, connection.metadata.score, connection.peer];
             $('#token_registed').text(array_entries.length);
             changeStartBtn();
-            // 切断された時の処理
-            connection.on('close', function () {
-                for (var i = 0; i < array_entries.length; i++) {
-                    if (array_entries[i][1] == connection.peer) {
-                        array_entries.splice(i, 1);
-                        $('#token_registed').text(array_entries.length);
-                        changeStartBtn()
-                    }
-                }
-            });
         }
+        connection.on('data', operateScore);
+        // 切断された時の処理
+        connection.on('close', function () {
+            for (var i = 0; i < array_entries.length; i++) {
+                if (array_entries[i][2] == connection.peer) {
+                    array_entries.splice(i, 1);
+                    $('#token_registed').text(array_entries.length);
+                    changeStartBtn()
+                }
+            }
+            connection.close();
+        });
     });
 
-//////////  //////////
+    //////////  //////////
     // 学習チームの人数が変更された時の関数
     $('#select_team').change(function () {
         var_selectbox = $(this).val();
@@ -128,7 +128,30 @@
         }
     }
 
-////////  ////////
+    function operateScore(data) {
+        // 学習者情報を更新する
+        array_changeUser[array_changeUser.length] = [data.name, data.score];
+        for (var i = 0; i < array_teamAprogress.length; i++) {
+            if (array_teamAprogress[i][0] === data.name || array_teamAprogress[i][1] === data.name) {
+                array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+                displayProgress();
+            } else if (array_teamAprogress[i].length === 4) {
+                if (array_teamAprogress[i][2] === data.name) {
+                    array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+                    displayProgress();
+                }
+            } else if (array_teamAprogress[i].length === 5) {
+                if (array_teamAprogress[i][3] === data.name) {
+                    array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+                    displayProgress();
+                }
+            }
+        }
+        if (token_changeuser == 0) {
+            changeUserPool();
+        }
+    }
+    ////////  ////////
     // 学習を開始するための関数
     $('#send-start').click(Start);
 
@@ -137,16 +160,16 @@
             .then(function () {
                 // スコアの降順にソート
                 array_entries.sort(function (a, b) {
-                    console.log(a[0]);
-                    return a[0] - b[0];
+                    console.log(a[1]);
+                    return a[1] - b[1];
                 });
-                console.log(array_entries);
             })
             .then(function () {
                 // ピアIDをペアリングし、配列に格納
                 tmp_student = parseInt($("#select_team").val());
                 // 余り処理のために、その対象となる人数を定義
                 var tmp_pairing_adjust = 0;
+                array_teamAprogress.length = 0;
                 switch (array_entries.length % tmp_student) {
                     case 0:
                         // 全パターン：あまりなし
@@ -176,24 +199,32 @@
                 // 基本ペアリング
                 for (var i = 0; i < array_entries.length - tmp_pairing_adjust; i += tmp_student) {
                     tmp_array_team[tmp_array_team.length] = [];
+                    array_teamAprogress[array_teamAprogress.length] = [];
                     for (var j = 0; j < tmp_student; j++) {
-                        tmp_array_team[tmp_array_team.length - 1].push(array_entries[i + j][1]);
+                        tmp_array_team[tmp_array_team.length - 1].push(array_entries[i + j][2]);
+                        array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][0]);
                     }
+                    array_teamAprogress[array_teamAprogress.length - 1].push(0);
                 }
                 if (0 < tmp_pairing_adjust && tmp_pairing_adjust <= 4) {
                     // 余り処理１：調節されるチームは一つ
                     tmp_array_team[tmp_array_team.length] = [];
+                    array_teamAprogress[array_teamAprogress.length] = [];
                     for (var x = tmp_pairing_adjust; x > 0; x--) {
-                        tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - x][1]);
+                        tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - x][2]);
+                        array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][0]);
                     }
+                    array_teamAprogress[array_teamAprogress.length - 1].push(0);
                 } else if (tmp_pairing_adjust >= 5) {
                     // 余り処理２：調節されるチームは二つ
                     for (var y = tmp_pairing_adjust; y > 0; y -= 3) {
                         tmp_array_team[tmp_array_team.length] = [];
+                        array_teamAprogress[array_teamAprogress.length] = [];
                         for (var z = 0; z < y && z < 3; z++) {
-                            console.log(array_entries.length + '-' + y + '+' + z + '=' + (array_entries.length - y + z));
-                            tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - y + z][1]);
+                            tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - y + z][2]);
+                            array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][0]);
                         }
+                        array_teamAprogress[array_teamAprogress.length - 1].push(0);
                     }
                 }
             })
@@ -202,8 +233,9 @@
                 // 学習者へ送信
                 for (var k = 0; k < tmp_array_team.length; k++) {
                     //console.log(tmp_array_team);
-                    $('#displayStudent').append('<ul>');
+                    //$('#displayStudent').append('<ul>');
                     for (var l = 0; l < tmp_array_team[k].length; l++) {
+                        console.log('send');
                         conn = peer.connect(tmp_array_team[k][l], {
                             metadata: {
                                 // 変数（名前）をメタデータとして送信
@@ -213,16 +245,19 @@
                                 'partnerKEYs': tmp_array_team[k]
                             }
                         });
+                        console.log(conn);
                         //conn.close();
-                        console.log('sended to ' + tmp_array_team[k][l]);
-                        $('#displayStudent').append(tmp_array_team[k][l] + ' ');
+                        //console.log('sended to ' + tmp_array_team[k][l]);
+                        //$('#displayStudent').append(tmp_array_team[k][l] + ' ');
                     }
-                    $('#displayStudent').append('</ul>');
+                    //$('#displayStudent').append('</ul>');
                 }
             })
             .then(function () {
+                displayProgress();
                 // リセット
                 array_entries.length = 0;
+                tmp_array_team.length = 0;
                 $('#token_registed').text(array_entries.length);
                 $('#send-start').prop('disabled', true);
             });
@@ -231,15 +266,39 @@
     function func_start() {
         return new Promise(function (resolve, reject) {
             // セレクトボックスのデータを取得
-            console.log(array_question);
-            console.log(array_entries);
             if ($("#select_question").val() != '0') {
                 var_question = parseInt($("#select_question").val()) - 1;
             } else {
                 var_question = Math.floor(Math.random() * (array_question.length));
             }
+            tmp_last_question.length = 0;
+            tmp_last_question = array_question[var_question][1].split(" ");
             resolve(1);
         });
+    }
+
+    function displayProgress() {
+        $('#displayStudent').text('');
+        for (var i = 0; i < array_teamAprogress.length; i++) {
+            console.log(array_teamAprogress[i]);
+            $('#displayStudent').append('<ul>');
+            for (var j = 0; j < array_teamAprogress[i].length - 1; j++) {
+                $('#displayStudent').append(array_teamAprogress[i][j].substring(array_teamAprogress[i][j].indexOf(" ") + 1, array_teamAprogress[i][j].length));
+                if (j < array_teamAprogress[i].length - 2) {
+                    $('#displayStudent').append(', ');
+                }
+            }
+            var tmp_progress = 0;
+            $('#displayStudent').append(':');
+            while (array_teamAprogress[i][array_teamAprogress[i].length - 1] - tmp_progress > 0) {
+                $('#displayStudent').append('■');
+                tmp_progress++;
+            }
+            if (array_teamAprogress[i][array_teamAprogress[i].length - 1] >= tmp_last_question.length) {
+                $('#displayStudent').append(' Finish!');
+            }
+            $('#displayStudent').append('</ul>');
+        }
     }
 
     //////// iframe関数 ////////
