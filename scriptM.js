@@ -58,11 +58,11 @@
     function GetTSV() {
         d3.tsv(TSVFILE, function (error, data) {
             $('#wrapper_learning').removeClass('hidden');
-            var i = 0;
-            //for (var i in data) {
+            //var i = 0;
+            for (var i in data) {
                 array_question.push([('000' + i).slice(-3), data[i].String, data[i].Translation]);
                 $("#select_question").append($("<option>").val(parseInt(i) + 1).text(parseInt(i) + 1));
-            //}
+            }
         });
     }
 
