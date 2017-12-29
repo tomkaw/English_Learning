@@ -58,10 +58,11 @@
     function GetTSV() {
         d3.tsv(TSVFILE, function (error, data) {
             $('#wrapper_learning').removeClass('hidden');
-            for (var i in data) {
-                array_question[i] = [('000' + i).slice(-3), data[i].String, data[i].Translation];
+            var i = 0;
+            //for (var i in data) {
+                array_question.push([('000' + i).slice(-3), data[i].String, data[i].Translation]);
                 $("#select_question").append($("<option>").val(parseInt(i) + 1).text(parseInt(i) + 1));
-            }
+            //}
         });
     }
 
@@ -130,27 +131,63 @@
 
     function operateScore(data) {
         // 学習者情報を更新する
-        array_changeUser[array_changeUser.length] = [data.name, data.score];
-        for (var i = 0; i < array_teamAprogress.length; i++) {
-            if (array_teamAprogress[i][0] === data.name || array_teamAprogress[i][1] === data.name) {
-                array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
-                displayProgress();
-            } else if (array_teamAprogress[i].length === 4) {
-                if (array_teamAprogress[i][2] === data.name) {
-                    array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
-                    displayProgress();
+        empty4promise()
+            .then(function () {
+                array_changeUser.push([data.name, data.score]);
+                //console.log(array_changeUser.length);
+                console.log(array_changeUser);
+            })
+            .then(function () {
+                for (var i = 0; i < array_teamAprogress.length; i++) {
+                    if (array_teamAprogress[i][0] === data.name || array_teamAprogress[i][1] === data.name) {
+                        array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+                        displayProgress();
+                    } else if (array_teamAprogress[i].length === 4) {
+                        if (array_teamAprogress[i][2] === data.name) {
+                            array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+                            displayProgress();
+                        }
+                    } else if (array_teamAprogress[i].length === 5) {
+                        if (array_teamAprogress[i][3] === data.name) {
+                            array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+                            displayProgress();
+                        }
+                    }
                 }
-            } else if (array_teamAprogress[i].length === 5) {
-                if (array_teamAprogress[i][3] === data.name) {
-                    array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
-                    displayProgress();
+            })
+            .then(function () {
+                if (token_changeuser == 0) {
+                    changeUserPool();
                 }
-            }
-        }
-        if (token_changeuser == 0) {
-            changeUserPool();
-        }
+            });
+        // array_changeUser[array_changeUser.length] = [data.name, data.score];
+        // for (var i = 0; i < array_teamAprogress.length; i++) {
+        //     if (array_teamAprogress[i][0] === data.name || array_teamAprogress[i][1] === data.name) {
+        //         array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+        //         displayProgress();
+        //     } else if (array_teamAprogress[i].length === 4) {
+        //         if (array_teamAprogress[i][2] === data.name) {
+        //             array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+        //             displayProgress();
+        //         }
+        //     } else if (array_teamAprogress[i].length === 5) {
+        //         if (array_teamAprogress[i][3] === data.name) {
+        //             array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
+        //             displayProgress();
+        //         }
+        //     }
+        // }
+        // if (token_changeuser == 0) {
+        //     changeUserPool();
+        // }
     }
+
+    function empty4promise() {
+        return new Promise(function (resolve, reject) {
+            resolve(1);
+        });
+    }
+
     ////////  ////////
     // 学習を開始するための関数
     $('#send-start').click(Start);
@@ -382,6 +419,8 @@
                         });
                 }
             }
+            removeElement(iframe);
+            resolve(1);
         });
     }
 
@@ -400,7 +439,9 @@
         }
         return new Promise(function (resolve, reject) {
             iframe.onload = function (e) {
-                resolve(iframe);
+                removeElement(iframe);
+                //resolve(iframe);
+                resolve(1);
             }
             setTimeout(function () {
                 //reject("submitNewdiscussion: timeout: over " + injectIframe.timeout + "ms: " + + iframe.src + ": " + form.action);
@@ -423,7 +464,9 @@
         }
         return new Promise(function (resolve, reject) {
             iframe.onload = function (e) {
-                resolve(iframe);
+                removeElement(iframe);
+                //resolve(iframe);
+                resolve(1);
             }
             setTimeout(function () {
                 //reject("submitNewdiscussion: timeout: over " + injectIframe.timeout + "ms: " + + iframe.src + ": " + form.action);
@@ -433,23 +476,23 @@
     }
 
     function changeUserPool() {
-        console.log("manage");
         token_changeuser = 1;
         GetURL(iframe_url, 'DB_USER', 'view')
             .then(injectIframe)
             .then(function (iframe) {
-                for (var i = 0; i < array_changeUser.length; i++) {
+                for (var i = 0; i < array_changeUser.length; i ++) {
                     ChangeUserData(iframe, array_changeUser[i][0], array_changeUser[i][1]);
                 }
             })
             .then(function () {
+                console.log('7');
                 array_changeUser.length = 0;
                 token_changeuser = 0;
-            });
-
+             });
     }
 
     function ChangeUserData(iframe, name, score) {
+        console.log('3');
         reg = new RegExp('^name:' + name);
         return new Promise(function (resolve) {
             var doc = iframe.contentDocument;
@@ -469,6 +512,8 @@
                     }
                 }
             }
+            //removeElement(iframe);
+            resolve(1);
         });
     }
 
@@ -486,7 +531,9 @@
         }
         return new Promise(function (resolve, reject) {
             iframe.onload = function (e) {
-                resolve(iframe);
+                removeElement(iframe);
+                //resolve(iframe);
+                resolve(1);
             }
             setTimeout(function () {
                 //reject("submitNewdiscussion: timeout: over " + injectIframe.timeout + "ms: " + + iframe.src + ": " + form.action);
