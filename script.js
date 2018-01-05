@@ -366,12 +366,14 @@ $(function () {
         //var answer = data.text.toLowerCase();
         //answer = answer.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
         if (processString(array_strings[learnValue_progress]) === processString(data.text)) {
-            advanceLearning();
+            learnValue_mistake = 0;
+            learnValue_progress = advanceLearning(learnValue_progress);
         } else {
             displayJudge = '不';
             learnValue_mistake++;
             if (learnValue_mistake >= define_mistakeLimit) {
-                advanceLearning();
+                learnValue_mistake = 0;
+                learnValue_progress = advanceLearning(learnValue_progress);
             }
         }
 
@@ -422,13 +424,20 @@ $(function () {
         }
     }
 
-    function advanceLearning() {
-        learnValue_mistake = 0;
+    function advanceLearning(progress) {
+        var tmp_progress = progress;
         var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
-        learnValue_progress++;
-        while (reg.test(array_strings[learnValue_progress])) {
-            learnValue_progress++;
+        tmp_progress++;
+        while (reg.test(array_strings[tmp_progress])) {
+            tmp_progress++;
         }
+        return tmp_progress;
+        // learnValue_mistake = 0;
+        //var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
+        //learnValue_progress++;
+        //while (reg.test(array_strings[learnValue_progress])) {
+        //    learnValue_progress++;
+        //}
     }
 
     // メッセージの送信
@@ -491,6 +500,7 @@ $(function () {
         return tmp_string;
     }
 
+    // スペースキーで音声再生+半角スペースの除去
     $('#message').keyup(function (e) {
         var tmptxt = $('#message').val();
         tmptxt = tmptxt.replace(/ /g, "");
@@ -709,25 +719,21 @@ $(function () {
     }
 
     function operateScore(value) {
+        // スコアを変更
         data_score = parseInt(data_score) + value;
+        // 表示スコアの更新
         $('#mydata_score').text(data_score);
+        // 管理者へ送信する学習進捗の設定
         var tmp_progress = learnValue_progress;
         if (value > 0 || learnValue_mistake >= 2) {
-            tmp_progress++;
-            var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
-            while (reg.test(array_strings[tmp_progress])) {
-                tmp_progress++;
-            }
+            tmp_progress = advanceLearning(tmp_progress);
+            // tmp_progress++;
+            // var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
+            // while (reg.test(array_strings[tmp_progress])) {
+            //     tmp_progress++;
+            // }
         }
-        var data = { 'name': data_username, 'score': data_score, 'progress': tmp_progress}
-        // conn_master = peer.connect(peerID_master, {
-        //     metadata: {
-        //         'name': data_username,
-        //         'score': data_score,
-        //         'token': 2,
-        //         'progress': tmp_progress
-        //     }
-        // });
+        var data = { 'name': data_username, 'score': data_score, 'progress': tmp_progress };
         conn_master.send(data);
     }
 
