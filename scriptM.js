@@ -58,7 +58,7 @@
     function GetTSV() {
         d3.tsv(TSVFILE, function (error, data) {
             $('#wrapper_learning').removeClass('hidden');
-            //var i = 0;
+            var i = 0;
             for (var i in data) {
                 array_question.push([('000' + i).slice(-3), data[i].String, data[i].Translation]);
                 $("#select_question").append($("<option>").val(parseInt(i) + 1).text(parseInt(i) + 1));
@@ -134,8 +134,6 @@
         empty4promise()
             .then(function () {
                 array_changeUser.push([data.name, data.score]);
-                //console.log(array_changeUser.length);
-                console.log(array_changeUser);
             })
             .then(function () {
                 for (var i = 0; i < array_teamAprogress.length; i++) {
@@ -160,26 +158,6 @@
                     changeUserPool();
                 }
             });
-        // array_changeUser[array_changeUser.length] = [data.name, data.score];
-        // for (var i = 0; i < array_teamAprogress.length; i++) {
-        //     if (array_teamAprogress[i][0] === data.name || array_teamAprogress[i][1] === data.name) {
-        //         array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
-        //         displayProgress();
-        //     } else if (array_teamAprogress[i].length === 4) {
-        //         if (array_teamAprogress[i][2] === data.name) {
-        //             array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
-        //             displayProgress();
-        //         }
-        //     } else if (array_teamAprogress[i].length === 5) {
-        //         if (array_teamAprogress[i][3] === data.name) {
-        //             array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
-        //             displayProgress();
-        //         }
-        //     }
-        // }
-        // if (token_changeuser == 0) {
-        //     changeUserPool();
-        // }
     }
 
     function empty4promise() {
@@ -269,8 +247,6 @@
                 $('#displayStudent').text('');
                 // 学習者へ送信
                 for (var k = 0; k < tmp_array_team.length; k++) {
-                    //console.log(tmp_array_team);
-                    //$('#displayStudent').append('<ul>');
                     for (var l = 0; l < tmp_array_team[k].length; l++) {
                         console.log('send');
                         conn = peer.connect(tmp_array_team[k][l], {
@@ -283,11 +259,7 @@
                             }
                         });
                         console.log(conn);
-                        //conn.close();
-                        //console.log('sended to ' + tmp_array_team[k][l]);
-                        //$('#displayStudent').append(tmp_array_team[k][l] + ' ');
                     }
-                    //$('#displayStudent').append('</ul>');
                 }
             })
             .then(function () {

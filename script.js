@@ -102,6 +102,8 @@ $(function () {
                         } else {
                             data_score = data['score'];
                         }
+                    })
+                    .then(function () {
                         Peer4Master(peerID_master);
                     })
                     .then(function () {
@@ -129,8 +131,8 @@ $(function () {
 
     ////////// P2P接続のリクエストを受けた場合の処理 //////////
     peer.on('connection', function (conn) {
-        console.log(conn.peer);
-        if (conn.peer == peerID_master) {
+        //console.log(conn.peer);
+        if (conn.peer === peerID_master) {
             // 学習用のデータを保存
             P4MgetLearnData(conn.metadata)
                 .then(function (question) {
@@ -361,10 +363,6 @@ $(function () {
     // メッセージの受信
     function handleMessage(data) {
         var displayJudge = '';
-        //var sended = array_strings[learnValue_progress].toLowerCase();
-        //sended = sended.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
-        //var answer = data.text.toLowerCase();
-        //answer = answer.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, "");
         if (processString(array_strings[learnValue_progress]) === processString(data.text)) {
             learnValue_mistake = 0;
             learnValue_progress = advanceLearning(learnValue_progress);
@@ -432,12 +430,6 @@ $(function () {
             tmp_progress++;
         }
         return tmp_progress;
-        // learnValue_mistake = 0;
-        //var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
-        //learnValue_progress++;
-        //while (reg.test(array_strings[learnValue_progress])) {
-        //    learnValue_progress++;
-        //}
     }
 
     // メッセージの送信
@@ -727,12 +719,8 @@ $(function () {
         var tmp_progress = learnValue_progress;
         if (value > 0 || learnValue_mistake >= 2) {
             tmp_progress = advanceLearning(tmp_progress);
-            // tmp_progress++;
-            // var reg = new RegExp(/^[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]$/);
-            // while (reg.test(array_strings[tmp_progress])) {
-            //     tmp_progress++;
-            // }
         }
+        // 管理者へ送信
         var data = { 'name': data_username, 'score': data_score, 'progress': tmp_progress };
         conn_master.send(data);
     }
