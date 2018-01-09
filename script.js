@@ -233,7 +233,7 @@
                 console.log('receive p1');
                 conn_1 = conn;
                 conn_1.on('data', handleMessage);
-                console.log(conn_1);
+                console.log('Connection1 :'+ conn_1);
             } else if (conn.peer == peerID_2) {
                 console.log('receive p2');
                 conn_2 = conn;
