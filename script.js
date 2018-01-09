@@ -150,16 +150,41 @@
                     // 学習者同士での通信
                     conn_master.on('data', operateScore);
                     Peer4Student();
+                }).catch(function (error) {
+                    console.log('ERROR: ' + error);
                 });
         } else {
-            waitGetStudent();
-            P4SgetPeerData(conn)
+            empty4promise()
                 .then(function () {
-                    token_waitOtherStudent++;
+                    waitGetStudent();
+                })
+                .then(function () {
+                    //P4SgetPeerData(conn);
+                    if (conn.peer == peerID_1) {
+                        console.log('receive p1');
+                        conn_1 = conn;
+                        conn_1.on('data', handleMessage);
+                        console.log('Connection1 :' + conn_1.peer);
+                    } else if (conn.peer == peerID_2) {
+                        console.log('receive p2');
+                        conn_2 = conn;
+                        conn_2.on('data', handleMessage);
+                    } else if (conn.peer == peerID_3) {
+                        console.log('receive p3');
+                        conn_3 = conn;
+                        conn_3.on('data', handleMessage);
+                    }
+                    $('#partnerdata').removeClass('hidden');
+                    $('#partnerdata_name').append(conn.metadata.username + ' ');
+                })
+                .then(function () {
+                    token_waitOtherStudent ++;
                     if (token_waitOtherStudent >= array_partnerKey.length - 1) {
                         console.log('Peer ID: '+peerID_1);
                         startCountdown();
                     }
+                }).catch(function (error) {
+                    console.log('ERROR: ' + error);
                 });
         }
         conn.on('close', function () {
@@ -226,35 +251,43 @@
         });
     }
 
-    function P4SgetPeerData(conn) {
+    // function P4SgetPeerData(conn) {
+    //     return new Promise(function (resolve, reject) {
+    //         // 送信されたPeer接続の中身をそのまま格納
+    //         if (conn.peer == peerID_1) {
+    //             console.log('receive p1');
+    //             conn_1 = conn;
+    //             conn_1.on('data', handleMessage);
+    //             console.log('Connection1 :'+ conn_1.value);
+    //         } else if (conn.peer == peerID_2) {
+    //             console.log('receive p2');
+    //             conn_2 = conn;
+    //             conn_2.on('data', handleMessage);
+    //         } else if (conn.peer == peerID_3) {
+    //             console.log('receive p3');
+    //             conn_3 = conn;
+    //             conn_3.on('data', handleMessage);
+    //         }
+    //         $('#partnerdata').removeClass('hidden');
+    //         $('#partnerdata_name').append(conn.metadata.username + ' ');
+    //         resolve(1);
+    //     });
+    // }
+
+    function empty4promise() {
         return new Promise(function (resolve, reject) {
-            // 送信されたPeer接続の中身をそのまま格納
-            if (conn.peer == peerID_1) {
-                console.log('receive p1');
-                conn_1 = conn;
-                conn_1.on('data', handleMessage);
-                console.log('Connection1 :'+ conn_1);
-            } else if (conn.peer == peerID_2) {
-                console.log('receive p2');
-                conn_2 = conn;
-                conn_2.on('data', handleMessage);
-            } else if (conn.peer == peerID_3) {
-                console.log('receive p3');
-                conn_3 = conn;
-                conn_3.on('data', handleMessage);
-            }
-            $('#partnerdata').removeClass('hidden');
-            $('#partnerdata_name').append(conn.metadata.username + ' ');
             resolve(1);
         });
     }
 
     function waitGetStudent() {
         var nestCount_wgs = function () {
-            console.log("waiting connect to master.");
-            var tmp_wgs = setTimeout(nestCount_wgs, 1000);
+            var tmp_wgs = setTimeout(nestCount_wgs, 100);
+            console.log('testtesttest');
             if (array_partnerKey.length != 0) {
                 clearTimeout(tmp_wgs);
+            } else {
+                console.log("waiting connect to master.");
             }
         }
         nestCount_wgs();
@@ -448,8 +481,7 @@
                 // 入力文字列name、textを取得
                 var data = { 'from': data_username, 'text': text, 'time': timelimit, 'peerid': data_peerID };
                 return data;
-            })
-            .then(function (data) {
+            }).then(function (data) {
                 // 接続connを使って送信
                 if (peerID_1 != 'default') {
                     console.log('send1');
@@ -467,6 +499,8 @@
                 handleMessage(data);
                 // 入力文字列textを初期化
                 $('#message').val('');
+            }).catch(function (error) {
+                console.log('ERROR: ' + error);
             });
     }
 
