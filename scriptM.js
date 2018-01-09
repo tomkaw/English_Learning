@@ -98,6 +98,7 @@
             // 学習者のデータを配列に格納
             array_entries[array_entries.length] = [connection.metadata.name, connection.metadata.score, connection.peer];
             $('#token_registed').text(array_entries.length);
+            displayWaiting();
             changeStartBtn();
         }
         connection.on('data', operateScore);
@@ -107,7 +108,8 @@
                 if (array_entries[i][2] == connection.peer) {
                     array_entries.splice(i, 1);
                     $('#token_registed').text(array_entries.length);
-                    changeStartBtn()
+                    displayWaiting();
+                    changeStartBtn();
                 }
             }
             connection.close();
@@ -268,6 +270,7 @@
                 array_entries.length = 0;
                 tmp_array_team.length = 0;
                 $('#token_registed').text(array_entries.length);
+                displayWaiting();
                 $('#send-start').prop('disabled', true);
             });
     }
@@ -286,6 +289,14 @@
         });
     }
 
+    function displayWaiting() {
+        $('#waitingStudent').text('');
+        for (var i = 0; i < array_entries.length; i++) {
+            name = array_entries[i][0];
+            $('#waitingStudent').append(name.substring(name.indexOf(" ") + 1, name.length) + ' ');
+        }
+    }
+
     function displayProgress() {
         $('#displayStudent').text('');
         for (var i = 0; i < array_teamAprogress.length; i++) {
@@ -299,13 +310,17 @@
             }
             var tmp_progress = 0;
             $('#displayStudent').append(':');
-            while (array_teamAprogress[i][array_teamAprogress[i].length - 1] - tmp_progress > 0) {
-                $('#displayStudent').append('■');
+            while (tmp_progress < tmp_last_question.length) {
+                if (array_teamAprogress[i][array_teamAprogress[i].length - 1] > tmp_progress) {
+                    $('#displayStudent').append('■');
+                } else {
+                    $('#displayStudent').append('□');
+                }
                 tmp_progress++;
             }
-            if (array_teamAprogress[i][array_teamAprogress[i].length - 1] >= tmp_last_question.length) {
-                $('#displayStudent').append(' Finish!');
-            }
+            //if (array_teamAprogress[i][array_teamAprogress[i].length - 1] >= tmp_last_question.length) {
+            //    $('#displayStudent').append(' Finish!');
+            //}
             $('#displayStudent').append('</ul>');
         }
     }

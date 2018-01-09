@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
     //////// 変数定義 ////////
     // 通信用変数
     var data_username, data_score, data_peerID, data_displayname;	// 接続, 自分の名前, 自分のスコア
@@ -15,6 +15,7 @@ $(function () {
     var define_timerLimit = 20, define_mistakeLimit = 3, define_countBeforeStart = 5;
 
     var tmp_restart = 0;
+    var tmp_change = 0;
 
     // 学習用配列
     var array_question = new Array();       // 問題の全データ
@@ -111,8 +112,9 @@ $(function () {
                         $('#mydata').removeClass('hidden');
                         $('#mydata_name').text(data_displayname + ' (' + peer.id + ')');
                         $('#mydata_score').text(data_score);
-                        $('#expo').removeClass('hidden');
+                        $('#wrapper_expo').removeClass('hidden');
                         $('#expo_limit').text('制限時間（' + (define_timerLimit) + '秒）を超えてしまうと相手の番になります');
+                        $('#expo').addClass('hidden');
                     });
             });
     }
@@ -131,7 +133,7 @@ $(function () {
 
     ////////// P2P接続のリクエストを受けた場合の処理 //////////
     peer.on('connection', function (conn) {
-        //console.log(conn.peer);
+        console.log(conn.peer);
         if (conn.peer === peerID_master) {
             // 学習用のデータを保存
             P4MgetLearnData(conn.metadata)
@@ -155,6 +157,7 @@ $(function () {
                 .then(function () {
                     token_waitOtherStudent++;
                     if (token_waitOtherStudent >= array_partnerKey.length - 1) {
+                        console.log('Peer ID: '+peerID_1);
                         startCountdown();
                     }
                 });
@@ -261,8 +264,10 @@ $(function () {
         var tmp_countdown = 0;
         var nestCount = function () {
             if (learnValue_order != learnValue_flow) {
+                $('#order_latest').css('color', 'black');
                 $('#order_latest').text("現在、あなたは解答者ではありません");
             } else {
+                $('#order_latest').css('color', 'blue');
                 $('#order_latest').text("現在、あなたは解答者です");
             }
             $('#questiontimer_value').text(define_countBeforeStart - tmp_countdown);
@@ -274,9 +279,10 @@ $(function () {
             }
         }
         $('#loading').addClass('hidden');
-        $('#order').removeClass('hidden');
-        $('#ELmessage').removeClass('hidden');
-        $('#questiontimer').removeClass('hidden');
+        $('#wrapper_order').removeClass('hidden');
+        //$('#order').removeClass('hidden');
+        $('#wrapper-message').removeClass('hidden');
+        //$('#questiontimer').removeClass('hidden');
         nestCount();
     }
 
@@ -288,10 +294,12 @@ $(function () {
             })
             .then(function () {
                 if (learnValue_order != learnValue_flow) {
+                    $('#order_latest').css('color', 'black');
                     $('#order_latest').text("現在、あなたは解答者ではありません");
                     $('#send-message').prop('disabled', true);
                     displayTimer();
                 } else {
+                    $('#order_latest').css('color', 'blue');
                     $('#order_latest').text("現在、あなたは解答者です");
                     $('#send-message').prop('disabled', false);
                     token_btnDisabled = 0;
@@ -516,6 +524,18 @@ $(function () {
         }
     });
 
+    $('#change-expo').click(function () {
+        if (tmp_change == 0) {
+            $('#expo').removeClass('hidden');
+            $('#change-expo').text('説明を非表示');
+            tmp_change = 1;
+        } else {
+            $('#expo').addClass('hidden');
+            $('#change-expo').text('説明を表示');
+            tmp_change = 0;
+        }
+    });
+
     function getSoundData() {
         return new Promise(function (resolve, reject) {
             var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3";
@@ -529,15 +549,18 @@ $(function () {
 
     function func_order(val) {
         if (val == 0) {
+            $('#order_latest').css('color', 'blue');
             $('#order_latest').text("現在、あなたは解答者です");
             $('#send-message').prop('disabled', false);
             token_btnDisabled = 0;
             countdown_timer();
         } else if (val == 1) {
+            $('#order_latest').css('color', 'black');
             $('#order_latest').text("現在、あなたは解答者ではありません");
             $('#send-message').prop('disabled', true);
             token_btnDisabled = 1;
         } else {
+            $('#order_latest').css('color', 'black');
             $('#order_latest').text("学習は終了しました");
             $('#order_latest').append("<button id='send-restart'>もう一度</button>");
             $('#questionstring_translation').text(array_question[2]);
@@ -748,8 +771,9 @@ $(function () {
         $('#questionstring_translation').text('');
 
         $('#partnerdata').addClass('hidden');
-        $('#order').addClass('hidden');
-        $('#questiontimer').addClass('hidden');
+        $('#wrapper_order').removeClass('hidden');
+        //$('#order').addClass('hidden');
+        //$('#questiontimer').addClass('hidden');
         $('#token_sound').addClass('hidden');
         $('#ELtext').addClass('hidden');
         $('#questionstring').addClass('hidden');
