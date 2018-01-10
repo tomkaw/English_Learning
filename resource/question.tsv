@@ -1,16 +1,500 @@
-ï»¿String	Translation
-Each individual paid 7000 dollars .	ä¸€äººã‚ãŸã‚Šï¼—åƒãƒ‰ãƒ«æ‰•ã£ãŸã€‚
-Come what may ; I won't change my mind .	ä½•ãŒèµ·ã“ã‚ã†ã¨ã‚‚ã€ç§ã¯æ±ºå¿ƒã‚’å¤‰ãˆãªã„ã€‚
-It has been raining off and on .	é›¨ãŒé™ã£ãŸã‚Šã‚„ã‚“ã ã‚Šã—ã¦ã„ã‚‹ã€‚
-All people can become friends , even if their languages and customs are different .	ãŸã¨ãˆè¨€èªã‚„ç¿’æ…£ãŒé•ã£ã¦ã„ã¦ã‚‚ã™ã¹ã¦ã®äººã€…ã¯å‹é”ã«ãªã‚Œã¾ã™ã€‚
-Everybody thought it was strange that he lived alone .	å½¼ãŒã²ã¨ã‚Šã§ç”Ÿæ´»ã—ã¦ã„ã‚‹ã®ã¯ã ã‚Œã‚‚ãŒä¸æ€è­°ã«æ€ã£ãŸã€‚
-Last year , I saw at least fifty movies .	æ˜¨å¹´ç§ã¯å°‘ãªãã¨ã‚‚ï¼•ï¼æœ¬ã¯æ˜ ç”»ã‚’è¦‹ãŸã€‚
-If we're going to play , make your mind up about the rules !	éŠã³ãŸã„ãªã‚‰ã¡ã‚ƒã‚“ã¨ãƒ«ãƒ¼ãƒ«ã‚’æ±ºã‚ã¦ãŠããªã•ã„ã€‚
-His death was a great loss to our country .	å½¼ã®æ­»ã¯ã‚ãŒå›½ã«ã¨ã£ã¦ä¸€å¤§æå¤±ã§ã‚ã£ãŸã€‚
-It was just something I read in a newspaper .	ãã‚Œã¯ã¾ã•ã«ç§ãŒæ–°èã§èª­ã‚“ã ã‚‚ã®ã ã£ãŸã€‚
-My new pair of shoes are made of leather .	ç§ã®æ–°ã—ã„é´ã¯é©è£½ã§ã™ã€‚
-Would you mind calling him to the phone ?	å½¼ã‚’é›»è©±å£ã«ãŠå‘¼ã³ã„ãŸã ã‘ã¾ã›ã‚“ã‹ã€‚
-The elevator seems to be out of order .	ãã®ã‚¨ãƒ¬ãƒ™ãƒ¼ã‚¿ãƒ¼ã¯æ•…éšœã—ã¦ã„ã‚‹ã‚ˆã†ã ã€‚
-He looked into her eyes and suddenly went away .	å½¼ã¯å½¼å¥³ã®ç›®ã‚’è¦—ãè¾¼ã‚€ã¨ã€çªç„¶ç«‹ã¡å»ã£ãŸã€‚
-Which do you prefer , tea or coffee ?	ãŠèŒ¶ã¨ã‚³ãƒ¼ãƒ’ãƒ¼ã®ã©ã¡ã‚‰ãŒãŠå¥½ãã§ã™ã‹ã€‚
-That's where I can't agree with you .	ãã“ãŒã‚ãªãŸã¨æ„è¦‹ã‚’ç•°ã«ã™ã‚‹ã¨ã“ã‚ã§ã™ã€‚
+We are given to regretting our past.	„‚½‚¿ ‚Í ‰ß‹ ‚ğ Œã‰÷ ˆ×‚é{‚µ} Ÿ‚¿{‚ª‚¿} ‚Å‚ ‚é
+He is an able engineer.	”Ş ‚Í —L”\{—L”\‚È} ‹Zt ‚Å‚·
+I'm not responsible for what Tom did.	„ ‚Í ‚ª ˆ×‚é{‚µ‚½} –{‚±‚Æ} ‚É‘Î‚µ‚Ä Ó”C ‚Í –³‚¢{‚È‚¢}
+He answered that he could swim well.	”Ş ‚Í —Ç‚­{‚æ‚­} ‰j‚®{‰j‚°‚é} ‚Æ “š‚¦‚é{“š‚¦‚½}
+I'm going to climb Mt. Kitadake.	‚É “o‚é Ï‚à‚è{‚Â‚à‚è} ‚Å‚·
+Glass breaks easily.	Éq{ƒKƒ‰ƒX} ‚Í ‰ó‚ê‚é{‰ó‚ê} ˆÕ‚¢{‚â‚·‚¢}
+The noise kept me awake all night.	‘´‚Ì{‚»‚Ì} ‘›‰¹ ‚Ì ˆ×‚É{‚½‚ß‚É} „ ‚Í ˆê”Ó’† –°‚é{–°‚ê‚È‚©‚Á‚½}
+He was suspected of underground action.	”Ş ‚Í ’n‰º Šˆ“® ‚Ì ‹^‚¢‚ğ‚©‚¯‚ç‚ê‚é{‹^‚¢‚ğ‚©‚¯‚ç‚ê‚½}
+I read it in today's edition.	¡“ú ‚Ì Ğà ‚Å ‘´‚ê{‚»‚ê} ‚ğ “Ç‚Ş{“Ç‚ñ‚¾}
+	ŠwZ ‚Ì §• ‚Í á ‚Ì ˆ×{chool was due to the snow.
+I finished writing the letter by noon.	„ ‚Í ’‹ –˜{‚Ü‚Å} ‚É è† ‚ğ ‘‚­{‘‚«} I‚¦‚é{I‚¦‚½}
+"Between ourselves, he is rather stupid."	‚±‚±‚¾‚¯‚Ì˜b ‚¾ ‚ª ”Ş ‚Í ‰Â–ç{‚©‚È‚è} ‹ğ‚©Ò ‚¾ ‚æ
+No river in the world is longer than the Nile.	ƒiƒCƒ‹ ì ‚æ‚è ’·‚¢ ì ‚Í ¢ŠE’† ‚É –³‚¢{‚È‚¢}
+This is too difficult for me.	Ÿ‚ê{‚±‚ê} ‚Í „ ‚Éæ‚Á‚Ä{‚É‚Æ‚Á‚Ä} “ï‚µ‚¢{“ï‚µ} ‰ß‚¬‚é{‚·‚¬‚Ä} •ª‚©‚é{•ª‚©‚ç‚È‚¢}
+"Asked about her job, she said, ""My job is too complicated to sum up in a word."""	”Ş— ‚Í d– ‚Ì –{‚±‚Æ} ‚ğ q‚Ë‚é{q‚Ë‚ç‚ê‚é} ‚Æ „{„‚Ì} d– ‚Í •¡G ‚È‚Ì‚Å ˆêŒ¾ ‚Å ‚Í —v–ñ o—ˆ‚é{‚Å‚«‚Ü‚¹‚ñ} ‚Æ Œ¾‚¤{Œ¾‚Á‚½}
+I got the engine going.	ƒGƒ“ƒWƒ“ ‚ğ n“® ˆ×‚¹‚é{‚³‚¹‚½}
+"If you sum up feminist counselling in a few words, I suppose it would be counselling done from a woman's standpoint."	ƒtƒFƒ~ƒjƒXƒg ƒJƒEƒ“ƒZƒŠƒ“ƒO ‚ğ ˆêŒ¾ ‚Å à–¾ ˆ×‚é{‚·‚é} ‚È‚ç —« ‚Ì{‚Ì} ‹“_ ‚É —§‚Â{‚½‚Á‚½} ƒJƒEƒ“ƒZƒŠƒ“ƒO ‚Æ Œ¾‚¤{‚¢‚¤} –‚É‚È‚é{‚±‚Æ‚É‚È‚é} ‚Å‚µ‚å‚¤‚©
+The event came about like this.	–Œ ‚Í ‚±‚ñ‚È•—‚É{‚±‚ñ‚È‚Ó‚¤‚É} ‹N‚«‚é{‹N‚«‚½}
+Never did I tell her that I loved her.	„ ‚Í Œˆ‚µ‚Ä ”Ş— ‚É ”Ş— ‚ª D‚« ‚¾ ‚Æ ‚Í Œ¾‚¤{Œ¾‚Á‚Ä‚¢‚È‚¢}
+I don't know whether he'll join us or not.	”Ş ‚ª „‚½‚¿ ‚É ‰Á‚í‚é ‚©‚Ç‚¤‚© „ ‚Í ’m‚é{’m‚ç‚È‚¢}
+Which way will you take?	‰½•û{‚Ç‚¿‚ç} ‚Ì “¹ ‚ğ s‚­{s‚«‚Ü‚·} ‚©
+We need to talk about how to do it.	‘´‚Ì{‚»‚Ì} ‚â‚è•û ‚ÉA‚¢‚Ä{‚É‚Â‚¢‚Ä} ”@‰½{‚Ç‚¤} ‚·‰Â‚«{‚·‚×‚«} ‚© ‚ğ ˜b‚µ‡‚¤ •K—v ‚ª —L‚é{‚ ‚é}
+"I would appreciate it if you could find time to see Mr Fukuoka, or to introduce him to one of your associates."	 ‚É Œä{‚¨} ‰ï‚¤{‰ï‚¢} ’¸‚¯‚é{‚¢‚½‚¾‚¯‚é} ‚© ˆ½‚Í{‚ ‚é‚¢‚Í} ‹MĞ ‚Ì •û ‚ğ ‚Ç‚È‚½‚© Œä{‚²} Ğ‰î ’¸‚­{‚¢‚½‚¾‚¯‚Ü‚·} —l{‚æ‚¤} ‚¨Šè‚¢‚¢‚½‚µ‚Ü‚·
+We experience and understand the world through signals that are received by the senses and interpreted by the brain - and both stages are subject to distortion.	„‚½‚¿ ‚ª Ÿ‚Ì{‚±‚Ì} ¢ŠE ‚ğ ŒoŒ± ˆ×‚é{‚µ} —‰ğ ˆ×‚é{‚·‚é} ‚Ì ‚Í ŒÜŠ´ ‚ğ ’Ê‚¶‚Ä ó‚¯“ü‚ê‚é{ó‚¯“ü‚ê‚ç‚ê} ”] ‚Éˆö‚Á‚Ä{‚É‚æ‚Á‚Ä} ‰ğß ˆ×‚ê‚é{‚³‚ê‚é} M† ‚ğ ’Ê‚¶‚é{’Ê‚¶‚Ä} ‚È‚Ì‚Å‚ ‚é §‚µ‚Ä{‚»‚µ‚Ä} Ÿ‚Ì{‚±‚Ì} —¼•û ‚Ì ƒvƒƒZƒX ‹¤{‚Æ‚à} ˜c‚ß‚é{‚ä‚ª‚ß‚ç‚ê} ˆÕ‚¢{‚â‚·‚¢}
+I argued her out of going skiing.	„ ‚Í ”Ş— ‚É ƒXƒL[ ‚ğ v‚¢‚Æ‚Ç‚Ü‚é{v‚¢‚Æ‚Ç‚Ü‚ç‚¹‚½}
+I'll buy a through ticket to Hakata.	–˜{‚Ü‚Å} ‚Ì ’Ê‚µØ•„ ‚ğ ”ƒ‚¤{”ƒ‚¢‚Ü‚µ‚å‚¤}
+She flared up at the sight of her husband walking with another woman.	•v ‚ª •Ê{•Ê‚Ì} — ‚Æ •à‚­{•à‚¢‚Ä‚¢‚é} ‚Ì ‚ğ Œ©‚é{‚İ‚Ä} ”Ş— ‚Í ƒJƒb‚Æ‚È‚é{‚©‚Á‚Æ‚È‚Á‚½}
+What kind of part-time job do you have?	‰½‚© ƒAƒ‹ƒoƒCƒg ‚Í ˆ×‚é{‚µ‚Ä‚¢‚Ü‚·} ‚©
+It is difficult to shoot a bird flying in the air.	‹ó‚ğ”ò‚Ô{‹ó‚ğ”ò‚ñ‚Å‚¢‚é} ’¹ ‚ğ Œ‚‚Â – ‚Í “ï‚µ‚¢
+I saw a flock of sheep.	„ ‚Í —r ‚Ì ŒQ ‚ğ Œ©‚é{Œ©‚½}
+He is a doctor by profession.	”Ş ‚Ì E‹Æ ‚Í ˆãt ‚¾
+"To do him justice, he is an able man."	Œö•½{Œö•½‚É} Œ¾‚¤ ‚Æ ”Ş ‚Í —L”\{—L”\‚È} ’j ‚¾
+It is ten years since I left college.	„ ‚ª ‘åŠw‚ğo‚é{‘åŠw‚ğo‚Ä} ‚©‚ç ”N ‚É‚È‚é{‚É‚È‚è‚Ü‚·}
+She likes traveling best of all.	”Ş— ‚Í —·s ‚ª æ‚è•ª‚¯{‚Æ‚è‚í‚¯} D‚« ‚Å‚ ‚é
+I just dropped in.	ˆê¡{‚¿‚å‚Á‚Æ} —§‚¿Šñ‚é{—§‚¿Šñ‚Á‚Ä} Œ©‚é{‚İ‚½} ‚Ì‚¾{‚ñ‚¾}
+This watch is as expensive a gift as that bracelet.	Ÿ‚Ì{‚±‚Ì} Œv ‚Í ”Ş‚Ì{‚ ‚Ì} ƒuƒŒƒXƒŒƒbƒg ‚Æ “¯‚¶‚­‚ç‚¢ ‚‰¿{‚‰¿‚È} ‘¡‚è•¨ ‚Å‚·
+She left home after three days.	”Ş— ‚Í O“ú Œã ‚É ‰Æ ‚ğ —£‚ê‚é{—£‚ê‚½}
+Forever and always? asked the little black rabbit.	‰½‚à{‚¢‚Â‚à} §‚µ‚Ä{‚»‚µ‚Ä} ‰½‚Ü‚Å‚à{‚¢‚Â‚Ü‚Å‚à} ‚Æ ¬‚³‚¢ •‚¢ “e{ƒEƒTƒM} ‚Í •·‚­{‚«‚«‚Ü‚µ‚½}
+She returned the book to the library.	”Ş— ‚Í }‘ŠÙ ‚É –{ ‚ğ •Ô‚·{•Ô‚µ‚½}
+He found difficulty in making ends meet on his small salary.	­‚µ ‚Ì ‹‹—¿ ‚ğ ‚â‚èŒJ‚è{‚â‚è‚­‚è} ˆ×‚é{‚µ‚Ä} •é‚ç‚·{•é‚ç‚µ‚Ä} s‚­{‚¢‚­} ‚Ì ‚Í “ï‚µ‚¢ ‚Æ ”Ş ‚Í v‚¤{v‚Á‚½}
+There are many ships in the harbor.	` ‚É‚Í ‘òR{‚½‚­‚³‚ñ} ‚Ì ‘D{M} ‚ª ‹‚é{‚¢‚é}
+Imagine that you have a time machine.	ƒ^ƒCƒ€ƒ}ƒV[ƒ“ ‚ğ ‚Â{‚Á‚Ä‚¢‚é} ‚Æ ‘z‘œ ˆ×‚é{‚µ‚Ä} Œ©‚é{Œ©‚Ä} ‰º‚³‚¢{‚­‚¾‚³‚¢}
+She waited on her husband all day long.	”Ş— ‚Í ˆê“ú’†{‚P“ú’†} •v ‚Ì ¢˜b‚ğ‚·‚é{¢˜b‚ğ‚µ‚½}
+I will go to Sydney on business next month.	„ ‚Í —ˆŒ d– ‚Å ƒVƒhƒj[ ‚É s‚­ ‚Å‚µ‚å‚¤
+I am not keen on this kind of music.	„ ‚Í ‚±‚¤‚¢‚Á‚½ ‰¹Šy ‚Í —]‚è{‚ ‚Ü‚è} D‚« ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢}
+My fellow Americans: ask not what your country can do for you; ask what you can do for your country.	ƒAƒƒŠƒJ‡O‘ ‚Ì “¯–E ”ŒN ‘‰Æ ‚ª ”ŒN ‚Ì ˆ×‚É{‚½‚ß‚É} ‰½ ‚ğ ˆ×‚é{‚µ‚Ä} Œà‚ê‚é{‚­‚ê‚é} ‚© ‚ğ ‹‚ß‚é{‹‚ß‚¸} ”ŒN ‚ª ‘‰Æ ‚Ì ˆ×‚É{‚½‚ß‚É} ‰½ ‚ğ o—ˆ‚é{‚Å‚«‚é} ‚© ‚ğ ‹‚ß‚é{‹‚ß‚æ‚¤}
+She could not bear the sight of the mean man.	”Ş— ‚Í ‘´‚Ì{‚»‚Ì} ”Ú—ò{”Ú—ò‚È} ’j ‚ğ Œ©‚é ‚Ì ‚ª Œ™ ‚¾{‚¾‚Á‚½}
+I'm taking off now.	‚»‚ë‚»‚ë s‚­ ‚í‚Ë
+Ask your dad to help you.	‚¨•ƒ‚³‚ñ ‚É è“`‚¤{è“`‚Á‚Ä} –á‚¤{‚à‚ç‚¢} ‚È‚³‚¢
+He left without so much as saying good-by to me.	”Ş ‚Í „ ‚É ¶—l‚È‚ç{‚³‚æ‚È‚ç} ‚³‚¦ Œ¾‚¤{Œ¾‚í‚È‚¢‚Å} o‚Äs‚­{o‚Ä‚¢‚Á‚½}
+He intended to have visited the temple last week.	”Ş ‚Í æT ‘´‚Ì{‚»‚Ì} Œä{‚¨} › ‚ğ –K‚Ë‚é{‚½‚¸‚Ë‚é} Ï‚à‚è{‚Â‚à‚è} ‚¾{‚¾‚Á‚½}
+You should think before you begin to speak.	‚«‚¿‚ñ‚Æ l‚¦‚é{l‚¦‚Ä} ‚©‚ç ˜b‚·{˜b‚µ} n‚ß‚é{n‚ß} –³‚«‚á‚¢‚¯‚È‚¢{‚È‚­‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ}
+Japan imports oranges from California.	“ú–{ ‚Í ƒJƒŠƒtƒHƒ‹ƒjƒA ‚©‚ç ƒIƒŒƒ“ƒW ‚ğ —A“ü ˆ×‚é{‚µ‚Ä‚¢‚é}
+My first son was named after my uncle.	’·’j ‚Ì –¼‘O ‚Í ”Œ•ƒ‚³‚ñ{‚¨‚¶‚³‚ñ} ‚Ì –¼‘O ‚©‚ç æ‚é{æ‚è‚Ü‚µ‚½}
+"The man began to take off his hat, glasses and mask."	’j ‚Í –Xq Šá‹¾ ‰¼–Ê ‚ğ ’E‚®{’E‚¬} n‚ß‚é{n‚ß‚½}
+Look at that picture on the desk.	Š÷ ‚Ì ã ‚É —L‚é{‚ ‚é} ‘´‚Ì{‚»‚Ì} Ê^ ‚ğ Œ©‚é{Œ©} ‚È‚³‚¢
+The storm prevented our plane from taking off.	–\•— ‚Ì ˆ×{‚½‚ß} „‚½‚¿ ‚Ì ”òs‹@ ‚Í —£—¤ o—ˆ‚é{‚Å‚«‚È‚©‚Á‚½}
+A lot of trees were cut down.	‘òR{‚½‚­‚³‚ñ} ‚Ì –Ø ‚ª Ø‚è“|‚·{Ø‚è“|‚³‚ê‚½}
+Are you happy?	ŒN ‚Í K‚¹ ‚Å‚·‚©
+He earns his living by playing the piano.	”Ş ‚Í ƒsƒAƒm ‚Ì ‰‰‘t ‚Å ¶Œv‚ğ—§‚Ä‚é{¶Œv‚ğ—§‚Ä‚Ä‚¢‚é}
+He was relieved of his heavy responsibility.	”Ş ‚Í dÓ ‚ğ ‰ğ‚­{‰ğ‚©‚ê‚½}
+"We were running out of gas, and what was worse, it began to snow heavily."	’iX{‚¾‚ñ‚¾‚ñ} ƒKƒ\ƒŠƒ“ ‚ª –³‚­‚È‚é{‚È‚­‚È‚Á‚Ä} —ˆ‚é{‚«‚½} ‚»‚Ìã ‚³‚ç‚Éˆ«‚¢‚±‚Æ‚É ‚Í á ‚ª Œƒ‚µ‚¢{Œƒ‚µ‚­} ~‚èn‚ß‚é{~‚èn‚ß‚½}
+He has ants in his pants.	”Ş ‚Í ‚»‚í‚»‚í ˆ×‚é{‚µ‚Ä‚¢‚é}
+I think it dangerous walking alone at night.	–é“¹ ‚ğ ˆêl{‚Pl} ‚Å •à‚­ ‚Ì ‚Í ŠëŒ¯ ‚¾ ‚Æ v‚¤{v‚¢‚Ü‚·}
+We must take his youth into account.	„‚½‚¿ ‚Í ”Ş{”Ş‚Ì} á‚¢{á} ‚³ ‚ğ l—¶‚É“ü‚ê‚é{l—¶‚É“ü‚ê} ‚Ë‚Î‚È‚ç‚È‚¢{‚È‚¯‚ê‚Î‚È‚ç‚È‚¢}
+See you next week!	–”{‚Ü‚½} —ˆT
+The Prime Minister was obliged to resign from the Cabinet.	ñ‘Š ‚Í “àŠt ‚©‚ç ‚Ì «E ‚ğ —]‹V‚È‚­‚³‚ê‚é{—]‹V‚È‚­‚³‚ê‚½}
+The party lasted more than three hours.	ƒp[ƒeƒB[ ‚Í ŠÔ ˆÈã ‚à ‘±‚­{‘±‚¢‚½}
+He had a firm belief in his God.	”Ş ‚Í ©•ª ‚Ì _ ‚ğ d‚¢{Œ˜‚­} M‚¶‚é{M‚¶‚Ä‚¢‚½}
+She doesn't always take a trip to France in summer.	”Ş— ‚Í ‰Ä ‚É‚È‚é‚Æ ‰½‚à{‚¢‚Â‚à} •§—–¼{ƒtƒ‰ƒ“ƒX} ‚Ö —·s ˆ×‚é{‚·‚é} –ó‚Å‚Í‚È‚¢{‚í‚¯‚Å‚Í‚È‚¢}
+They held a protest march for freedom.	”Ş‚ç ‚Í ©—R ‚ğ ‹‚ß‚é{‹‚ß‚Ä} R‹c ƒfƒ‚ ‚ğ s‚­{s‚Á‚½}
+I want to come to terms with him.	”Ş ‚Æ ’‡’¼‚è ‚µ‚½‚¢
+I was surprised because he lifted me up with ease.	”Ş ‚ª „ ‚ğ ŠÈ’P{ŠÈ’P‚É} •ø‚«ã‚°‚é{•ø‚«ã‚°‚½} ‚Ì‚Å „ ‚Í ‹Á‚­{‹Á‚¢‚½}
+He had grown senile recently.	”Ş ‚Í Ÿ‚Ì {‚±‚Ì‚²‚ë} “ª ‚ª •ğ‚¯‚é{‚Ú‚¯‚Ä} —ˆ‚é{‚«‚½}
+She's a very earnest person.	”Ş— ‚Í ç‰‚à{‚Æ‚Ä‚à} ^–Ê–Ú{‚Ü‚¶‚ß‚È} l ‚¾
+What did you come here for?	”@‰½‚µ‚Ä{‚Ç‚¤‚µ‚Ä} Ÿˆ{‚±‚±} ‚Ö —ˆ‚é{—ˆ‚½} ‚Ì‚¾{‚Ì‚Å‚·} ‚©
+His ideas carry a lot of weight.	”Ş{”Ş‚Ì} ˆÓŒ© ‚É ”­—g ‰e‹¿—Í ‚ª —L‚é{‚ ‚é}
+You've given me good advice.	ŒN ‚Í —Ç‚¢{‚¢‚¢} •Œ¾ ‚ğ ˆ×‚é{‚µ‚Ä} Œà‚ê‚é{‚­‚ê‚½}
+He speaks as if he had studied abroad.	”Ş ‚Í ”@‰½‚É‚à{‚¢‚©‚É‚à} —¯Šw ˆ×‚é{‚µ‚½} —l{‚æ‚¤‚È} – ‚ğ Œ¾‚¤
+I have been writing letters all day long.	„ ‚Í ˆê“ú’†{‚P“ú’†} è† ‚ğ ‘‚­{‘‚¢‚Ä‚¢‚½}
+I am quite clear that it is a fact.	‘´‚ê{‚»‚ê} ‚ª –À ‚¾ ‚Æ Œ¾‚¤{‚¢‚¤} –{‚±‚Æ} ‚Í –l{‚Ú‚­} ‚É‚Í ‚Í‚Á‚«‚è •ª‚©‚é{‚í‚©‚Á‚Ä‚¢‚é}
+Please help me fill out this form.	Ÿ‚Ì{‚±‚Ì} †  ‚É ‹L“ü ˆ×‚é{‚·‚é} ‚Ì ‚ğ è“`‚¤{è“`‚Á‚Ä} ‰º‚³‚¢{‚­‚¾‚³‚¢}
+Can you spare a minute? I'd like to discuss something of importance to both of us.	ˆê¡{‚¿‚å‚Á‚Æ} ŠÔ‚ğŠ„‚­{ŠÔ‚ğŠ„‚¢‚Ä} Œà‚ê‚é{‚­‚ê‚Ü‚¹‚ñ} ‚© “ñl{‚Ó‚½‚è} ‚Éæ‚Á‚Ä{‚É‚Æ‚Á‚Ä} ‘å–{‘å–‚È} – ‚ğ ˜b‚µ‡‚¤{˜b‚µ‡‚¢} ‚½‚¢ ‚Ì‚¾{‚Ì‚Å‚·}
+"I got cold, so I turned on the heater."	Š¦‚¢{Š¦‚­} ¬‚é{‚È‚Á‚½} ‚Ì‚Å ƒq[ƒ^[ ‚ğ •t‚¯‚é{‚Â‚¯‚½}
+Father made a long tear in his sleeve.	•ƒ ‚Í ‘³ ‚É ’·‚¢ —ô‚¯–Ú ‚ğ ì‚é{ì‚Á‚½}
+They laughed over their silly misunderstanding.	”Ş‚ç ‚Í Î‚¤{Î‚¢} “á‚ç{‚È‚ª‚ç} ‚¨Œİ‚¢‚É ‹l‚ç‚È‚¢{‚Â‚Ü‚ç‚Ê} Œë‰ğ ‚ğ ˆ×‚é{‚µ‚Ä‚¢‚½} •¨{‚à‚Ì} ‚¾ ‚Æ Œê‚è‡‚¤{Œê‚è‡‚Á‚½}
+Do you mind if I call on you tomorrow?	–¾“ú f‚¤{‚¨f‚¢} ˆ×‚é{‚µ‚Ä} ‚à ‹X‚µ‚¢{‚æ‚ë‚µ‚¢} ‚Å‚·‚©
+I will side with you just this once.	¡‰ñ ä{‚¾‚¯} ‚Í ŒN{ŒN‚Ì} –¡•û ‚ğ ˆ×‚é{‚µ‚æ‚¤}
+Our school beat Keio at baseball.	–l‚½‚¿ ‚Ì ŠwZ ‚Í –ì‹… ‚Å ‚ğ •‰‚©‚·{•‰‚©‚µ‚½}
+You'll regret that!	¡{‚¢‚Ü} ‚É Œã‰÷ ˆ×‚é{‚·‚é} ‚¼
+He revived the child with artificial respiration.	”Ş ‚Í lHŒÄ‹z ‚Å q‹Ÿ ‚ğ ¶‚«•Ô‚é{¶‚«•Ô‚ç‚¹‚½}
+"There being no vacant seat in the bus, I kept on standing."	ƒoƒX ‚É‚Í ‹óÈ ‚ª –³‚¢{‚È‚©‚Á‚½} ‚Ì‚Å „ ‚Í ‚¸‚Á‚Æ —§‚¿‘±‚¯ ‚¾{‚¾‚Á‚½}
+We have French in third period.	ŠÔ –Ú ‚É‚Í ƒtƒ‰ƒ“ƒXŒê ‚ª —L‚é{‚ ‚è‚Ü‚·}
+Meg is curious to know everything about Japan.	‚Í “ú–{ ‚ÉA‚¢‚Ä{‚É‚Â‚¢‚Ä} ‰½‚Å‚à ’m‚é{’m‚è} ‚½‚ª‚é
+I'll be your first patient.	„ ‚Í ‹M•û{‚ ‚È‚½} ‚Ì ‘æˆê † ‚Ì Š³Ò ‚É‚È‚é ‚í
+The man was held in police custody.	‘´‚Ì{‚»‚Ì} ’j ‚Í S—¯ ˆ×‚ê‚é{‚³‚ê‚½}
+She gave me plenty to eat.	”Ş— ‚Í „ ‚É ‘òR{‚½‚­‚³‚ñ} H‚×•¨ ‚ğ Œà‚ê‚é{‚­‚ê‚½}
+"If you have a cold, lack of sleep is very bad for you."	•—×‚ğ‚Ğ‚­{‚©‚º‚ğ‚Ğ‚¢‚Ä‚¢‚é} {‚Æ‚«} ‚Í ‡–°•s‘« ‚Í —Ç‚¢{—Ç‚­‚ ‚è‚Ü‚¹‚ñ}
+Choose a present carefully.	‘¡‚è•¨ ‚Í Td{Td‚É} ‘I‚Ô{‘I‚Ñ} ‚È‚³‚¢
+He liked history among others.	”Ş ‚Í ’†‚Å‚à —ğj ‚ª D‚« ‚¾{‚¾‚Á‚½}
+I told them again to turn down the radio.	”Ş‚ç ‚É ƒ‰ƒWƒI ‚Ì ‰¹ ‚ğ ¬‚³‚¢{¬‚³‚­} ˆ×‚é{‚·‚é} —l‚É{‚æ‚¤‚É} ‰½“x ‚à Œ¾‚¤{Œ¾‚Á‚½}
+They complained about their low wages.	”Ş‚ç ‚Í ’á’À‹à ‚É •s– ‚ğ Œ¾‚¤{Œ¾‚Á‚½}
+I lost my travelers checks.	ƒgƒ‰ƒxƒ‰[ƒYƒ`ƒFƒbƒN ‚ğ –³‚­‚·{‚È‚­‚µ‚Ä} d•‘‚¤{‚µ‚Ü‚¢‚Ü‚µ‚½}
+I read fifty pages further.	„ ‚Í X‚É •Å{ƒy[ƒW} “Ç‚Ş{“Ç‚ñ‚¾}
+The climate of Tokyo is different from that of London.	“Œ‹ ‚Ì ‹CŒó ‚Í —Ï“Ö{ƒƒ“ƒhƒ“} ‚Æ‚Í ˆÙ‚È‚é{ˆÙ‚È‚Á‚Ä‚¢‚é}
+Then who are you? Are you Elijah?	‚Å‚Í ˆê‘Ì{‚¢‚Á‚½‚¢} ’N ‚Å‚·‚© ‹M•û{‚ ‚È‚½} ‚Í ‚Å‚·‚©
+I tried writing a novel.	„ ‚Í ‚µ{‚½‚ß‚µ} ‚É ¬à ‚ğ ‘‚­{‘‚¢‚Ä} Œ©‚é{‚İ‚½}
+Blue Sky Sport is closed every Thursday.	“X ‚Í –ˆT –Ø—j“ú ‚ª Œä{‚¨} ‹x‚İ ‚Å‚·
+There is no other country in the world where earthquakes are as frequent as in Japan.	“ú–{ ’ö{‚Ù‚Ç} ’nk ‚Ì ‘½‚¢ ‘ ‚Í –³‚¢{‚È‚¢}
+I think she's over 40 years old.	”Ş— ‚Í ­‚È‚­‚Æ‚à Ë ‚Í ‰z‚¦‚é{‰z‚¦‚Ä‚¢‚é} ‚Æ v‚¤
+"As a child, Bob lived in Boston."	q‹Ÿ ‚Ì {‚Æ‚«} ‚Í ƒ{ƒXƒgƒ“ ‚É Z‚Ş{Z‚ñ‚Å‚¢‚½}
+He regretted having quit his job.	”Ş ‚Í d– ‚ğ «‚ß‚é{‚â‚ß‚½} –{‚±‚Æ} ‚ğ Œã‰÷ ˆ×‚é{‚µ‚½}
+Nobody speaks well of that politician.	’N‚à ”Ş‚Ì{‚ ‚Ì} ­¡‰Æ ‚ğ –J‚ß‚é{‚Ù‚ß‚È‚¢}
+He will cope well with difficulties.	”Ş ‚Í ¢“ï ‚ğ ãè‚¢{‚¤‚Ü‚­} Ø‚è”²‚¯‚é{Ø‚è”²‚¯‚Ä} s‚­{‚¢‚­} ‚¾‚ë‚¤
+We are giving Tom a birthday party.	‚Ì ’a¶ƒp[ƒeƒB[ ‚ğ ŠJ‚­ —\’è ‚¾
+It cost me ten thousand yen to have my television set repaired.	ƒeƒŒƒr ‚ğ C‘U ˆ×‚¹‚é{‚³‚¹‚½‚ç} ‰~ æ‚é{‚Æ‚ç‚ê‚½}
+The practice still prevails locally in parts of Japan.	‘´‚Ì{‚»‚Ì} KŠµ ‚Í ¡ ®{‚È‚¨} “ú–{ ‚Ì ŠX ‚Å s‚í‚ê‚é{s‚í‚ê‚Ä‚¢‚é}
+Anyway what are you on about? Going around sleeveless in this cold.	‘å‘Ì{‚¾‚¢‚½‚¢} ‹M•û{‚ ‚ñ‚½} Ÿ‚Ì{‚±‚Ì} Š¦‚¢ ‚Ì‚É ƒm[ƒXƒŠ[ƒu ‚Å ‰½ Œ¾‚¤{‚¢‚Á‚Ä‚ñ} ‚Ì ‚æ
+I hope the economy picks up soon.	Œi‹C ‚ª ’¼‚®‚É{‚·‚®‚É} ‰ñ•œ ˆ×‚é{‚·‚é} ‚Æ —Ç‚¢{‚¢‚¢} ‚Ì‚¾{‚Ì‚Å‚·} ‚ª
+He used the dictionary.	”Ş ‚Í ‘´‚Ì{‚»‚Ì} «‘ ‚ğ g‚¤{g‚Á‚½}
+The doctor advised me to take up some sport to stay in shape.	ˆãÒ ‚Í „ ‚É Œ’N ‚Ì ˆ×‚É{‚½‚ß‚É} ‰½‚© ‰^“® ‚ğ ‚µ‚½•û‚ª‚¢‚¢{‚µ‚½‚Ù‚¤‚ª‚¢‚¢} ‚Å‚· ‚æ ‚Æ Œ¾‚¤{Œ¾‚¢‚Ü‚µ‚½}
+"I lost my watch, so I have to buy one."	„ ‚Í Œv ‚ğ –³‚­‚·{‚È‚­‚µ‚½} ‚Ì‚Å Œv ‚ğ ”ƒ‚¤{”ƒ‚í} ‚Ë‚Î‚È‚ç‚È‚¢{‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢}
+Depending on the results both companies may be put under administrative guidance from February.	Œ‹‰Ê Ÿ‘æ ‚Å ‚Í —¼Ğ ‚É‘Î‚µ‚Ä “ñŒ{2Œ} ˆÈ—ˆ ‚Ì s­w“± ‚ª s‚¤{s‚í‚ê‚é}
+I was in trouble with the police last night.	„ ‚Í ğ”Ó Œx@ ‚Æ ‚¢‚´‚±‚´ ‚ğ ‹N‚±‚·{‹N‚±‚µ‚½}
+None of the programs look interesting to me.	”Ô‘g ‚Ì ‰½‚ê‚à{‚Ç‚ê‚à} „ ‚É‚Í –Ê”’‚¢{–Ê”’} ‚»‚¤ ‚É Œ©‚¦‚é{Œ©‚¦‚È‚¢}
+"If it is interesting, any book will do."	–Ê”’‚¢{‚¨‚à‚µ‚ë‚¯‚ê‚Î} ‚Ç‚ñ‚È –{ ‚Å‚à —Ç‚¢{‚¢‚¢} ‚Å‚· ‚æ
+You must take care of yourself.	‹M•û{‚ ‚È‚½} ‚Í ‘Ì ‚ğ ‘å– ‚É ˆ×‚é{‚µ} ‚Ë‚Î‚È‚ç‚È‚¢{‚È‚¯‚ê‚Î‚¢‚¯‚Ü‚¹‚ñ}
+He led a life of luxury.	”Ş ‚Í æÒ‘ò{æÒ‘ò‚È} ¶Šˆ ‚ğ ‘—‚é{‘—‚Á‚½}
+I think I must be leaving since it is getting late.	’x‚¢{’x‚­} ¬‚é{‚È‚Á‚Ä} —ˆ‚é{‚«‚½} ‚Ì‚Å ‚à‚¤ ‹A‚é{‹A‚è‚Ü‚·}
+He turned a deaf ear to my advice.	”Ş ‚Í ‰äX ‚Ì ’‰ ‚É ¨‚ğ‘İ‚·{¨‚ğ‘İ‚³‚È‚©‚Á‚½}
+"When we reached the summit, we all yelled out into the void."	’¸ã ‚É ’…‚­ ‚Æ ŠF ‚Å ‚Æ ‹©‚Ô{‹©‚ñ‚¾}
+It is six years since I started to study English.	„ ‚Í ‰pŒê ‚ğ n‚ß‚é{n‚ß‚Ä} ‚©‚ç ‚à‚¤ ”N ‚É‚È‚é
+I am seldom at leisure.	„ ‚Í –Å‘½‚É{‚ß‚Á‚½‚É} ‰É{‰É‚È} {‚Æ‚«} ‚ª –³‚¢{‚È‚¢}
+You are acting beyond your position.	‘´‚ê{‚»‚ê} ‚Í ‰zŒ sˆ× ‚¾
+I lost my shirt on the stock market.	Š” ‚Å ‚·‚Á‚Ä‚ñ‚Ä‚ñ ‚É‚È‚é{‚É‚È‚Á} ‚¿‚Ü‚¤{‚¿‚Ü‚Á‚½}
+He jumped across the puddle.	”Ş ‚Í …—­‚Ü‚è{…‚½‚Ü‚è} ‚ğ ”ò‚Ñ‰z‚·{”ò‚Ñ‰z‚µ‚½}
+He is of royal blood.	”Ş ‚Í ‰¤ ‚Ì ŒŒ ‚ğ ˆø‚­{ˆø‚¢‚Ä‚¢‚é}
+They are boring a hole.	”Ş‚ç ‚Í ŒŠ ‚ğ Œ@‚é{Œ@‚Á‚Ä‚¢‚é}
+I'll be late for school!	ŠwZ ‚É ’x ˆ×‚é{‚µ} ‚»‚¤
+I have a lot of work to get through today.	¡“ú ‚Í ‘òR{‚½‚­‚³‚ñ} ‚Ì d– ‚ğ I‚¦‚é{I‚¦} ‚Ë‚Î‚È‚ç‚È‚¢{‚È‚¯‚ê‚Î‚È‚ç‚È‚¢}
+He yielded to temptation and took drugs.	”Ş ‚Í —U˜f ‚É ‹ü‚·‚é{‹ü‚µ} –ƒ–ò ‚É è‚ğo‚·{è‚ğo‚µ‚Ä} d•‘‚¤{‚µ‚Ü‚¢‚Ü‚µ‚½}
+Mayuko appears wise.	‚Í Œ«‚¢{Œ«} ‚»‚¤ ‚¾
+Please send the merchandise by return.	Ü‚è•Ô‚µ ¤•i ‚ğ —X‘— ˆ×‚é{‚·‚é} ‰Â‚µ{‚×‚µ}
+It is beginning to tell on him.	‘´‚ê{‚»‚ê} ‚Í ”Ş ‚Ì g ‚É ‰‚¦‚é{‰‚¦} o‚·{‚¾‚µ‚½}
+I don't feel inclined to play baseball today.	¡“ú ‚Í –ì‹… ‚ğ Œ­‚é‹C{‚â‚é‹C} ‚ª ˆ×‚é{‚µ‚È‚¢}
+The offer is worthy of being considered.	‘´‚Ì{‚»‚Ì} \‚µo ‚Í l—¶ ‚É ’l‚·‚é
+We were arguing on different planes to the last.	ÅŒã‚Ü‚Å ‹c˜_ ‚Ì •Ô ‚ª Šš‚İ‡‚¤{Šš‚İ‡‚í‚È‚©‚Á‚½}
+My mother had cooked supper when I got home.	„ ‚ª ‹A‚é{‹A‚Á‚½} {‚Æ‚«} •ê ‚Í —[H ‚Ì —¿— ‚ğ I‚¦‚é{I‚¦‚Ä‚¢‚½}
+Tastes differ.	l ‚Ì D‚İ{‚±‚Ì‚İ} ‚Í ˆÙ‚È‚é
+The president laughed in spite of himself.	‘å“—Ì ‚Í v‚í‚¸ Î‚¤{Î‚Á‚Ä} d•‘‚¤{‚µ‚Ü‚Á‚½}
+I've never been to Paris.	–¢‚¾{‚Ü‚¾} ”b—¢{ƒpƒŠ} ‚É s‚­{s‚Á‚½} –‚ª–³‚¢{‚±‚Æ‚ª‚È‚¢}
+I am sure of success.	„ ‚É‚Í ¬Z ‚ª —L‚é{‚ ‚é}
+Did he go there?	”Ş ‚Í ‘´ˆ{‚»‚±} ‚Ö s‚­{s‚«‚Ü‚µ‚½} ‚©
+Jack explained to me how to change the wheel of the car.	‚Í –l ‚É Ô ‚Ì ƒ^ƒCƒ„ ŒğŠ· ‚Ì d•û ‚ğ à–¾ ˆ×‚é{‚µ‚Ä} Œà‚ê‚é{‚­‚ê‚½}
+He is the picture of his father.	”Ş ‚Í •ƒ ‚»‚Á‚­‚è ‚¾
+We are longing for world peace.	‰äX ‚Í ¢ŠE•½˜a ‚ğ –]‚Ş{–]‚ñ‚Å‚¢‚é}
+"I want to buy this book not because it is cheap, but because it is useful."	ˆÀ‚¢ ‚©‚ç ‚Å ‚Í –³‚¢{‚È‚­} –ğ‚É—§‚Â ‚©‚ç „ ‚Í Ÿ‚Ì{‚±‚Ì} –{ ‚ğ ”ƒ‚¤{”ƒ‚¢} ‚½‚¢
+I need some butter. Do you have any?	ƒoƒ^[ ‚ª —v‚é ‚Ì{‚ñ} ‚¾ ‚¯‚Ç Šô‚ç‚©{‚¢‚­‚ç‚©} —L‚é{‚ ‚è‚Ü‚·} ‚©
+It's too late to turn back now.	¡ ˆø‚«•Ô‚· ‚É‚Í ’x‚¢{’x} ‰ß‚¬‚é{‚·‚¬‚é}
+The digression is escalating more and more.	’Eü ‚ª ‚Ç‚ñ‚Ç‚ñ ƒGƒXƒJƒŒ[ƒg ˆ×‚é{‚µ‚Ä} s‚­{‚¢‚­}
+Don't kill the goose that lays the golden eggs.	‹à ‚Ì —‘ ‚ğ ¶‚Ş êA’¹{ƒKƒ`ƒ‡ƒE} ‚ğ E‚· ‚È
+Raise your hand to the sky.	‘´‚Ì{‚»‚Ì} è ‚ğ ‹ó ‚Ö “Ë‚« ã‚°‚é{ã‚°‚ë}
+The iron broke down due to over-heating.	‘´‚Ì{‚»‚Ì} ƒAƒCƒƒ“ ‚Í ‰ß”M ‚Ì ˆ×‚É{‚½‚ß‚É} ŒÌá ˆ×‚é{‚µ‚½}
+It's not wise of you to turn down his offer.	”Ş{”Ş‚Ì} \‚µo ‚ğ ’f‚é ‚Æ‚Í ŒN ‚à Œ«–¾ ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢}
+He is always complaining about the way I do things.	”Ş ‚Í ‰½‚à{‚¢‚Â‚à} „{„‚Ì} ‚â‚è•û ‚É •¶‹å ‚ğ Œ¾‚¤{Œ¾‚Á‚Ä‚¢‚é}
+You must carry the task through to the end.	ÅŒã‚Ü‚Å ‘´‚Ì{‚»‚Ì} d– ‚ğ ‚â‚è‹‚°‚é{‚â‚è‹‚°} ‚Ë‚Î‚È‚ç‚È‚¢{‚È‚¯‚ê‚Î‚È‚ç‚È‚¢}
+She is inferior to him in math.	”Ş— ‚Í ”Ş ‚æ‚è ”Šw ‚É‰—‚¢‚Ä{‚É‚¨‚¢‚Ä} —ò‚é{—ò‚Á‚Ä‚¢‚é}
+Overseas service here.	Ÿ•û{‚±‚¿‚ç} ‘Û“d˜b ‚Ì ŒW{ŒW‚è} ‚Å‚·
+I burned my hand with an iron.	ƒAƒCƒƒ“ ‚Å è ‚ğ ‰Î{‚â‚¯‚Ç} ˆ×‚é{‚µ‚Ü‚µ‚½}
+Jane was waiting with her back against the tree.	‚Í ”w ‚ğ –Ø ‚É ™~‚ê‚é{‚à‚½‚ê} ‰Ë‚¯‚é{‚©‚¯‚Ä} ‘Ò‚Â{‘Ò‚Á‚Ä‚¢‚½}
+I had no idea it would put you to so much trouble.	‚±‚ñ‚È‚É Œä{‚²} –À˜f‚ğ‚©‚¯‚é ‚Æ ‚Í v‚¤{v‚Á‚Ä} ‹‚é{‚¨‚è‚Ü‚¹‚ñ‚Å‚µ‚½}
+How long do I have to wait for the next bus?	Ÿ{Ÿ‚Ì} ƒoƒX –˜{‚Ü‚Å} ‚É‚Í ‚Ç‚ÌˆÊ{‚Ç‚Ì‚­‚ç‚¢} ‘Ò‚Â{‘Ò‚¿‚Ü‚·} ‚©
+"Should he call me in my absence, please tell him that I will call him back."	–œˆê „{„‚Ì} —¯ç’† ‚É ”Ş ‚ª “d˜b‚ğ‚©‚¯‚é{“d˜b‚ğ‚©‚¯‚Ä} —ˆ‚é{‚«‚½‚ç} Ü‚è•Ô‚µ „{„‚Ì} •û ‚©‚ç “d˜b‚ğ‚©‚¯‚é
+My sister-in-law had four children in five years.	‹`—‚Ìo ‚Í ŒÜ ”NŠÔ ‚Å ll ‚Ì q‹Ÿ ‚ğ ¶‚Ş{¶‚ñ‚¾}
+Your idea is definitely worth thinking about.	ŒN{ŒN‚Ì} ƒAƒCƒfƒA{ƒAƒCƒfƒBƒA} ‚Í Šm‚©‚É ŒŸ“¢ ˆ×‚é{‚·‚é} ‰¿’l ‚ª —L‚é{‚ ‚é}
+"If you do your best, no one will blame you."	Å‘P‚ğs‚­‚·{Å‘P‚ğ‚Â‚­‚¹‚Î} ’N‚à ŒN ‚ğ ™é‚ß‚é{‚Æ‚ª‚ß‚È‚¢} ‚Å‚µ‚å‚¤
+"She is a lady, and ought to be treated as such."	”Ş— ‚Í — ‚Å‚ ‚é{‚Å‚ ‚è} ‚»‚Ì‚æ‚¤{‚»‚Ì‚æ‚¤‚É} ‘Ò‹ö ˆ×‚ê‚é{‚³‚ê‚é} ‰Â‚«{‚×‚«} ‚Å‚ ‚é
+"Sorry to be so direct, but how much did you pay for this?"	‚Ô‚Á‚¿‚á‚¯‚é{‚Ô‚Á‚¿‚á‚¯‚½} ˜b Ÿ‚ê{‚±‚ê} ‚Á‚Ä Šô‚ç{‚¢‚­‚ç} ˆÊ{‚®‚ç‚¢} ˆ×‚é{‚µ‚½} ‚Ì
+The boy sat among the girls.	‘´‚Ì{‚»‚Ì} ­”N ‚Í ­— ’B{‚½‚¿} ‚Ì ŠÔ ‚É À‚é{À‚Á‚½}
+You should have helped him with his work.	ŒN ‚Í ”Ş ‚Ì d– ‚ğ è“`‚¤ ‰Â‚«{‚×‚«} ‚¾{‚¾‚Á‚½}
+"When meeting a person for the first time, be sure to pay attention to the distance placed between yourself and your partner."	l ‚É ‰‚ß‚Ä ‰ï‚¤ {‚Æ‚«} ‚É‚Í •K‚¸ ©•ª ‚Æ ‘Šè ‚Æ ‚Ì ‹——£ ‚É ’ˆÓ ‚ğ •¥‚¤{•¥‚¢} ‚È‚³‚¢
+Wondering if my daughter had arrived safely I tried to call her but couldn't get through.	–º ‚ª –³– ‚É ’…‚­{’…‚¢‚½} ‚©‚Ç‚¤‚© ‚Æ v‚¤{v‚Á‚Ä} “d˜b‚ğ‚©‚¯‚é{“d˜b‚ğ‚©‚¯‚æ‚¤} ‚Æ‚·‚é{‚Æ‚µ‚½} ‚ª ’Ê‚¶‚é{’Ê‚¶‚È‚©‚Á‚½}
+He came down in the world.	”Ş ‚Í —‚¿‚Ô‚ê‚é{—‚¿‚Ô‚ê‚½}
+You will have to go to England next year.	‹M•û{‚ ‚È‚½} ‚Í —ˆ”N ‚Í ‰p‹g—˜{ƒCƒMƒŠƒX} ‚Ö s‚­{s‚©} ‚Ë‚Î‚È‚ç‚È‚¢{‚È‚¯‚ê‚Î‚È‚ç‚È‚¢} ‚Å‚µ‚å‚¤
+Try out my reins and my heart.	„{„‚Ì} S ‚Æ v‚¢ ‚Æ ‚ğ —û‚é{—û‚è} ´‚ß‚é{´‚ß‚Ä} ‰º‚³‚¢{‚­‚¾‚³‚¢}
+He has a large store of food.	”Ş ‚Í H—¿ ‚Ì ’~‚¦ ‚Í \•ª{\•ª‚É} —L‚é{‚ ‚é}
+They moved ahead slowly.	”Ş‚ç ‚Í ‚ä‚Á‚­‚è ‘Oi ˆ×‚é{‚µ‚½}
+I want this letter registered.	Ÿ‚Ì{‚±‚Ì} è† ‚ğ ‘—Ş ‚É ˆ×‚é{‚µ‚Ä} –á‚¤{‚à‚ç‚¢} ‚½‚¢
+"If UFOs were to attack the earth, what would become of us?"	‰¼‚É ‚t‚e‚n ‚ª ’n‹… ‚ğ UŒ‚ ˆ×‚é{‚µ‚Ä} —ˆ‚é{—ˆ‚½‚ç} ‰äX ‚Í ”@‰½{‚Ç‚¤} ¬‚é{‚È‚é} ‚¾‚ë‚¤
+Don't be scared of making mistakes.	¸”s ‚ğ •|‚ª‚é –{‚±‚Æ} ‚Í —L‚é{‚ ‚è‚Ü‚¹‚ñ}
+He fell captive to her charms.	”Ş ‚Í ”Ş—{”Ş—‚Ì} –£—Í ‚Ì —¸{‚Æ‚è‚±} ‚É‚È‚é{‚É‚È‚Á‚½}
+You should know better.	ŒN ‚Í ‚à‚Á‚Æ •ª•Ê ‚ğ ‚Â{‚à‚¿} ‚È‚³‚¢
+Those are not your chairs.	‘´‚ê“™{‚»‚ê‚ç} ‚Í ŒN‚½‚¿ ‚Ì ˆÖq ‚Å‚·{‚Å‚Í‚ ‚è‚Ü‚¹‚ñ}
+They blamed the failure on George.	”Ş‚ç ‚Í ¸”s ˆ×‚é{‚µ‚½} ‚Ì ‚ğ ‚Ì Šˆ×‚É‚·‚é{‚¹‚¢‚É‚µ‚½}
+She is a high-liver.	”Ş— ‚Í ‚–]‚İ ˆ×‚é{‚·‚é} ƒ^ƒCƒv ‚Å‚·
+I can't walk any farther.	‚à‚¤ Ÿ‚ê{‚±‚ê} ˆÈã •à‚­{•à‚¯‚È‚¢}
+Persons under age are prohibited from smoking.	–¢¬”NÒ ‚Í ‹i‰Œ ‚ğ ‹Ö‚¶‚é{‹Ö‚¶‚ç‚ê‚Ä‚¢‚é}
+The population of Tokyo is about five times as large as that of our city.	“Œ‹ ‚Ì lŒû ‚Í ‰äX ‚Ì s ‚Ì lŒû ‚Ì –ñ ”{ ‚Å‚ ‚é
+I'll expect you next week.	—ˆT ‘Ò‚Â{‚¨‚Ü‚¿} ˆ×‚é{‚µ‚Ä} ‹‚é{‚¨‚è‚Ü‚·}
+Don't be deceived by appearances.	ŠOŒ© ‚É éx‚·{‚¾‚Ü‚³‚ê‚é} ‚È
+We celebrated the New Year with a party.	„‚½‚¿{„’B} ‚Í ƒp[ƒeƒB[ ‚ğ ˆ×‚é{‚µ‚Ä} V”N ‚ğ j‚¤{j‚Á‚½}
+What marvelous weather.	‰½‚Ä ‘f°‚ç‚µ‚¢{‚·‚Î‚ç‚µ‚¢} “V‹C ‚¾‚ë‚¤
+The secret seems to have leaked out.	”é–§ ‚ª ˜R‚ê‚é{˜R‚ê‚½} ‚ç‚µ‚¢
+When can I see you?	‰½{‚¢‚Â} ‚¨–Ú‚ÉŠ|‚©‚é{‚¨–Ú‚É‚©‚©‚ê‚Ü‚·} ‚©
+Recent overseas transfers show that productivity improvements in Japanese manufacturing industry have almost reached their limit.	Å‹ß{Å‹ß‚Ì} ŠCŠO ˆÚ“] ‚Ì “®‚« ‚ğ Œ©‚é{Œ©‚Ä} ‚à •ª‚©‚é{‚í‚©‚é} —l{‚æ‚¤‚É} »‘¢‹Æ ‚Ì ¶Y« ‰ü‘P ‚à ŒÀŠE ‚É ‹ß‚¢ Š{‚Æ‚±‚ë} –˜{‚Ü‚Å} i‚Ş{i‚ñ‚Å‚¢‚é}
+Game birds abound in the area.	‘´‚Ì{‚»‚Ì} ’n‹æ —Â’¹ ‚ª ‘½‚¢
+I do not want him to be careless.	„ ‚Í ”Ş ‚É •s’ˆÓ ‚Å‚ ‚é{‚Å‚ ‚Á‚Ä} –á‚¤{‚à‚ç‚¢} ‚½‚¢{‚½‚­‚ ‚è‚Ü‚¹‚ñ}
+Justice and kindness are virtues.	³‹` ‚Æ eØ ‚Í ”ü“¿ ‚Å‚ ‚é
+The Internet is very useful for knowing the circumstances of each part of the world.	ƒCƒ“ƒ^[ƒlƒbƒg ‚Í ¢ŠE Še’n ‚Ì ó‹µ ‚ğ ’m‚é ‚Ì‚É ç‰‚à{‚Æ‚Ä‚à} –ğ‚É—§‚Â{–ğ‚É—§‚¿‚Ü‚·}
+We furnished the refugees with blankets.	‰äX ‚Í ”ğ“ï–¯ ‚É –Ñ•z ‚ğ —^‚¦‚é{—^‚¦‚½}
+The weather is becoming cooler.	—Á‚µ‚¢{—Á‚µ‚­} ¬‚é{‚È‚Á‚Ä} —ˆ‚é{‚«‚½}
+He finished the work at the expense of his health.	”Ş ‚Í Œ’N ‚ğ ‹]µ ‚É ˆ×‚é{‚µ‚Ä} ‘´‚Ì{‚»‚Ì} d– ‚ğ I‚¦‚é{I‚¦‚½}
+Don't take the trouble to come and meet me.	‘ÔX{‚í‚´‚í‚´} Œ}‚¦‚É—ˆ‚é —l{‚æ‚¤‚È} –{‚±‚Æ} ‚Í ˆ×‚é{‚µ‚È‚¢‚Å} ‰º‚³‚¢
+He suffered an insult.	”Ş ‚Í ŠÃ‚ñ‚¶‚é{ŠÃ‚ñ‚¶‚Ä} ‹üJ ‚É ‘Ï‚¦‚é{‘Ï‚¦‚½}
+Everyone is friendly to her.	ŠF{‚İ‚ñ‚È} ”Ş— ‚É eØ ‚Å‚·
+"Be that as it may, you are wrong."	‘´‚ê{‚»‚ê} ‚Í “e‚ÉŠp{‚Æ‚É‚©‚­} ŒN ‚ª ˆ«‚¢
+"There's nothing to do, so I may as well go to bed."	‰½‚à ˆ×‚é{‚·‚é} –{‚±‚Æ} ‚ª –³‚¢{‚È‚¢} ‚È‚ç Q‚é{Q‚½} •û‚ª‚¢‚¢
+She invited me to dinner.	”Ş— ‚Í „ ‚ğ H– ‚É µ‚­{µ‚¢‚Ä} Œà‚ê‚é{‚­‚ê‚½}
+There is no more important problem than this.	Ÿ‚ê’ö{‚±‚ê‚Ù‚Ç} d—v{d—v‚È} –â‘è ‚Í –³‚¢{‚È‚¢}
+She held on to my hand tightly.	”Ş— ‚Í „{„‚Ì} è ‚É Šm‚è{‚µ‚Á‚©‚è‚Æ} ‚µ‚ª‚İ•t‚­{‚µ‚ª‚İ•t‚¢‚½}
+How did you reply?	‰½‚Ä “š‚¦‚é{“š‚¦‚½} ‚Ì
+The net-cafes here cater to students; fees start at around a pound an hour.	Ÿˆ{‚±‚±} ‚Ì ƒlƒbƒgƒJƒtƒF ‚Í Šw¶ ‘Šè ‚Ì “X ‚Å —¿‹à ‚Í ˆêŠÔ{‚PŠÔ} –ñ ‰~ ‚©‚ç ‚Æ‚È‚é{‚Æ‚È‚è‚Ü‚·}
+Rosie was allowed to stay up till eleven o'clock.	‚Í  –˜{‚Ü‚Å} ‹N‚«‚é{‹N‚«‚Ä‚¢‚é} – ‚ğ ‹–‚·{‹–‚³‚ê‚½}
+The colony declared independence.	‘´‚Ì{‚»‚Ì} A–¯’n ‚Í “Æ—§ ‚ğ éŒ¾ ˆ×‚é{‚µ‚½}
+My health makes me a very slow worker.	Œ’N ‚ÌŠˆ×‚Å{‚Ì‚¹‚¢‚Å} d– ‚ª ˆêŒü‚É{‚¢‚Á‚±‚¤‚É} ’»‚é{‚Í‚©‚Ç‚ç‚È‚¢}
+Don't haggle over a small sum of money.	‹Í‚©{‚í‚¸‚©‚È} Šz ‚Ì –{‚±‚Æ} ‚Å Œ¾‚¢‘ˆ‚¤ ‚Ì ‚Í ~‚·{‚æ‚¹}
+The person whose name was on the passport was described with words.	ƒpƒXƒ|[ƒg ‚É –¼‘O ‚ª ‹LÚ ˆ×‚ê‚é{‚³‚ê‚Ä‚¢‚é} l ‚Í Œ¾—t ‚Å q‚×‚é{q‚×‚ç‚ê‚Ä‚¢‚½}
+I can't buy a book this expensive.	‚»‚ñ‚È ‚‰¿{‚‰¿‚È} –{ ‚Í ”ƒ‚¤{”ƒ‚¦‚È‚¢}
+With this his spirit will be consoled.	Ÿ‚ê{‚±‚ê} ‚Å ”Ş ‚Ì —ì ‚à •‚‚©‚Ô{•‚‚©‚Î‚ê‚é} ‚¾‚ë‚¤
+We could barely make out two figures in the dark.	ˆÅ{ˆÅ‚Ì} ’† ‚Å h‚¤‚¶‚Ä{‚©‚ë‚¤‚¶‚Ä} “ñl{‚Ql} ‚Ì l‰e ‚ª Œ©•ª‚¯‚é{Œ©•ª‚¯‚ç‚ê‚½}
+I'm already accustomed to the heat of summer.	‰Ä ‚Ì ‹‚¢{‹} ‚³ ‚É‚à ‚à‚¤ Šµ‚ê‚é{Šµ‚ê‚Ü‚µ‚½}
+He's eating an apple.	”Ş ‚Í —ÑŒç{‚è‚ñ‚²} ‚ğ H‚×‚é{H‚×‚Ä‚¢‚Ü‚·}
+"It being awfully cold, the party were almost frozen to death."	ç‰‚à{‚Æ‚Ä‚à} Š¦‚¢{Š¦‚©‚Á‚½} ‚Ì‚Å ˆês ‚Í “€€ ˆ×‚é{‚·‚é} Š{‚Æ‚±‚ë} ‚¾{‚¾‚Á‚½}
+I worked far into the night.	„ ‚Í –é’x‚­ –˜{‚Ü‚Å} “­‚­{“­‚¢‚½}
+I am good friends with Bill.	„ ‚Í ‚Æ ’‡—Ç‚µ ‚Å‚·
+A TV set of this size will take little space.	Ÿ‚Ì{‚±‚Ì} Œ^ ‚Ì ƒeƒŒƒr ‚È‚ç —]‚è{‚ ‚Ü‚è} êŠ‚ğæ‚é{êŠ‚ğ‚Æ‚ç‚È‚¢} ‚Å‚µ‚å‚¤
+The city is well supplied with water.	‘´‚Ì{‚»‚Ì} s ‚É‚Í \•ª{\•ª‚É} … ‚ª ‹Ÿ‹‹ ˆ×‚ê‚é{‚³‚ê‚Ä‚¢‚é}
+The ruling party is running a smear campaign against the opposition.	—^“} ‚Í –ì“} ”ñ“ï ‚Ì ƒLƒƒƒ“ƒy[ƒ“ ‚ğ “WŠJ ˆ×‚é{‚µ‚Ä‚¢‚Ü‚·}
+I had a miscarriage last year.	‹”N —¬Y ˆ×‚é{‚µ‚Ü‚µ‚½}
+I am afraid that I shall not be free till the examination is over.	Œ± ‚ª Ï‚Ş –˜{‚Ü‚Å} ‚Í –Z‚µ‚¢{–Z‚µ‚­‚Ä} ‰É‚ª‚È‚¢ ‚¾‚ë‚¤ ‚Æ v‚¤{v‚¢‚Ü‚·}
+I have labor pains every thirty minutes.	w’É ‚ª •ª ’u‚«‚É{‚¨‚«‚É} ‹N‚±‚é{‹N‚±‚è‚Ü‚·}
+He's too busy.	”Ş ‚Í –Z‚µ‚¢{–Z‚µ} ‰ß‚¬‚é{‚·‚¬‚é} ‚Ì{‚ñ} ‚¾ ‚æ
+Do you wonder why no one trusts him?	’N‚à ”Ş ‚ğ M—p ˆ×‚é{‚µ‚È‚¢} ‚Ì ‚ğ •Ï ‚¾ ‚Æ v‚¤{‚¨‚à‚¤} ‚©‚¢
+Let me congratulate you on your victory in the tournament.	ƒg[ƒiƒƒ“ƒg ‚Å ‚Ì —DŸ ‚¨–Úo“x‚¤{‚¨‚ß‚Å‚Æ‚¤} ŒäÀ‚¢‚Ü‚·{‚²‚´‚¢‚Ü‚·}
+I refused absolutely.	„ ‚Í ’fŒÅ ‚Æ‚µ‚Ä ‹‘â ˆ×‚é{‚µ‚½}
+We had a little water.	„‚½‚¿ ‚É‚Í … ‚ª ­‚µ —L‚é{‚ ‚è‚Ü‚µ‚½}
+He was beaten black and blue.	”Ş ‚Í ‰£‚é{‰£‚ç‚ê‚Ä} Âá{{Â‚ ‚´} ‚ª o—ˆ‚é{‚Å‚«‚½}
+You must on no condition open the box.	‚Ç‚ñ‚È–‚ª‚ ‚Á‚Ä‚à{‚Ç‚ñ‚È‚±‚Æ‚ª‚ ‚Á‚Ä‚à} ‘´‚Ì{‚»‚Ì} ”  ‚ğ ŠJ‚¯‚é{ŠJ‚¯‚Ä} ‚Í s‚¯‚È‚¢{‚¢‚¯‚È‚¢}
+Would you be kind enough to explain it to me?	‹°‚ê“ü‚è‚Ü‚·‚ª ‘´‚Ì{‚»‚Ì} –{‚±‚Æ} ‚ğ „ ‚É à–¾ ˆ×‚é{‚µ‚Ä} ’¸‚¯‚é{‚¢‚½‚¾‚¯‚Ü‚¹‚ñ} ‚Å‚µ‚å‚¤‚©
+California is about as large as Japan.	ƒJƒŠƒtƒHƒ‹ƒjƒA ‚Í “ú–{ ‚Æ “¯‚¶‚­‚ç‚¢ ‚Ì L‚¢{L} ‚³ ‚¾
+Two weeks went by.	TŠÔ ‚ª ‰ß‚¬‚é{‰ß‚¬‚½}
+I think it's somewhere around here.	‚±‚Ì•Ó‚è{‚±‚Ì‚ ‚½‚è} ‚É —L‚é{‚ ‚é} ‚Æ v‚¤ ‚Ì‚¾{‚Ì‚Å‚·} ‚ª
+That person has had an odd grin on his face for a while. What do you suppose is behind it?	‚³‚Á‚« ‚©‚ç ‚ ‚Ìl ˆêl‚Å ƒjƒ„ƒjƒ„{‚É‚â‚É‚â} ˆ×‚é{‚µ‚Ä} ‰ö‚µ‚¢
+They cleared the streets of snow.	”Ş‚ç ‚Í ’Ê‚è ‚ğ œá ˆ×‚é{‚µ‚½}
+He bought her a dog.	”Ş ‚Í ”Ş— ‚É Œ¢ ‚ğ ”ƒ‚¤{”ƒ‚Á‚Ä} Œ­‚é{‚â‚Á‚½}
+An old woman was burnt to death.	˜V”k ‚ª Ä‚¯€‚Ê{Ä‚¯€‚ñ‚¾}
+Were they let in on the secret?	”Ş‚ç ‚Í ”é–§ ‚ğ ’m‚ç‚·{’m‚ç‚³‚ê‚½} ‚Ì ‚¾‚ë‚¤‚©
+"Excuse me, but may I ask you something."	ˆê¡{‚¿‚å‚Á‚Æ} q‚Ë‚é{‚¨‚½‚¸‚Ë} ˆ×‚é{‚µ‚Ü‚·} ‚ª
+Can you write a letter in English?	‹M•û{‚ ‚È‚½} ‚Í ‰pŒê ‚Å è† ‚ğ ‘‚­ –‚ªo—ˆ‚é{‚±‚Æ‚ªo—ˆ‚Ü‚·} ‚©
+I slept well last night.	„ ‚Í ğ–é —Ç‚¢{—Ç‚­} –°‚é{–°‚ê‚½}
+"How is it? ""Well, yes ... could be some signs of dehydration."""	‹ï‡ ‚Í ”@‰½{‚Ç‚¤} ‚È‚Ì‚¾{‚È‚ñ‚Å‚·} ‚© šjŒÄ{‚ ‚ } ‚¤‚ñ ­‚µ ’E…Çó ‚ª o‚é{o‚Ä‚¢‚é} ‚©‚È
+I got acquainted with her in France.	„ ‚Í •§—–¼{ƒtƒ‰ƒ“ƒX} ‚Å ”Ş— ‚Æ ’m‚è‡‚¤{’m‚è‡‚Á‚½}
+They must've skipped out of town.	”Ş‚ç ‚Í ‚”ò‚Ñ{‚”ò‚Ñ‚µ‚½} ‚É ˆá‚¢‚È‚¢
+He knows how to behave in public.	”Ş ‚Í l‘O ‚Å ”@‰½{‚Ç‚¤} U‚é•‘‚¤{U•‘‚¤} ‚© ‚ğ ’m‚é{’m‚Á‚Ä‚¢‚é}
+Bobby may watch TV until 7:00.	‚Í  –˜{‚Ü‚Å} ƒeƒŒƒr ‚ğ Œ©‚é{‚İ‚Ä} —Ç‚¢{‚¢‚¢} ‚í
+He should be back any minute.	”Ş ‚Í ’¼‚®{‚·‚®} –ß‚é ”¤{‚Í‚¸} ‚Å‚·
+I've worn out two pairs of shoes this year.	„ ‚Í ¡”N “ñ‘«{“ñ‘«‚Ì} ŒC ‚ğ —š‚­{‚Í‚«} ’×‚·{‚Â‚Ô‚µ‚½}
+I informed him of the result.	„ ‚Í ”Ş ‚É Œ‹‰Ê ‚ğ ’m‚ç‚¹‚é{’m‚ç‚¹‚½}
+Who made this pie?	’N ‚ª Ÿ‚Ì{‚±‚Ì} ƒpƒC ‚ğ ì‚é{ì‚Á‚½} ‚Ì
+Sports nurture friendships.	ƒXƒ|[ƒc ‚Í —Fî ‚ğ ˆç‚­‚Ş{‚Í‚®‚­‚Ş} •¨{‚à‚Ì} ‚¾
+How long have you lived in Kobe?	‹M•û{‚ ‚È‚½} ‚Í ‚Ç‚ÌˆÊ{‚Ç‚Ì‚­‚ç‚¢} ‚Ì ŠÔ _ŒË ‚É Z‚Ş{Z‚ñ‚Å‚¢‚Ü‚·} ‚©
+"Even toddlers can do it, so I'd like you to enjoy yourselves as a family."	‚æ‚¿‚æ‚¿•à‚«{‚æ‚¿‚æ‚¿•à‚«‚Ì} —c™ ‚Å‚à o—ˆ‚é{‚Å‚«‚é} ‚Ì ‚¾ ‚©‚ç ‰Æ‘° ‚Å Šy‚µ‚Ş{Šy‚µ‚ñ‚Å} ’¸‚­{‚¢‚½‚¾‚«} ‚½‚¢
+I met her by accident.	„ ‚Í ‹ô‘R ”Ş— ‚É ‰ï‚¤{‰ï‚Á‚½}
+She stayed there for a short while.	”Ş— ‚Í ­‚µ ‚Ì ŠÔ ‘´ˆ{‚»‚±} ‚É ‘Øİ ˆ×‚é{‚µ‚½}
+She is afraid of barking dogs.	”Ş— ‚Í –i‚¦‚é Œ¢ ‚ğ •|‚ª‚é
+These meetings are carried on entirely in English.	Ÿ‚ê“™{‚±‚ê‚ç‚Ì} ‰ï‡ ‚Í ‘S•” ‰pŒê ‚Å s‚í‚ê‚é
+He's looking for someone to serve him.	”Ş ‚Í ©•ª ‚É s‚­‚·{s‚­‚µ‚Ä} Œà‚ê‚é{‚­‚ê‚é} l ‚ğ ’T‚·{’T‚µ‚Ä‚¢‚Ü‚·}
+"He came out shooting, same as you said he would."	ŒN{ŒN‚Ì} —\Œ¾ ’Ê‚è{‚Ç‚¨‚è} “z{‚â‚Â} ‚Í Œ‚‚Â{‚¤‚Á‚Ä} —ˆ‚é{‚«‚½}
+She hung a little Picasso on the wall of the drawing room.	”Ş— ‚Í ‹ŠÔ ‚Ì •Ç ‚É ¬‚³‚È ƒsƒJƒ\ ‚Ì ŠG ‚ğ Š|‚¯‚é{Š|‚¯‚½}
+Jobs are hard come by these days.	Ÿ‚Ì{‚±‚Ì}   ‚Í d– ‚É —L‚è•t‚­{‚ ‚è‚Â‚­} ‚Ì ‚ª “ï‚µ‚¢
+We do not always take his advice.	„‚½‚¿{„’B} ‚Í ‰½‚à{‚¢‚Â‚à} ”Ş{”Ş‚Ì} ’‰ ‚ğ æ‚è“ü‚ê‚é ‚Æ Œ¾‚¤{‚¢‚¤} –ó‚Å‚Í‚È‚¢{‚í‚¯‚Å‚Í‚È‚¢}
+He deeply deplored the situation.	”Ş ‚Í Œ»ó ‚ğ ‘å‚¢‚É ’Q‚­{’Q‚¢‚½}
+I know some of these boys.	„ ‚Í Ÿ‚ê“™{‚±‚ê‚ç‚Ì} ­”N ‚Ì “à{‚¤‚¿} ‰½l‚© ‚ğ ’m‚é{’m‚Á‚Ä‚¢‚é}
+Kate may well complain of her husband.	‚ª •v ‚Ì •s•½ ‚ğ Œ¾‚¤ ‚Ì ‚à –Ş‚à{‚à‚Á‚Æ‚à} ‚¾
+It shines on the beautiful sea.	‘´‚Ì{‚»‚Ì} Œõ ‚ª ”ü‚µ‚¢ ŠC ‚É ‹P‚­
+"His mother died when he was young, and his grandmother brought him up."	”Ş{”Ş‚Ì} •êe ‚Í ”Ş ‚ª ¬‚³‚¢ {‚Æ‚«} ‚É –S‚­‚È‚é{–S‚­‚È‚Á‚½} ‚Ì‚Å ‚¨‘c•ê‚³‚ñ ‚ª ”Ş ‚ğ ˆç‚Ä‚é{ˆç‚Ä‚½}
+"Not liking carrots, he didn't eat it."	”Ş ‚Í lQ{ƒjƒ“ƒWƒ“} ‚ª D‚« ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢} ‚Ì‚Å H‚×‚é{H‚×‚È‚©‚Á‚½}
+Not a day passes without traffic accidents.	Œğ’Ê–ŒÌ ‚Ì –³‚¢{‚È‚¢} “ú ‚Í ˆê“ú{‚P“ú} ‚Æ‚µ‚Ä –³‚¢{‚È‚¢}
+The kid got hurt.	‘´‚Ì{‚»‚Ì} q ‚Í ‰ö‰ä ‚ğ ˆ×‚é{‚µ‚½}
+He arrived in time.	”Ş ‚Í ŠÔ’Ê‚è “’… ˆ×‚é{‚µ‚½}
+I have never heard from him since.	‚»‚êˆÈ—ˆ ”Ş ‚©‚ç ‚Í ‰½‚Ì •Ö‚è ‚à —L‚é{‚ ‚è‚Ü‚¹‚ñ}
+He was denounced as a coward.	”Ş ‚Í ”Ú‹¯Ò ‚¾ ‚Æ ”ñ“ï ˆ×‚ê‚é{‚³‚ê‚½}
+"If I am dull, I am at least industrious."	‰¼—ß{‚½‚Æ‚¦} „ ‚Í “ª ‚ª “İ‚¢{“İ‚­} ‚Æ‚à ­‚È‚­‚Æ‚à ‹Î•× ‚¾
+The greatest pleasure I know is to do a good action by stealth and have it found out by accident.	„{„‚Ì} ’m‚é{’m‚Á‚Ä‚¢‚é} Å‘å ‚Ì Šì‚Ñ ‚Í –§‚©{‚Ğ‚»‚©‚É} —Ç‚¢{‚æ‚¢} s‚¢ ‚ğ ˆ×‚é{‚µ‚Ä} ‹ô‘R l ‚É ’m‚é{’m‚ç‚ê‚é} –{‚±‚Æ} ‚Å‚ ‚é
+You'd better eat everything that's on your plate.	‚¨M ‚É æ‚é{æ‚Á‚½} •¨{‚à‚Ì} ‚Í ‘S•” H‚×‚é{H‚×} ‚È‚³‚¢
+My uncle was willing to agree to my suggestion.	„{„‚Ì} f•ƒ ‚Í ‰õ‚¢{‰õ‚­} „{„‚Ì} ’ñˆÄ ‚É “¯ˆÓ ˆ×‚é{‚µ‚Ä} Œà‚ê‚é{‚­‚ê‚½}
+That's where you're mistaken.	‘´ˆ{‚»‚±} ‚ª ‹M•û{‚ ‚È‚½} ‚Ì ŠÔˆá‚¤{ŠÔˆá‚Á‚Ä‚¢‚é} Š{‚Æ‚±‚ë} ‚Å‚·
+The chairman did not rule out the possibility of a disagreement.	‹c’· ‚Í ˆÓŒ© ‚ª •sˆê’v ‚É I‚í‚é{I‚é} ‰Â”\« ‚ğ ”rœ ˆ×‚é{‚µ‚È‚©‚Á‚½}
+It is no use making an excuse for this.	Ÿ‚ê{‚±‚ê} ‚ÉA‚¢‚Ä{‚É‚Â‚¢‚Ä} Œ¾‚¢–ó ˆ×‚é{‚µ‚Ä} ‚à –³‘Ê{‚Ş‚¾} ‚¾
+He assimilated what he was taught.	”Ş ‚Í ‹³‚í‚é{‹³‚í‚Á‚½} –{‚±‚Æ} ‚ğ ©•ª ‚Ì •¨{‚à‚Ì} ‚Æ‚·‚é{‚Æ‚µ‚½}
+I have a friend everybody trusts.	„ ‚É‚Í ŠF{‚İ‚ñ‚È} ‚É M—p ˆ×‚ê‚é{‚³‚ê‚Ä‚¢‚é} —F’B ‚ª ‹‚é{‚¢‚é}
+Human beings have achieved a lot more than animals.	lŠÔ ‚Í “®•¨ ‚æ‚è —y‚©{‚Í‚é‚©‚É} ‘½‚­ ‚Ì ˆÌ‹Æ ‚ğ ¬‚·{‚È‚µ‚Ä} —ˆ‚é{‚«‚½} ‚Ì ‚Å‚ ‚é
+"It is not because I hate him, but because I love him."	‘´‚ê{‚»‚ê} ‚Í „ ‚ª ”Ş ‚ğ ‘‚Ş{‘‚ñ‚Å‚¢‚é} ‚©‚ç ‚¾{‚Å‚Í‚È‚­‚Ä} ”Ş ‚ğ ˆ¤‚·‚é{ˆ¤‚µ‚Ä‚¢‚é} ‚©‚ç ‚Å‚·
+"If it were not for the sun, nothing could live."	‘¾—z ‚ª –³‚¯‚ê‚Î{‚È‚¯‚ê‚Î} ‰½‚à ¶‚«‚é{¶‚«‚ç‚ê‚È‚¢} ‚¾‚ë‚¤
+It is ten years since I saw her last.	”Ş— ‚É ÅŒã ‚É ‰ï‚¤{‰ï‚Á‚Ä} ‚©‚ç ”N ‚É‚È‚é{‚É‚È‚è‚Ü‚·}
+Both of my sisters are not married.	„{„‚Ì} o ‚ª “ñl‚Æ‚à Œ‹¥{Œ‹¥‚µ‚Ä‚¢‚é} –ó‚Å‚Í‚È‚¢{‚í‚¯‚Å‚Í‚È‚¢}
+Would you please lock the door?	ƒhƒA ‚É Œ®‚ğ‚©‚¯‚é{Œ®‚ğ‚©‚¯‚Ä} ‰º‚³‚é{‚­‚¾‚³‚¢‚Ü‚¹‚ñ} ‚©
+"If you have an umbrella, let me join you under it."	P ‚ğ ‚Â{‚¨‚¿} ‚È‚ç “ü‚ê‚é{“ü‚ê‚³‚¹‚Ä} ‰º‚³‚¢{‚­‚¾‚³‚¢}
+Let's continue with the lesson for today.	¡“ú ‚Ì •×‹­ ‚ğ ‘±‚¯‚é{‘±‚¯‚Ü‚µ‚å‚¤}
+"When I flew to New York, I was told to check in two hours before my flight."	„ ‚Í ƒjƒ…[ƒˆ[ƒN ‚Ö ”ò‚Ô{”ò‚ñ‚¾} {‚Æ‚«} ŠÔ ‘O ‚É “‹æ è‘±‚« ‚ğ æ‚é{‚Æ‚é} —l{‚æ‚¤‚É} ‚Æ Œ¾‚¤{Œ¾‚í‚ê‚½}
+She told a white lie out of necessity.	”Ş— ‚Í •K—v ‚É ”—‚é{”—‚ç‚ê‚Ä} ß ‚à –³‚¢{‚È‚¢} ‰R‚ğ‚Â‚­{‚¤‚»‚ğ‚Â‚¢‚½}
+He is not young any more than I am.	”Ş ‚Í „ ‚Æ “¯—l á‚¢{á‚­‚È‚¢}
+She rose to her feet with tears in her eyes.	”Ş— ‚Í –Ú ‚É —Ü ‚ğ •‚‚©‚×‚é{•‚‚©‚×‚Ä} —§‚¿ã‚ª‚é{—§‚¿‚ ‚ª‚Á‚½}
+He had a hungry look.	”Ş ‚Í ‚Ğ‚à‚¶‚¢{‚Ğ‚à‚¶‚»‚¤‚È} Šç ‚ğ ˆ×‚é{‚µ‚Ä‚¢‚½}
+I found him riding a bicycle in the park.	„ ‚Í ”Ş ‚ª Œö‰€ ‚Å ©“]Ô ‚É æ‚é{æ‚Á‚Ä‚¢‚é} ‚Ì ‚ğ Œ©‚Â‚¯‚é{Œ©‚Â‚¯‚½}
+A house is built on top of a solid foundation of cement.	‰Æ ‚Í Œ˜ŒÅ{Œ˜ŒÅ‚È} ƒZƒƒ“ƒg ‚Ì Šî”Õ ‚Ì ã ‚É Œš‚Ä‚é{Œš‚Ä‚ç‚ê‚é}
+Ninety-nine always makes me laugh.	‚Í ‰½‚à{‚¢‚Â‚à} „ ‚ğ Î‚¤{Î‚í‚¹‚é}
+Jim acted very strangely all day.	‚Í ˆê“ú’†{‚P“ú’†} s“® ‚ª ‰ÂÎ‚µ‚¢{‚¨‚©‚µ‚©‚Á‚½}
+The man dashed the bottle against the wall.	‘´‚Ì{‚»‚Ì} ’j ‚Í •r{ƒrƒ“} ‚ğ •Ç ‚É ’@‚«•t‚¯‚é{’@‚«‚Â‚¯‚½}
+I met an old student of mine in London.	ƒƒ“ƒhƒ“ ‚Å Ì{Ì‚Ì} ‹³‚¦q ‚É ‰ï‚¤{‰ï‚Á‚½} ‚æ
+The trade imbalance bulks large in our minds.	–fˆÕ •s‹Ït ‚ª ‘å‚«‚È –â‘è ‚Å‚ ‚é —l‚É{‚æ‚¤‚É} v‚¦‚é
+She looked better than last time.	”Ş— ‚Í ‘O ‚æ‚è Œ³‹C ‚»‚¤ ‚¾{‚¾‚Á‚½}
+This is a picture painted by him.	Ÿ‚ê{‚±‚ê} ‚Í ”Ş ‚Éˆö‚Á‚Ä{‚É‚æ‚Á‚Ä} •`‚­{‚©‚©‚ê‚½} ŠG{‰æ} ‚Å‚·
+That altered the aspect of the case.	‘´‚ê‚Å{‚»‚ê‚Å} Œ`¨ ‚ª •Ï‚í‚é{•Ï‚í‚Á‚½}
+Yumi went there by herself.	‚Í ˆêl‚Å ‘´ˆ{‚»‚±} ‚Ö s‚­{s‚Á‚½}
+More than half the residents are opposed to the plan.	Z–¯ ‚Ì ”¼” ˆÈã ‚Í ‘´‚Ì{‚»‚Ì} Œv‰æ ‚É ”½‘Î ‚¾
+That added to his unhappiness.	‘´‚ê‚Å{‚»‚ê‚Å} —]Œv{—]Œv‚É} ”Ş ‚Í •sK ‚É‚È‚é{‚É‚È‚Á‚½}
+At last he found the evidence he was looking for.	”Ş ‚Í ““ª{‚Æ‚¤‚Æ‚¤} ‘´‚Ì{‚»‚Ì} Ø‹’ ‚ğ ”­Œ© ˆ×‚é{‚µ‚½}
+He had a share in completing the job.	”Ş ‚Í ‘´‚Ì{‚»‚Ì} d– ‚ğ Š®¬ ˆ×‚é{‚·‚é} ‚Ì‚É vŒ£ ˆ×‚é{‚µ‚½}
+The garden is common to the two houses.	’ë ‚Í “ñ Œ¬ ‚Ì ‰Æ ‚Ì ‹¤—L ‚Ì •¨{‚à‚Ì} ‚Å‚·
+But you just come here in the summer! Said Tony.	‚Å‚à ŒN‚½‚¿{ŒN’B} ‚ª Ÿˆ{‚±‚±} ‚É —ˆ‚é ‚Ì ‚Í ‰Ä ä{‚¾‚¯} ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢} ‚© ‚Æ ‚ª Œ¾‚¤{Œ¾‚¢‚Ü‚µ‚½}
+He not only does not work but will not find a job.	”Ş ‚Í “­‚­{“­‚©‚È‚¢} ‚¾‚¯‚Å‚È‚­ d– ‚ğ ’T‚·{’T‚»‚¤} ‚Æ‚à ˆ×‚é{‚µ‚È‚¢}
+"Her sister I like very much, but her brother I do not like."	”Ş—{”Ş—‚Ì} –… ‚Í ‘åD‚« ‚¾ ‚ª ”Ş—{”Ş—‚Ì} ’í ‚Í D‚« ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢}
+Will you go to America next year?	‹M•û{‚ ‚È‚½} ‚Í —ˆ”N ˆŸ•Ä—˜‰Á{ƒAƒƒŠƒJ} ‚Ö s‚­ Ï‚à‚è{‚Â‚à‚è} ‚Å‚·‚©
+I worked as hard as possible.	„ ‚Í o—ˆ‚éŒÀ‚è{‚Å‚«‚é‚©‚¬‚è} ”MS{”MS‚É} “­‚­{“­‚¢‚½}
+That was the first time I had flown.	”òs‹@ ‚É æ‚é{æ‚Á‚½} ‚Ì ‚Í ‘´‚ê{‚»‚ê} ‚ª ‰‚ß‚Ä{n‚ß‚Ä} ‚Å‚·{‚Å‚µ‚½}
+The sun having set we stayed there for the night.	‘¾—z ‚ª ’¾‚Ş{’¾‚ñ‚Å} d•‘‚¤{‚µ‚Ü‚Á‚½} ‚Ì‚Å „‚½‚¿{„’B} ‚Í ˆê”Ó ‘´ˆ{‚»‚±} ‚É ‘Øİ ˆ×‚é{‚µ‚½}
+Your idea is definitely worth thinking about.	ŒN{ŒN‚Ì} ƒAƒCƒfƒA{ƒAƒCƒfƒBƒA} ‚Í Šm‚©‚É ŒŸ“¢ ˆ×‚é{‚·‚é} ‰¿’l ‚ª —L‚é{‚ ‚é}
+"I'm not a child, but sometimes you talk to me as if I were a child."	„ ‚Í q‹Ÿ ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢} ‚Ì‚É ‹M•û{‚ ‚È‚½} ‚Á‚½‚ç X{‚Æ‚«‚Ç‚«} ŠÛ‚Å{‚Ü‚é‚Å} „ ‚ª q‹Ÿ ‚Å‚ ‚é ‚© ‚Ì —l{‚æ‚¤‚È} Œû‚Ì—˜‚«•û{Œû‚Ì‚«‚«•û} ‚ğ ˆ×‚é{‚·‚é} ‚Ì ‚Ë
+He works at the welfare office.	”Ş ‚Í •Ÿƒ––±Š ‚Å “­‚­{“­‚¢‚Ä‚¢‚é}
+"No, thank you. I'm so full."	”Û{‚¢‚¦} Œ‹\ ‚à‚¤ \•ª ‚Å‚·
+He scraped mud from the door.	”Ş ‚Í ƒhƒA ‚Ì “D ‚ğ C‚é{‚±‚·‚è} —‚Æ‚·{—‚Æ‚µ‚½}
+I owe it to my parents that I am so healthy.	„ ‚ª Œ’N{Œ’N‚È} ‚Ì ‚Í —¼e ‚Ì ‚¨‰A{‚¨‚©‚°} ‚Å‚ ‚é
+He saw no advantage in waiting any longer.	”Ş ‚Í Ÿ‚ê{‚±‚ê} ˆÈã ‘Ò‚Â{‘Ò‚Á‚Ä} ‚à ‰½‚É‚à ¬‚é{‚È‚ç‚È‚¢} ‚Æ v‚¤{v‚Á‚½}
+"As great a scientist as he is, he lacks common sense."	”Ş ‚Í ˆÌ‘å{ˆÌ‘å‚È} ‰ÈŠwÒ ‚¾ ‚ª í¯ ‚ª –³‚¢{‚È‚¢}
+I'll tell you what.	‚Ü‚  •·‚­{•·‚«} ‚È‚³‚¢
+He is careless about money.	”Ş ‚Í ‹à‘K ‚É –³“Ú’…{‚Ş‚Æ‚ñ‚¶‚á‚­} ‚Å‚ ‚é
+Her mother made her a new dress.	”Ş—{”Ş—‚Ì} ‚¨•ê‚³‚ñ ‚Í ”Ş— ‚É V‚µ‚¢ • ‚ğ ì‚é{ì‚Á‚Ä} ã‚°‚é{‚ ‚°‚Ü‚µ‚½}
+I do not mind what people say.	l ‚ª ‰½ ‚ğ Œ¾‚¤{Œ¾‚¨‚¤} ‚Æ ‹C‚É‚µ‚È‚¢
+I would rather stay at home than go to the movies tonight.	¡”Ó ‚Í ‚Ç‚¿‚ç‚©‚ÆŒ¾‚¤‚Æ{‚Ç‚¿‚ç‚©‚Æ‚¢‚¤‚Æ} ‰f‰æ ‚É s‚­ ‚æ‚è ‰Æ ‚É ‹‚é{‚¢} ‚½‚¢
+The popular singer committed suicide.	‘´‚Ì{‚»‚Ì} l‹C ‰Ìè ‚Í ©E ˆ×‚é{‚µ‚½}
+You can read a lot more than you think you can.	©•ª ‚Å “Ç‚Ş{“Ç‚ß‚é} ‚Æ v‚¤{v‚Á‚Ä‚¢‚é} ‚æ‚è‚à  ÀÛ ‚Í ‚¸‚Á‚Æ ‘½‚­ ‚Ì –{ ‚ª “Ç‚Ş{“Ç‚ß‚é} •¨{‚à‚Ì} ‚Å‚·
+Four boys are making their way along the street.	l ‚Ì ­”N ’B{‚½‚¿} ‚ª “¹ ‚ğ •à‚­{•à‚¢‚Ä‚¢‚é}
+"By the way, have you ever been to Hokkaido?"	Š‚Å{‚Æ‚±‚ë‚Å} ‹M•û{‚ ‚È‚½} ‚Í –kŠC“¹ ‚É s‚­{s‚Á‚½} –‚ª‚ ‚é{‚±‚Æ‚ª‚ ‚è‚Ü‚·} ‚©
+You should do your homework now.	¡ h‘è ‚ğ Œ­‚é{‚â‚Á‚Ä} d•‘‚¤{‚µ‚Ü‚¢} ‚È‚³‚¢
+The question is not so easy that anyone can answer it.	‘´‚Ì{‚»‚Ì} –â‘è ‚Í ’N‚Å‚à “š‚¦‚é{“š‚¦‚ç‚ê‚é} ’ö{‚Ù‚Ç} —eˆÕ ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢}
+The government issued the following statement.	­•{ ‚Í Ÿ{Ÿ‚Ì} —l{‚æ‚¤‚È} º–¾ ‚ğ o‚·{o‚µ‚½}
+If you mate a horse with an ass you will get a mule.	”n ‚Æ é†”n{ƒƒo} ‚ğ Œğ”z ˆ×‚¹‚é{‚³‚¹‚é} ‚Æ é€”n{ƒ‰ƒo} ‚ª ¶‚Ü‚ê‚é
+He is well spoken of by everybody.	”Ş ‚Í ŠF{‚İ‚ñ‚È} ‚É –J‚ß‚é{‚Ù‚ß‚ç‚ê‚é}
+Betty challenged me to a game of tennis.	‚Í „ ‚É ƒeƒjƒX ‚Ì ‡ ‚ğ ’§‚Ş{’§‚ñ‚¾}
+How long does it take to get to the stadium?	‹£‹Zê ‚Ö s‚­ ‚Ì‚É ‰½‚ê‚­‚ç‚¢{‚Ç‚ê‚­‚ç‚¢} ŠÔ‚ª‚©‚©‚é{ŠÔ‚ª‚©‚©‚è‚Ü‚·} ‚©
+Then it dawned on me that they were speaking Spanish.	”Ş‚ç ‚ª ƒXƒyƒCƒ“Œê ‚ğ ˜b‚·{˜b‚µ‚Ä‚¢‚é} –{‚±‚Æ} ‚ª ‘´‚Ì{‚»‚Ì}  „ ‚É •ª‚©‚é{‚í‚©‚è} n‚ß‚é{n‚ß‚½}
+Chris brought her a present and bravely gave it to her.	‚Í ƒvƒŒƒ[ƒ“ƒg ‚ğ ‚Á‚Ä‚­‚é{‚Á‚Ä‚«‚Ä} —E‹C‚ğo‚·{—E‹C‚ğo‚µ‚Ä} ”Ş— ‚É “n‚·{“n‚µ‚Ü‚µ‚½}
+This magnificent cathedral dates back to the Middle Ages.	Ÿ‚Ì{‚±‚Ì} ‘s‘å{‘s‘å‚È} ‘å¹“° ‚Ì Œš—§ ‚Í ’†¢ ‚É –˜{‚Ü‚Å} ‘k‚é{‚³‚©‚Ì‚Ú‚é}
+The field is crying out for rain.	”¨ ‚Í ¡ ‰J ‚ª ”@‰½‚µ‚Ä‚à{‚Ç‚¤‚µ‚Ä‚à} •K—v ‚¾
+She took back the coat she lent me.	”Ş— ‚Í „ ‚É ‘İ‚·{‘İ‚µ‚½} ƒR[ƒg ‚ğ æ‚è•Ô‚·{æ‚è•Ô‚µ‚½}
+Ken met her on his way home.	‚Í ‰Æ ‚É ‹A‚é “r’† ”Ş— ‚É ‰ï‚¤{‰ï‚Á‚½}
+He worked hard none the worse for the accident.	–ŒÌ ‚É ‰ï‚¤{‚ ‚Á‚½} ‚Ì‚É –î‚Á’£‚è{‚â‚Í‚è} ”Ş ‚Í ˆê¶Œœ–½ “­‚­{“­‚¢‚½}
+"He went there, never to return."	”Ş ‚Í ‘´ˆ{‚»‚±} ‚É s‚­{s‚Á‚½} Ø‚è{‚«‚è} “ñ“x‚Æ{‚Q“x‚Æ} ‹A‚Á‚Ä—ˆ‚é{‹A‚Á‚Ä‚±‚È‚©‚Á‚½}
+They won't come until tomorrow.	”Ş‚ç ‚Í –¾“ú –˜{‚Ü‚Å} —ˆ‚é{—ˆ‚È‚¢} ‚¾‚ë‚¤
+I am quite pleased with you.	‹M•û{‚ ‚È‚½} ‚Ì –{‚±‚Æ} ‚ª ‚·‚Á‚©‚è ‹C‚É“ü‚é{‹C‚É“ü‚è‚Ü‚µ‚½}
+"Hi, Bill. How are you?"	‚â‚  Œ³‹C
+Can I borrow your pen for a few minutes?	ˆê¡{‚¿‚å‚Á‚Æ} ‚Ì ŠÔ ƒyƒ“ ‚ğ ‘İ‚·{‘İ‚µ‚Ä} ’¸‚¯‚é{‚¢‚½‚¾‚¯‚Ü‚·} ‚©
+He is glad to hear the news.	”Ş ‚Í ‘´‚Ì{‚»‚Ì} ’m‚ç‚¹ ‚ğ •·‚­{•·‚¢‚Ä} Šğ‚µ‚¢{‚¤‚ê‚µ‚ª‚Á‚Ä‚¢‚é}
+Did you mail the letter yesterday or today?	ğ“ú è†‚ğo‚·{è†‚ğo‚µ‚½} ‚Ì‚¾{‚Ì‚Å‚·} ‚© ‘´‚ê‹¤{‚»‚ê‚Æ‚à} ¡“ú ‚Å‚·‚©
+These teacups make a pair.	Ÿ‚ê“™{‚±‚ê‚ç‚Ì} ƒeƒB[ƒJƒbƒv ‚Í ‘Î‚É‚È‚é{‘Î‚É‚È‚Á‚Ä‚¢‚é}
+"Listening to him, she got tired."	”Ş ‚Ì ˜b ‚ğ •·‚­{•·‚¢‚Ä‚¢‚Ä} ”Ş— ‚Í ‘Ş‹ü ˆ×‚é{‚µ‚½}
+The shifting pattern of world trade is made clear in the following table.	¢ŠE –fˆÕ ‚Ì •Ï“® ƒpƒ^[ƒ“ ‚ª Ÿ{Ÿ‚Ì} •\ ‚Å –¾‚ç‚©‚É‚·‚é{–¾‚ç‚©‚É‚³‚ê‚Ä‚¢‚é}
+There is no telling what would happen if she doesn't show up.	á‚µ{‚à‚µ} ”Ş— ‚ª Œ»‚ê‚é{Œ»‚ê‚È‚©‚Á‚½‚ç} ”@‰½{‚Ç‚¤} ¬‚é{‚È‚é} ‚© ‚È‚ñ‚Ä •ª‚©‚é{‚í‚©‚ç‚È‚¢}
+It seems that he was very much amused by the story.	”Ş ‚Í ‘´‚Ì{‚»‚Ì} ˜b ‚ª —]’ö{‚æ‚Ù‚Ç} –Ê”’‚¢{–Ê”’‚©‚Á‚½} —l‚¾{‚æ‚¤‚¾}
+We were eating lunch together.	„‚½‚¿ ‚Í ˆê‚É ’‹H ‚ğ Û‚é{‚Æ‚Á‚Ä‚¢‚Ü‚µ‚½}
+"My teeth are too weak for apples, said the boy."	–l{–l‚Ì} • ‚Í ç‰‚à{‚Æ‚Á‚Ä‚à} ã‚¢{ã‚­‚Á‚Ä} —ÑŒç{‚è‚ñ‚²} ‚Í Šš‚Ş{‚©‚ß‚Ü‚¹‚ñ} ‚Æ ’j‚Ìq  ‚Í Œ¾‚¤{Œ¾‚¢‚Ü‚µ‚½}
+I sold the house to advantage.	„ ‚Í ‰Æ ‚ğ —L—˜{—L—˜‚É} ”„‚é{”„‚Á‚½}
+I can't tell you exactly how long it will take.	‰½‚ê‚­‚ç‚¢{‚Ç‚ê‚­‚ç‚¢} ‚Ì ŠÔ‚ª‚©‚©‚é ‚Ì‚© ³Šm{³Šm‚È} Š{‚Æ‚±‚ë} ‚Í \‚µã‚°‚é{\‚µã‚°} Œ“‚Ë‚é{‚©‚Ë‚Ü‚·}
+I work every day save Sundays.	“ú—j“ú ˆÈŠO ‚Í –ˆ“ú “­‚­
+The police still can't point out who committed the crime.	Œx@ ‚Í –¢‚¾{‚¢‚Ü‚¾} ”Æl ‚ğ “Á’è o—ˆ‚é{‚Å‚«‚È‚¢} ‚Å ‹‚é{‚¢‚é}
+I sometimes play tennis with her.	„ ‚Í X ”Ş— ‚Æ ƒeƒjƒX ‚ğ ˆ×‚é{‚·‚é}
+Let me have a cigarette.	‰Œ‘{ƒ^ƒoƒR} ‚ğ –{ Œä{‚¨} Œà‚ê‚é{‚­‚ê}
+He showed exceptional ability in mathematics.	”Ş ‚Í ”Šw ‚É —D‚ê‚é{—D‚ê‚½} ”\—Í ‚ğ ¦‚·{¦‚µ‚½}
+My water broke on the evening of the predicted birth date.	—\’è“ú ‚Ì —[•û ‚É ”j… ˆ×‚é{‚µ‚Ü‚µ‚½}
+Choose one from among these products.	Ÿ‚ê“™{‚±‚ê‚ç‚Ì} ¤•i ‚Ì ’† ‚©‚ç ˆê‚Â{‚P‚Â} ‘I‚Ô{‘I‚Ñ} ‚È‚³‚¢
+I feel on top of the world.	Å‚ ‚Ì ‹C•ª ‚¾
+Why aren't women allowed to enjoy the same civil rights as men?	—« ‚Í ‰½ŒÌ{‚È‚º} ’j« ‚Æ “¯‚¶ s–¯Œ  ‚ğ ‹ó ˆ×‚é{‚·‚é} –{‚±‚Æ} ‚ª ‹–‚·{‹–‚³‚ê‚È‚¢} ‚Ì ‚©
+I consulted with my father about the plan.	‘´‚Ì{‚»‚Ì} Œv‰æ ‚ÉA‚¢‚Ä{‚É‚Â‚¢‚Ä} •ƒ ‚É ‘Š’k ˆ×‚é{‚µ‚½}
+We use them often as parasols or umbrellas.	‘´‚ê{‚»‚ê} ‚ğ “úœ‚¯{“ú‚æ‚¯} ‚â ‰JP ‚Ì ‘ã‚í‚è ‚É —Ç‚­{‚æ‚­} g‚¤{g‚¢‚Ü‚·}
+Their communication may be much more complex than we thought.	”Ş‚ç{”Ş‚ç‚Ì} ƒRƒ~ƒ…ƒjƒP[ƒVƒ‡ƒ“ ‚Í ‰äX ‚ª l‚¦‚é{l‚¦‚Ä} —ˆ‚é{‚«‚½} •¨{‚à‚Ì} ‚æ‚è —y‚©{‚Í‚é‚©} ‚É •¡G ‚©‚à’m‚ê‚È‚¢{‚©‚à‚µ‚ê‚Ü‚¹‚ñ}
+There are very few passengers in the train.	‘´‚Ì{‚»‚Ì} —ñÔ ‚É‚Í æ‹q ‚Í –{‚Ì{‚Ù‚ñ‚Ì} ‹Í‚© ‚µ‚© ‹‚é{‚¢‚È‚©‚Á‚½}
+His object is to pass the test.	”Ş{”Ş‚Ì} –Ú“I ‚Í ‘´‚Ì{‚»‚Ì} ƒeƒXƒg ‚É ‡Ši ˆ×‚é{‚·‚é} –{‚±‚Æ} ‚Å‚·
+It is getting warmer day by day.	“ú‘‚µ‚É ‹‚¢{‹‚­} ¬‚é{‚È‚é}
+I can't agree with you on this matter.	„ ‚Í Ÿ‚Ì{‚±‚Ì} – ‚Å ‚Í ‹M•û{‚ ‚È‚½} ‚É “¯ˆÓ o—ˆ‚é{‚Å‚«‚Ü‚¹‚ñ}
+The microphone is live.	ƒ}ƒCƒN ‚Í “ü‚é{“ü‚Á‚Ä‚¢‚é}
+It is possible for us to do addition very quickly.	‘«‚µZ ‚ğ ”ñí‚É ‘‚­ ˆ×‚é{‚·‚é} –{‚±‚Æ} ‚Í ‰Â”\ ‚¾
+I got a new camera.	„ ‚Í V‚µ‚¢ ƒJƒƒ‰ ‚ğ è‚É“ü‚ê‚é{è‚É“ü‚ê‚½}
+The way she spoke to us was suspicious.	”Ş—{”Ş—‚Ì} „‚½‚¿{„’B} ‚Ö ‚Ì Œû‚Ì—˜‚«•û{Œû‚Ì‚«‚«•û} ‚Í ‹^‚¢[‚¢{‹^‚¢[} ‹C{‚°} ‚¾{‚¾‚Á‚½}
+Is she all right?	‚ ‚Ìl ‚Í •Ï‚í‚é{•Ï‚í‚è} ‚Í –³‚¢{‚È‚¢} ‚Å‚·‚©
+He studied hard only to fail in the exam.	”Ş ‚Í ˆê¶Œœ–½ •×‹­{•×‹­‚µ‚½} ‚ª Œ± ‚É —‚¿‚é{—‚¿‚½}
+Don't draw a hasty conclusion from what you see now.	¡ Œ©‚é –{‚±‚Æ} ‚©‚ç Q‚Ä‚é{‚ ‚í‚Ä‚Ä} ’f’è ˆ×‚é{‚µ‚Ä} ‚Í s‚¯‚È‚¢{‚¢‚¯‚È‚¢}
+Is it always so crowded here?	‰½‚à{‚¢‚Â‚à} ‚±‚ñ‚È‚É ¬G ˆ×‚é{‚µ‚Ä‚¢‚é} ‚Ì‚¾{‚Ì‚Å‚·} ‚©
+May I use the toilet?	ƒgƒCƒŒ ‚ğ ”qØ o—ˆ‚é{‚Å‚«‚Ü‚·} ‚©
+I will leave home when my mother comes back.	•ê ‚ª –ß‚Á‚Ä—ˆ‚é{–ß‚Á‚Ä‚«‚½‚ç} „ ‚Í o‚©‚¯‚é{‚Å‚©‚¯‚Ü‚·}
+Everyone should periodically receive a physical examination.	l ‚Í ’N‚Å‚à ’èŠú“I{’èŠú“I‚É} Œ’Nf’f ‚ğ ˆ×‚é{‚µ‚Ä} –á‚¤{‚à‚ç‚¤} ‰Â‚«{‚×‚«} ‚¾
+Winter comes earlier in North Europe.	–k‰¢ ‚Å ‚Í “~ ‚Ì –K‚ê ‚ª ‘‚¢
+The letter was wrongly addressed.	‘´‚Ì{‚»‚Ì} è† ‚Í ˆ¶–¼ ‚ª ŠÔˆá‚¤{ŠÔˆá‚Á‚Ä‚¢‚½}
+"In the ""Mafia"" tradition of organized crime, any member who discloses its operation is sure to be rubbed out."	‘gD”Æß ‚Ì ”é–§Œ‹Ğ ƒ}ƒtƒBƒA ‚Ì d—ˆ‚½‚è{‚µ‚«‚½‚è} ‚Å ‚Í ‘´‚Ì{‚»‚Ì} “­‚« ‚ğ ˜R‚ç‚·{‰k‚ç‚·} •¨{‚à‚Ì} ‚Í ’N{‚¾‚ê} ‚Å‚à •K‚¸{‚©‚È‚ç‚¸} Á‚·{Á‚³‚ê‚é} ‚±‚Æ‚É‚È‚Á‚Ä‚¢‚é
+He called a hotel for accommodations.	”Ş ‚Í ƒzƒeƒ‹ ‚É “d˜b ‚Å h”‘ ‚ğ —Š‚Ş{—Š‚ñ‚¾}
+It was Tom that broke the window yesterday.	ğ“ú ‘‹ ‚ğ ‰ó‚·{‰ó‚µ‚½} ‚Ì ‚Í ‚¾
+May I use a pencil and some paper?	† ‚Æ ‰”•M ‚ğ Ø‚è‚é{Ø‚è‚Ä} ‚à —Ç‚¢{‚¢‚¢} ‚Å‚·‚©
+"Women no longer are satisfied with their traditional role of housewife, and are seeking recognition of needs in the workplace."	—« ‚Í Å‘{‚à‚Í‚â} “`““I{“`““I‚È} ê‹Æå•w ‚Ì –ğŠ„ ‚É –‘« ˆ×‚é{‚¹‚¸} ‚É d–ê ‚Å ‚Ì ”Ş— ’B{‚½‚¿} ‚Ì •K—v« ‚ğ ”F¯ ˆ×‚é{‚µ‚Ä} –á‚¤{‚à‚ç‚¢} ‚½‚¢ ‚Æ v‚¤{v‚Á‚Ä‚¢‚é}
+Will the work be finished by tomorrow?	‘´‚Ì{‚»‚Ì} d– ‚Í –¾“ú –˜{‚Ü‚Å} ‚É Š®¬ ˆ×‚é{‚·‚é} ‚¾‚ë‚¤‚©
+A person named Itoh wants to meet you.	‚³‚ñ ‚ÆŒ¾‚¤{‚Æ‚¢‚¤} •û ‚ª ‰ï‚¤{‚¨‰ï‚¢} ‚µ‚½‚¢ ‚»‚¤‚¾{‚»‚¤‚Å‚·}
+Both of my parents love each other.	„{„‚Ì} —¼e ‚Í ‚¨Œİ‚¢‚É ˆ¤‚µ‡‚¤{ˆ¤‚µ‡‚Á‚Ä‚¢‚é}
+He is afraid his wife is not very domestic.	”Ş ‚Í È ‚Í —]‚è{‚ ‚Ü‚è} ‰Æ– ‚ğ D‚« ‚Å‚Í–³‚¢{‚Å‚Í‚È‚¢} ‚Æ v‚¤{‚¨‚à‚Á‚Ä‚¢‚é}
+The judgement went against the government.	”»Œˆ ‚Í ­•{ ‚É •s—˜ ‚¾{‚¾‚Á‚½}
+I bought a woolen sweater.	„ ‚Í ƒE[ƒ‹ ‚Ì ƒZ[ƒ^[ ‚ğ ”ƒ‚¤{”ƒ‚Á‚½}
+This is for you.	Ÿ‚ê{‚±‚ê} ‚ğ ‹M•û{‚ ‚È‚½} ‚É ·‚µã‚°‚é{·‚µã‚°‚Ü‚·}
+Traffic accidents are likely to occur on rainy days.	Œğ’Ê–ŒÌ ‚Í ‰J ‚Ì “ú ‚É ‹N‚±‚é{‹N‚±‚è} ˆÕ‚¢{‚â‚·‚¢}
+He turned up an hour later.	”Ş ‚Í ˆêŠÔ ’x‚ê‚é{’x‚ê‚Ä} Œ»‚ê‚é{Œ»‚ê‚½}
+He reared three children by himself.	”Ş ‚Í ©•ª ˆêl‚Å Ol ‚Ì q‹Ÿ ‚ğ ˆç‚Ä‚é{ˆç‚Ä‚½}
+Land made him a rich man.	“y’n ‚Å ”Ş ‚Í ¬‹à{¬‚è‹à} ‚É‚È‚é{‚É‚È‚Á‚½}
+They are moving from the peaceful hills and the countryside to the busy world of streets and crowds.	•½˜a{•½˜a‚È} ‹u ‚â “c‰€ ’n‘Ñ ‚©‚ç ’Ê‚è ‚ª —L‚é{‚ ‚è} ŒQO ‚ª ‹‚é{‚¢‚é} –Z‚µ‚¢ ¢ŠE ‚Ö ‚Æ ˆÚ“® ˆ×‚é{‚·‚é} ‚Ì ‚Å‚ ‚é
+The fort was attacked by surprise.	Ô ‚Í •sˆÓ{•sˆÓ‚É} UŒ‚ ˆ×‚ê‚é{‚³‚ê‚½}
+"All right, do it your own way, but don't blame me if you fail."	•ª‚©‚é{‚í‚©‚Á‚½} ŒN{ŒN‚Ì} D‚«‚È‚æ‚¤‚É ˆ×‚é{‚µ‚ë} ‚Å‚à ¸”s ˆ×‚é{‚µ‚½} {‚Æ‚«} „ ‚ğ ˆ«‚¢{ˆ«‚­} Œ¾‚¤ ‚È ‚æ
+Where is the money exchange counter?	—¼‘ÖŠ ‚Í ‰½ˆ{‚Ç‚±} ‚Å‚·‚©
+I'll teach you how to drive a car.	ŒN ‚É ©“®Ô ‚Ì ‰^“] –@ ‚ğ ‹³‚¦‚é{‹³‚¦‚Ä} ã‚°‚é{‚ ‚°‚æ‚¤}
+Will you have another cup of tea?	‚à‚¤ ˆê”t ‚¨’ƒ Œä{‚¨} ”@‰½{‚¢‚©‚ª} ‚Å‚·‚©
+He dominates his family and makes all the decisions.	”Ş ‚Í ‘´‚Ì{‚»‚Ì} ‰Æ ‚ğ x”z ˆ×‚é{‚µ} ‘S‚Ä{‚·‚×‚Ä‚Ì} Œˆ’f ‚ğ ˆ×‚é{‚·‚é}
+"If he had carried the map with him, he wouldn't have got lost."	á‚µ‚à{‚à‚µ‚à} ’n} ‚ğ ‚Â{‚Á‚Ä‚¢‚½} ‚È‚ç{‚È‚ç‚Î} ”Ş ‚Í “¹‚É–À‚¤{“¹‚É–À‚í‚È‚©‚Á} ‚½‚ë‚¤ ‚É
+I will stay here for a short period.	­‚µ ‚Ì ŠÔ Ÿˆ{‚±‚±} ‚É ‘Øİ ˆ×‚é{‚µ‚Ü‚·}
+I was relieved to know that the operation was a success.	„ ‚Í èp ‚ª ¬Œ÷ ˆ×‚é{‚µ‚½} ‚Æ ’m‚é{’m‚Á‚Ä} ˆÀS ˆ×‚é{‚µ‚Ü‚µ‚½}
+Women usually live longer than men.	—« ‚Í ˆê”Ê‚É ’j« ‚æ‚è ’·¶‚« ˆ×‚é{‚·‚é}
+We kept on working for hours without eating anything.	‰äX ‚Í ‰½‚à H‚×‚é{H‚×‚¸} ‚É ‰½ŠÔ ‚à “­‚­{“­‚«} ‘±‚¯‚é{‘±‚¯‚½}
+I used to go skiing in winter.	„ ‚Í —Ç‚­{‚æ‚­} “~ ‚É ƒXƒL[ ‚É o‚©‚¯‚é{o‚©‚¯‚½} •¨{‚à‚Ì} ‚¾{‚¾‚Á‚½}
+He was covered with sweat.	”Ş ‚Í Š¾ ‚Ñ‚Á‚µ‚å‚è ‚¾{‚¾‚Á‚½}
+Her hair is long and beautiful.	”Ş—{”Ş—‚Ì} ”¯‚Ì–Ñ ‚Í ’·‚¢{’·‚­‚Ä} ”ü‚µ‚¢
+Salt helps to preserve food from decay.	‰– ‚Í H‚×•¨ ‚ğ •…‚é{•…‚ç‚¹‚¸} ’·‚¿ ˆ×‚¹‚é{‚³‚¹‚é} ‚Ì‚É –ğ—§‚Â
+Bill is my junior by two years.	‚Í „ ‚æ‚è “ñ‚Â{‚Q‚Â} ”N‰º ‚¾
+Please clean the dirty floor.	‰˜‚ê‚é{‰˜‚ê‚½} ° ‚ğ Šï—í{‚«‚ê‚¢} ‚É ˆ×‚é{‚µ‚Ä} ‰º‚³‚¢
+His English leaves nothing to be desired.	”Ş{”Ş‚Ì} ‰pŒê ‚Í \‚µ•ª ‚ª –³‚¢{‚È‚¢}
+Please write this down.	Ÿ‚ê{‚±‚ê} ‚ğ ‘‚«—¯‚ß‚é{‘‚«—¯‚ß‚Ä} ‰º‚³‚¢
+The tower fell into ruin.	‘´‚Ì{‚»‚Ì} “ƒ ‚Í •ö‰ó ˆ×‚é{‚µ‚½}
+The newspaper called for the government to stop inflation.	‘´‚Ì{‚»‚Ì} V•· ‚Í ­•{ ‚É ƒCƒ“ƒtƒŒ ‚ğ ~‚ß‚é —l‚É{‚æ‚¤‚É} ‹‚ß‚é{‹‚ß‚½}
+It's ten minutes' walk to the station.	‰w –˜{‚Ü‚Å} •à‚­{•à‚¢‚Ä} •ª ‚Å‚·
+Give me a reason for doing such a thing.	‚»‚ñ‚È –{‚±‚Æ} ‚ğ ˆ×‚é{‚·‚é} –ó{‚í‚¯} ‚ğ ‹³‚¦‚é{‹³‚¦‚Ä} Œà‚ê‚é{‚­‚ê}
+I'll be reading a book.	„ ‚Í –{ ‚ğ “Ç‚Ş{“Ç‚ñ‚Å‚¢‚é} ‚Å‚µ‚å‚¤
+I bought it.	„ ‚Í ‘´‚ê{‚»‚ê} ‚ğ ”ƒ‚¤{”ƒ‚Á‚½}
+Who will look after the baby?	’N ‚ª ‘´‚Ì{‚»‚Ì} Ô‚¿‚á‚ñ ‚Ì ¢˜b‚ğ‚·‚é{¢˜b‚ğ‚µ‚Ü‚·} ‚©
+He would not listen to my advice.	”Ş ‚Í „{„‚Ì} ’‰ ‚ğ •·‚«“ü‚ê‚é{•·‚«“ü‚ê‚æ‚¤} ‚Æ‚·‚é{‚Æ‚µ‚È‚©‚Á‚½}
+She couldn't stand the heat in the train.	”Ş— ‚Í —ñÔ ‚Ì ’† ‚Ì ”M‚¢{‚ ‚Â} ‚³ ‚É ‰ä– o—ˆ‚é{‚Å‚«‚È‚©‚Á‚½}
+He behaves as if he were somebody.	”Ş ‚Í ©•ª ‚ª ¦‚¢{‚·‚²‚¢} l ‚Å‚à‚ ‚é ‚© ‚Ì—l‚É{‚Ì‚æ‚¤‚É} U‚é•‘‚¤
+"Made in Italy, these jeans were very expensive."	ˆÉ‘¾—˜{ƒCƒ^ƒŠ[} » ‚È‚Ì‚Å Ÿ‚Ì{‚±‚Ì} ƒW[ƒ“ƒY ‚Í ç‰‚à{‚Æ‚Ä‚à} ’l’i ‚ª ‚‚¢{‚‚©‚Á‚½}
+Sit down and rest for a while.	À‚é{À‚Á‚Ä} b‚­{‚µ‚Î‚ç‚­} ‹x‚Ş{‹x‚İ} ‚È‚³‚¢
+He came back about nine last night.	”Ş ‚Í ğ–é   {‚²‚ë} –ß‚Á‚Ä—ˆ‚é{–ß‚Á‚Ä‚«‚½}
+He's a quick walker.	”Ş ‚Í •à‚­ ‚Ì ‚ª ‘‚¢{‘¬‚¢}
+He gave me what little money he had.	”Ş ‚Í ‚Â{‚Á‚Ä‚¢‚é} –³‚¯‚È‚µ{–³‚¯–³‚µ‚Ì} ‚¨‹à ‚ğ „ ‚É Œà‚ê‚é{‚­‚ê‚½}
+It was next to impossible to get a trained pilot.	ŒP—û ˆ×‚ê‚é{‚³‚ê‚½} ƒpƒCƒƒbƒg ‚ğ è‚É“ü‚ê‚é ‚Ì ‚Í •s‰Â”\{•s‰Â”\‚É} ‹ß‚¢{‹ß‚©‚Á‚½}
+The price of rice rose by more than three percent.	•Ä ‚Ì ‰¿Ši ‚ª ƒp[ƒZƒ“ƒg ˆÈã ã‚ª‚é{‚ ‚ª‚Á‚½}
+His wife had him wrapped around her little finger.	”Ş ‚Í •vl ‚Ì ˆÓ{‚¢} ‚Ì ˜Ô{‚Ü‚Ü} ‚¾{‚¾‚Á‚½}
+Women didn't care for him.	”Ş ‚Í — ‚É D‚­{D‚©‚ê‚È‚©‚Á‚½}
+"Not being well, she stayed home."	‹C•ª‚ªˆ«‚¢ ‚Ì‚Å ‰Æ ‚É ‹‚é{‚¢‚½}
+It is beneath him to say such a thing.	‚»‚ñ‚È –{‚±‚Æ} ‚ğ Œ¾‚¤ ‚Æ‚Í ”Ş ‚ç‚µ‚¢{‚ç‚µ‚­} ‚à –³‚¢{‚È‚¢}
+He can both speak and write Russian.	”Ş ‚Í ƒƒVƒAŒê ‚ª ˜b‚·{˜b‚¹‚é} ‚µ ‘‚­ –‚ªo—ˆ‚é{‚±‚Æ‚ª‚Å‚«‚é}
+The song descended from a legend.	‘´‚Ì{‚»‚Ì} ‰Ì ‚Í “`à ‚É —R—ˆ ˆ×‚é{‚·‚é} •¨ ‚¾{‚¾‚Á‚½}
+We may miss the next bus but at any rate we'll be there before midnight.	Ÿ{Ÿ‚Ì} ƒoƒX ‚É‚Í ’x‚ê‚é ‚¾‚ë‚¤ ‚ª “e‚ÉŠp{‚Æ‚É‚©‚­} ^–é’† ‘O ‚É‚Í ’…‚­ ‚æ
+I'm going to Europe by way of Anchorage next week.	„ ‚Í —ˆT ƒAƒ“ƒJƒŒƒbƒW Œo—R ‚Å ‰¢—…”b{ƒˆ[ƒƒbƒp} ‚Ö s‚­ Ï‚à‚è{‚Â‚à‚è} ‚Å‚·
+I found Kate more active than her brother.	‚ª ‚¨ŒZ‚³‚ñ ‚æ‚è Šˆ”­ ‚Å‚ ‚é –{‚±‚Æ} ‚ª •ª‚©‚é{‚í‚©‚Á‚½}
+Where can I obtain a map of Europe?	‰½ˆ{‚Ç‚±} ‚Ö s‚­{s‚¯‚Î} ‰¢—…”b{ƒˆ[ƒƒbƒp} ‚Ì ’n} ‚ª è‚É“ü‚é{è‚É“ü‚è‚Ü‚·} ‚©
+It's getting dark. You'd better go home.	ˆÃ‚¢{ˆÃ‚­} ¬‚é{‚È‚Á‚Ä} —ˆ‚é{‚«‚Ü‚µ‚½} ‹A‚é{‹A‚Á‚½} •û‚ª‚¢‚¢ ‚Å‚· ‚æ
+Would you like to dance?	—x‚é{—x‚Á‚Ä} –á‚¤{‚à‚ç‚¦‚Ü‚·} ‚©
+We walked as far as the park.	‰äX ‚Í Œö‰€ –˜{‚Ü‚Å} •à‚­{•à‚¢‚½}
+The marvel is that he succeeded in the adventure.	”Ş ‚ª ‘´‚Ì{‚»‚Ì} –`Œ¯ ‚É ¬Œ÷ ˆ×‚é{‚µ‚½} ‚Æ ‚Í ‹Á‚­‚×‚« –{‚±‚Æ} ‚¾
+Window or aisle?	‘‹‘¤ ‚© ’Ê˜H‘¤ ‰½•û{‚Ç‚¿‚ç} ‚É ˆ×‚³‚é{‚È‚³‚¢‚Ü‚·} ‚©
+He teaches mathematics as well as English.	”Ş ‚Í ‰pŒê ‚Æ “¯—l ”Šw ‚à ‹³‚¦‚é{‹³‚¦‚Ü‚·}
+"Besides attending the funeral, she needs to make all the arrangements."	”Ş— ‚Í ‘’‹V ‚É Q‰Á ˆ×‚é{‚·‚é} ‚¾‚¯‚Å‚È‚­ ‘S‚Ä{‚·‚×‚Ä‚Ì} ’iæ‚è ‚ğ •t‚¯‚é{‚Â‚¯} –³‚­‚Ä‚Í‚È‚ç‚È‚¢{‚È‚­‚Ä‚Í‚È‚ç‚È‚¢}
+I'll leave when she comes back.	”Ş— ‚ª –ß‚Á‚Ä—ˆ‚é{–ß‚Á‚Ä‚«‚½‚ç} o”­{o”­‚µ‚Ü‚·}
+I saw a boy swimming across the river.	’j‚Ìq  ‚ª ‰j‚®{‰j‚¢‚Å} ì ‚ğ “n‚é{“n‚Á‚Ä‚¢‚é} ‚Ì ‚ª Œ©‚¦‚é{Œ©‚¦‚Ü‚µ‚½}
+I can't stand humidity.	„ ‚Í ¼‹C ‚ª ‰ä– o—ˆ‚é{‚Å‚«‚È‚¢}
+Give a dog a bad name and hang him.	ˆê“x ˆ«–¼ ‚ğ æ‚é{æ‚Á‚½‚ç} ÅŒã ‚¾
+He is man of moderate views.	”Ş ‚Í ’†—f ‚ğ S“¾‚é{S“¾‚½} l•¨{‚¶‚ñ‚Ô‚Â} ‚Å‚ ‚é
+Which period of history are you studying?	‹M•û{‚ ‚È‚½} ‚Í —ğj ‚Ì ‰½‚Ì{‚Ç‚Ì} ‘ã ‚ğ Œ¤‹† ˆ×‚é{‚µ‚Ä‚¢‚Ü‚·} ‚©
+I met my classmate.	„ ‚Í ‹‰—F ‚É ‰ï‚¤{‰ï‚Á‚½}
+He may well get angry with her.	”Ş ‚ª ”Ş— ‚É • ‚ğ—§‚Ä‚é ‚Ì ‚à –Ş‚à{‚à‚Á‚Æ‚à} ‚¾
+Would you like to go have a drink?	‰½ˆ‚©{‚Ç‚±‚©} ‚Ö ˆù‚Ş{ˆù‚İ} ‚É s‚­{s‚«} ‚Ü‚µ‚å‚¤‚©
+Do you mind if I turn down the TV?	ƒeƒŒƒr ‚Ì ‰¹º ‚ğ ’á‚¢{’á‚­} ˆ×‚é{‚µ‚Ä} ‚à —Ç‚¢{‚¢‚¢}
+I am really in the dark on this case.	Ÿ‚Ì{‚±‚Ì} Œ ‚ÉŠÖ‚µ‚Ä ‚Í ‘S‚­{‚Ü‚Á‚½‚­} ’m‚é{’m‚ç‚È‚¢}
+She is not eligible for marriage.	”Ş— ‚Í Œ‹¥{Œ‹¥‚Ì} ‘Ši ‚Í –³‚¢{‚È‚¢}
+He writes an English letter.	”Ş ‚Í ‰pŒê ‚Ì è† ‚ğ ‘‚­{‘‚«‚Ü‚·}
+You could tell by the ear-to-ear grin that came to his face that he really had something to smile about.	ŠìF––Ê ‚Ì Î‚İ ‚ğ •‚‚©‚×‚é{•‚‚©‚×‚Ä‚¢‚é} ‚¯‚Ç ”Ş —]’ö{‚æ‚Á‚Û‚Ç} Šğ‚µ‚¢ –‚ª‚ ‚é{‚±‚Æ‚ª‚ ‚Á‚½} ‚Ì{‚ñ} ‚¾‚ë‚¤ ‚È
+"In the absence of definite evidence, he was acquitted."	Ø‹’ •s\•ª ‚Å ”Ş ‚Í –³ß ‚Æ‚È‚é{‚Æ‚È‚Á‚½}
+This is not to say that Mr. Tanaka did it all on his own.	‰½‚à{‚È‚É‚à} ‚³‚ñ ‚Ì —Í ‚ª ƒIƒ“ƒŠ[ ‚¾ ‚ÆŒ¾‚¤‚Ì‚Í{‚Æ‚¢‚¤‚Ì‚Í} –³‚¢{‚È‚¢}
+She was a genius in mathematics.	”Ş— ‚Í ”Šw ‚Ì “VË ‚¾{‚¾‚Á‚½}
