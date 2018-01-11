@@ -330,13 +330,15 @@
                     $('#order_latest').css('color', 'black');
                     $('#order_latest').text("現在、あなたは解答者ではありません");
                     $('#send-message').prop('disabled', true);
-                    displayTimer();
+                    //displayTimer();
+                    token_btnDisabled = 1;
+                    countdown_timer(token_btnDisabled);
                 } else {
                     $('#order_latest').css('color', 'blue');
                     $('#order_latest').text("現在、あなたは解答者です");
                     $('#send-message').prop('disabled', false);
                     token_btnDisabled = 0;
-                    countdown_timer()
+                    countdown_timer(token_btnDisabled);
                     //setTimeout(countdown_timer(), 1000);
                 }
             });
@@ -437,30 +439,39 @@
         DisplayString();
     }
 
-    function countdown_timer() {
+    function countdown_timer(value) {
         clearTimeout(setTimeout_timer);
         learnValue_timer = 0;
-        seElement[0].play();
+        if(value === 0) seElement[0].play();
         var funcCount_timer = function () {
-            displayTimer();
+            displayTimer(value);
             learnValue_timer++;
             setTimeout_timer = setTimeout(funcCount_timer, 1000);
             if (learnValue_timer > define_timerLimit) {
                 clearTimeout(setTimeout_timer);
-                sendMessage(1);
+                if(value === 0) sendMessage(1);
             }
         }
         funcCount_timer();
     }
 
-    function displayTimer() {
+    function displayTimer(value) {
         $('#questiontimer_value').text('残り時間 (' + ('000' + (define_timerLimit - learnValue_timer)).slice(-2) + '秒):');
-        for (var i = 0; i < learnValue_timer; i++) {
-            $('#questiontimer_value').append('□');
-        }
-        for (var j = learnValue_timer; j < define_timerLimit; j++) {
-            $('#questiontimer_value').append('■');
-        }
+        if (value === 0) {
+            for (var i = 0; i < learnValue_timer; i++) {
+                $('#questiontimer_value').append('□');
+            }
+            for (var j = learnValue_timer; j < define_timerLimit; j++) {
+                $('#questiontimer_value').append('■');
+            }
+        } else {
+            for (var i = define_timerLimit; i > learnValue_timer; i--) {
+                $('#questiontimer_value').append('□');
+            }
+            for (var i = learnValue_timer; i > 0; i--) {
+                $('#questiontimer_value').append('■');
+            }
+        }    
     }
 
     function advanceLearning(progress) {
@@ -480,8 +491,8 @@
             .then(function (text) {
                 // 入力文字列name、textを取得
                 var data = { 'from': data_username, 'text': text, 'time': timelimit, 'peerid': data_peerID };
-                return data;
-            }).then(function (data) {
+                //return data;
+            //}).then(function (data) {
                 // 接続connを使って送信
                 if (peerID_1 != 'default') {
                     console.log('send1');
@@ -572,7 +583,7 @@
 
     function getSoundData() {
         return new Promise(function (resolve, reject) {
-            var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/" + array_question[0] + ".mp3";
+            var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/sound/" + array_question[0] + ".mp3";
             // 再生ファイルの設定
             audioElement[0].src = url;
             // 音声の再生
@@ -587,18 +598,20 @@
             $('#order_latest').text("現在、あなたは解答者です");
             $('#send-message').prop('disabled', false);
             token_btnDisabled = 0;
-            countdown_timer();
+            countdown_timer(token_btnDisabled);
         } else if (val == 1) {
             $('#order_latest').css('color', 'black');
             $('#order_latest').text("現在、あなたは解答者ではありません");
             $('#send-message').prop('disabled', true);
             token_btnDisabled = 1;
+            countdown_timer(token_btnDisabled);
         } else {
             $('#order_latest').css('color', 'black');
             $('#order_latest').text("学習は終了しました");
             $('#order_latest').append("<button id='send-restart'>もう一度</button>");
             $('#questionstring_translation').text(array_question[2]);
             $('#send-message').prop('disabled', true);
+            clearTimeout(setTimeout_timer);
             token_btnDisabled = 1;
         }
     }
@@ -793,7 +806,7 @@
         if(conn_2) conn_2.close();
         if(conn_3) conn_3.close();
         conn_1 = void 0; conn_2 = void 0; conn_3 = void 0; conn_master = void 0; peerID_1 = 'default'; peerID_2 = 'default'; peerID_3 = 'default';
-        token_waitOtherStudent = 0; token_start = 0
+        token_waitOtherStudent = 0; token_start = 0;
         learnValue_order = 0;
         learnValue_flow = 0; learnValue_progress = 0; learnValue_mistake = 0;
         array_question.length = 0;
