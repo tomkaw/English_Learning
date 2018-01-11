@@ -25,18 +25,18 @@
     var peer = new Peer({
         // APIキー
         key: '900d7a23-6264-4afe-8896-15f0d020ca61',
-        turn: false,
+        //turn: false,
         //デバッグモードの冗長性
         debug: 3,
         // ICEサーバ
-        config: {
-            'iceServers': [
-                { url: 'stun:stun1.l.google.com:19302' },
-                {
-                    url: 'turn:numb.viagenie.ca',
-                    credential: 'muazkh', username: 'webrtc@live.com'
-                }]
-        }
+        // config: {
+        //     'iceServers': [
+        //         { url: 'stun:stun1.l.google.com:19302' },
+        //         {
+        //             url: 'turn:numb.viagenie.ca',
+        //             credential: 'muazkh', username: 'webrtc@live.com'
+        //         }]
+        // }
     });
 
     // 使用ブラウザを返す
@@ -61,7 +61,15 @@
             var i = 0;
             for (var i in data) {
                 array_question.push([('000' + i).slice(-3), data[i].String, data[i].Translation]);
-                $("#select_question").append($("<option>").val(parseInt(i) + 1).text(parseInt(i) + 1));
+                var tmp_option = '';
+                if (data[i].String.length < 10) {
+                    tmp_option = data[i].String;
+                } else {
+                    for (var j = 0; j < 10; j++) {
+                        tmp_option = tmp_option + data[i].String[j];
+                    }
+                }
+                $("#select_question").append($("<option>").val(parseInt(i) + 1).text((parseInt(i) + 1)+'. '+tmp_option+"..."));
             }
         });
     }
@@ -139,16 +147,16 @@
             })
             .then(function () {
                 for (var i = 0; i < array_teamAprogress.length; i++) {
-                    if (array_teamAprogress[i][0] === data.name || array_teamAprogress[i][1] === data.name) {
+                    if (array_teamAprogress[i][1] === data.peerid || array_teamAprogress[i][3] === data.peerid) {
                         array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
                         displayProgress();
                     } else if (array_teamAprogress[i].length === 4) {
-                        if (array_teamAprogress[i][2] === data.name) {
+                        if (array_teamAprogress[i][5] === data.peerid) {
                             array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
                             displayProgress();
                         }
                     } else if (array_teamAprogress[i].length === 5) {
-                        if (array_teamAprogress[i][3] === data.name) {
+                        if (array_teamAprogress[i][7] === data.peerid) {
                             array_teamAprogress[i][array_teamAprogress[i].length - 1] = data.progress;
                             displayProgress();
                         }
@@ -214,22 +222,26 @@
             })
             .then(function (tmp_pairing_adjust) {
                 // 基本ペアリング
-                for (var i = 0; i < array_entries.length - tmp_pairing_adjust; i += tmp_student) {
+                var i = 0, j = 0;
+                for (i = 0; i < array_entries.length - tmp_pairing_adjust; i += tmp_student) {
                     tmp_array_team[tmp_array_team.length] = [];
                     array_teamAprogress[array_teamAprogress.length] = [];
-                    for (var j = 0; j < tmp_student; j++) {
+                    for (j = 0; j < tmp_student; j++) {
                         tmp_array_team[tmp_array_team.length - 1].push(array_entries[i + j][2]);
                         array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][0]);
+                        array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][2]);
                     }
                     array_teamAprogress[array_teamAprogress.length - 1].push(0);
                 }
                 if (0 < tmp_pairing_adjust && tmp_pairing_adjust <= 4) {
+                    console.log(i + ', ' + j);
                     // 余り処理１：調節されるチームは一つ
                     tmp_array_team[tmp_array_team.length] = [];
                     array_teamAprogress[array_teamAprogress.length] = [];
                     for (var x = tmp_pairing_adjust; x > 0; x--) {
                         tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - x][2]);
                         array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][0]);
+                        array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][2]);
                     }
                     array_teamAprogress[array_teamAprogress.length - 1].push(0);
                 } else if (tmp_pairing_adjust >= 5) {
@@ -240,6 +252,7 @@
                         for (var z = 0; z < y && z < 3; z++) {
                             tmp_array_team[tmp_array_team.length - 1].push(array_entries[array_entries.length - y + z][2]);
                             array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][0]);
+                            array_teamAprogress[array_teamAprogress.length - 1].push(array_entries[i + j][2]);
                         }
                         array_teamAprogress[array_teamAprogress.length - 1].push(0);
                     }
@@ -293,7 +306,10 @@
         $('#waitingStudent').text('');
         for (var i = 0; i < array_entries.length; i++) {
             name = array_entries[i][0];
-            $('#waitingStudent').append(name.substring(name.indexOf(" ") + 1, name.length) + ' ');
+            if (i != 0) {
+                $('#waitingStudent').append(', ');
+            }
+            $('#waitingStudent').append(name.substring(name.indexOf(" ") + 1, name.length));
         }
     }
 
@@ -302,7 +318,7 @@
         for (var i = 0; i < array_teamAprogress.length; i++) {
             console.log(array_teamAprogress[i]);
             $('#displayStudent').append('<ul>');
-            for (var j = 0; j < array_teamAprogress[i].length - 1; j++) {
+            for (var j = 0; j < array_teamAprogress[i].length - 1; j+=2) {
                 $('#displayStudent').append(array_teamAprogress[i][j].substring(array_teamAprogress[i][j].indexOf(" ") + 1, array_teamAprogress[i][j].length));
                 if (j < array_teamAprogress[i].length - 2) {
                     $('#displayStudent').append(', ');

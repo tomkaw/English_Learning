@@ -56,6 +56,8 @@
         if (peer.id == null) {
             alert("Connection is closed.");
         } else {
+            //if (conn_1 === undefined) console.log("state: OK.");
+            //if (conn_1 === 'undefined') console.log('string: OK.');
             data_peerID = peer.id;
             FunctionIframe();
         }
@@ -161,16 +163,16 @@
                 })
                 .then(function () {
                     //P4SgetPeerData(conn);
-                    if (conn.peer == peerID_1) {
+                    if (conn.peer === peerID_1) {
                         console.log('receive p1');
                         conn_1 = conn;
                         conn_1.on('data', handleMessage);
                         console.log('Connection1 :' + conn_1.peer);
-                    } else if (conn.peer == peerID_2) {
+                    } else if (conn.peer === peerID_2) {
                         console.log('receive p2');
                         conn_2 = conn;
                         conn_2.on('data', handleMessage);
-                    } else if (conn.peer == peerID_3) {
+                    } else if (conn.peer === peerID_3) {
                         console.log('receive p3');
                         conn_3 = conn;
                         conn_3.on('data', handleMessage);
@@ -237,10 +239,10 @@
         return new Promise(function (resolve, reject) {
             for (var i in array_partnerKey) {
                 if (array_partnerKey[i] != data_peerID) {
-                    if (peerID_1 == 'default' || peerID_1 == undefined) {
+                    if (peerID_1 == 'default' || peerID_1 === undefined) {
                         peerID_1 = array_partnerKey[i];
                         console.log('conn1');
-                    } else if (peerID_2 == 'default' || peerID_2 == undefined) {
+                    } else if (peerID_2 == 'default' || peerID_2 === undefined) {
                         peerID_2 = array_partnerKey[i];
                         console.log('conn2');
                     } else {
@@ -262,7 +264,7 @@
     function waitGetStudent() {
         var nestCount_wgs = function () {
             var tmp_wgs = setTimeout(nestCount_wgs, 100);
-            console.log('testtesttest');
+            //console.log('testtesttest');
             if (array_partnerKey.length != 0) {
                 clearTimeout(tmp_wgs);
             } else {
@@ -275,34 +277,36 @@
     function hoshou() {
         var nestHoshou = function () {
             var tmp_hoshou = setTimeout(nestHoshou, 100);
-            switch (array_partnerKey.length) {
-                case 2:
-                    if (conn_1 != undefined) {
-                        console.log(conn_1.open);
-                        if (conn_1.open == true) {
-                            clearTimeout(tmp_hoshou);
-                            startCountdown();
+            if (conn_master !== undefined) {
+                switch (array_partnerKey.length) {
+                    case 2:
+                        if (conn_1 !== undefined) {
+                            //console.log(conn_1.open);
+                            if (conn_1.open === true && conn_master.open === true) {
+                                clearTimeout(tmp_hoshou);
+                                startCountdown();
+                            }
                         }
-                    }
-                    break;
-                case 3:
-                    if (conn_1 != undefined && conn_2 != undefined) {
-                        if (conn_1.open === true && conn_2.open === true) {
-                            clearTimeout(tmp_hoshou);
-                            startCountdown();
+                        break;
+                    case 3:
+                        if (conn_1 !== undefined && conn_2 !== undefined) {
+                            if (conn_1.open === true && conn_2.open === true && conn_master.open === true) {
+                                clearTimeout(tmp_hoshou);
+                                startCountdown();
+                            }
                         }
-                    }
-                    break;
-                case 4:
-                    if (conn_1 != NULL && conn_2 != NULL && conn_3 != NULL) {
-                        if (conn_1.open === true && conn_2.open === true && conn_3.open === true) {
-                            clearTimeout(tmp_hoshou);
-                            startCountdown();
+                        break;
+                    case 4:
+                        if (conn_1 !== undefined && conn_2 !== undefined && conn_3 !== undefined) {
+                            if (conn_1.open === true && conn_2.open === true && conn_3.open === true && conn_master.open === true) {
+                                clearTimeout(tmp_hoshou);
+                                startCountdown();
+                            }
                         }
-                    }
-                    break;
-                default:
-                    break;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         nestHoshou();
@@ -310,7 +314,7 @@
     
     function startCountdown() {
         var tmp_countdown = 0;
-        console.log("conn1: " + conn_1.open);
+        //console.log("conn1: " + conn_1.open);
         var nestCount = function () {
             if (learnValue_order != learnValue_flow) {
                 $('#order_latest').css('color', 'black');
@@ -321,7 +325,7 @@
             }
             $('#questiontimer_value').text(define_countBeforeStart - tmp_countdown);
             tmp_countdown++;
-            console.log("conn1: " + conn_1.open);
+            //console.log("conn1: " + conn_1.open);
             var tmp_scd = setTimeout(nestCount, 1000);
             if (define_countBeforeStart - tmp_countdown < 0) {
                 clearTimeout(tmp_scd);
@@ -339,7 +343,7 @@
     function learningStart() {
         skippedUserCheck()
             .then(function () {
-                console.log("conn1: " + conn_1.open);
+                //console.log("conn1: " + conn_1.open);
                 token_start = 1;
                 $('#ELtext').removeClass('hidden');
             })
@@ -383,10 +387,6 @@
             }
         });
         conn_1.on('data', handleMessage);
-        conn_1.on('error', function (error) {
-            alert(error.type + '; ' + error.message);
-            console.log(error);
-        });
         if (peerID_2 != 'default') {
             conn_2 = peer.connect(peerID_2, {
                 metadata: {
@@ -512,24 +512,22 @@
         sendMessage_getText()
             .then(function (text) {
                 // 入力文字列name、textを取得
+                console.log('check');
                 var data = { 'from': data_username, 'text': text, 'time': timelimit, 'peerid': data_peerID };
                 //return data;
             //}).then(function (data) {
                 // 接続connを使って送信
-                if (peerID_1 != 'default') {
+                //console.log(conn_1);
+                if (conn_1 !== undefined) {
                     console.log('send1');
-                    console.log('conn_1: ' + conn_1.open);
                     conn_1.send(data);
-                    conn_1.on('error', function (error) {
-                        alert(error.type + '; ' + error.message);
-                        console.log(error);
-                    });
                 }
-                if (peerID_2 != 'default') {
+                //console.log(conn_2);
+                if (conn_2 !== undefined) {
                     console.log('send2');
                     conn_2.send(data);
                 }
-                if (peerID_3 != 'default') {
+                if (conn_3 !== undefined) {
                     console.log('send3');
                     conn_3.send(data);
                 }
@@ -546,6 +544,7 @@
     function sendMessage_getText() {
         return new Promise(function (resolve, reject) {
             // HTMLのid=sendmessageボタンをクリックすると実行
+            console.log('check');
             var text = $('#message').val();
             if (processString(text) == processString(array_strings[learnValue_progress])) {
                 var tmp_addScore = 5;
@@ -819,7 +818,7 @@
             tmp_progress = advanceLearning(tmp_progress);
         }
         // 管理者へ送信
-        var data = { 'name': data_username, 'score': data_score, 'progress': tmp_progress };
+        var data = { 'name': data_username, 'score': data_score, 'progress': tmp_progress , 'peerid': data_peerID};
         conn_master.send(data);
     }
 
@@ -842,6 +841,10 @@
         array_partnerKey.length = 0;
         array_skippedUser.length = 0;
         array_connection.length = 0;
+
+        //console.log(conn_1);
+        //console.log(conn_2);
+        //console.log(conn_3);
 
         $('#questionstring_translation').text('');
 
