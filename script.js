@@ -32,18 +32,18 @@
     var peer = new Peer({
         // APIキー
         key: '900d7a23-6264-4afe-8896-15f0d020ca61',
-        turn: false,
+        //turn: false,
         //デバッグモードの冗長性
         debug: 3,
         // ICEサーバ
-        config: {
-            'iceServers': [
-                { url: 'stun:stun1.l.google.com:19302' },
-                {
-                    url: 'turn:numb.viagenie.ca',
-                    credential: 'muazkh', username: 'webrtc@live.com'
-                }]
-        }
+        // config: {
+        //     'iceServers': [
+        //         { url: 'stun:stun1.l.google.com:19302' },
+        //         {
+        //             url: 'turn:numb.viagenie.ca',
+        //             credential: 'muazkh', username: 'webrtc@live.com'
+        //         }]
+        // }
     });
 
     // 使用ブラウザを返す
@@ -151,6 +151,7 @@
                     conn_master.on('data', operateScore);
                     Peer4Student();
                 }).catch(function (error) {
+                    alert(error.type + '; ' + error.message);
                     console.log('ERROR: ' + error);
                 });
         } else {
@@ -164,10 +165,6 @@
                         console.log('receive p1');
                         conn_1 = conn;
                         conn_1.on('data', handleMessage);
-                        conn_1.on('error', function (error) {
-                            alert(error);
-                            console.log(error);
-                        });
                         console.log('Connection1 :' + conn_1.peer);
                     } else if (conn.peer == peerID_2) {
                         console.log('receive p2');
@@ -182,12 +179,13 @@
                     $('#partnerdata_name').append(conn.metadata.username + ' ');
                 })
                 .then(function () {
-                    token_waitOtherStudent ++;
-                    if (token_waitOtherStudent >= array_partnerKey.length - 1) {
-                        console.log('Peer ID: '+peerID_1);
-                        startCountdown();
-                    }
+                    hoshou();
+                    //if (token_waitOtherStudent >= array_partnerKey.length - 1) {
+                    //    console.log('Peer ID: '+peerID_1);
+                    //    startCountdown();
+                    //}
                 }).catch(function (error) {
+                    alert(error.type + '; ' + error.message);
                     console.log('ERROR: ' + error);
                 });
         }
@@ -219,7 +217,7 @@
             }
         });
         conn.on('error', function (error) {
-            alert(error);
+            alert(error.type + '; ' + error.message);
             console.log(error);
         });
     });
@@ -274,8 +272,45 @@
         nestCount_wgs();
     }
 
+    function hoshou() {
+        var nestHoshou = function () {
+            var tmp_hoshou = setTimeout(nestHoshou, 100);
+            switch (array_partnerKey.length) {
+                case 2:
+                    if (conn_1 != undefined) {
+                        console.log(conn_1.open);
+                        if (conn_1.open == true) {
+                            clearTimeout(tmp_hoshou);
+                            startCountdown();
+                        }
+                    }
+                    break;
+                case 3:
+                    if (conn_1 != undefined && conn_2 != undefined) {
+                        if (conn_1.open === true && conn_2.open === true) {
+                            clearTimeout(tmp_hoshou);
+                            startCountdown();
+                        }
+                    }
+                    break;
+                case 4:
+                    if (conn_1 != NULL && conn_2 != NULL && conn_3 != NULL) {
+                        if (conn_1.open === true && conn_2.open === true && conn_3.open === true) {
+                            clearTimeout(tmp_hoshou);
+                            startCountdown();
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        nestHoshou();
+    }
+    
     function startCountdown() {
         var tmp_countdown = 0;
+        console.log("conn1: " + conn_1.open);
         var nestCount = function () {
             if (learnValue_order != learnValue_flow) {
                 $('#order_latest').css('color', 'black');
@@ -286,6 +321,7 @@
             }
             $('#questiontimer_value').text(define_countBeforeStart - tmp_countdown);
             tmp_countdown++;
+            console.log("conn1: " + conn_1.open);
             var tmp_scd = setTimeout(nestCount, 1000);
             if (define_countBeforeStart - tmp_countdown < 0) {
                 clearTimeout(tmp_scd);
@@ -303,6 +339,7 @@
     function learningStart() {
         skippedUserCheck()
             .then(function () {
+                console.log("conn1: " + conn_1.open);
                 token_start = 1;
                 $('#ELtext').removeClass('hidden');
             })
@@ -347,7 +384,7 @@
         });
         conn_1.on('data', handleMessage);
         conn_1.on('error', function (error) {
-            alert(error);
+            alert(error.type + '; ' + error.message);
             console.log(error);
         });
         if (peerID_2 != 'default') {
@@ -481,9 +518,10 @@
                 // 接続connを使って送信
                 if (peerID_1 != 'default') {
                     console.log('send1');
+                    console.log('conn_1: ' + conn_1.open);
                     conn_1.send(data);
                     conn_1.on('error', function (error) {
-                        alert(error);
+                        alert(error.type + '; ' + error.message);
                         console.log(error);
                     });
                 }
@@ -500,6 +538,7 @@
                 // 入力文字列textを初期化
                 $('#message').val('');
             }).catch(function (error) {
+                alert(error.type + '; ' + error.message);
                 console.log('ERROR: ' + error);
             });
     }
