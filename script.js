@@ -164,6 +164,10 @@
                         console.log('receive p1');
                         conn_1 = conn;
                         conn_1.on('data', handleMessage);
+                        conn_1.on('error', function (error) {
+                            alert(error);
+                            console.log(error);
+                        });
                         console.log('Connection1 :' + conn_1.peer);
                     } else if (conn.peer == peerID_2) {
                         console.log('receive p2');
@@ -250,29 +254,6 @@
             resolve(1);
         });
     }
-
-    // function P4SgetPeerData(conn) {
-    //     return new Promise(function (resolve, reject) {
-    //         // 送信されたPeer接続の中身をそのまま格納
-    //         if (conn.peer == peerID_1) {
-    //             console.log('receive p1');
-    //             conn_1 = conn;
-    //             conn_1.on('data', handleMessage);
-    //             console.log('Connection1 :'+ conn_1.value);
-    //         } else if (conn.peer == peerID_2) {
-    //             console.log('receive p2');
-    //             conn_2 = conn;
-    //             conn_2.on('data', handleMessage);
-    //         } else if (conn.peer == peerID_3) {
-    //             console.log('receive p3');
-    //             conn_3 = conn;
-    //             conn_3.on('data', handleMessage);
-    //         }
-    //         $('#partnerdata').removeClass('hidden');
-    //         $('#partnerdata_name').append(conn.metadata.username + ' ');
-    //         resolve(1);
-    //     });
-    // }
 
     function empty4promise() {
         return new Promise(function (resolve, reject) {
@@ -365,6 +346,10 @@
             }
         });
         conn_1.on('data', handleMessage);
+        conn_1.on('error', function (error) {
+            alert(error);
+            console.log(error);
+        });
         if (peerID_2 != 'default') {
             conn_2 = peer.connect(peerID_2, {
                 metadata: {
@@ -497,6 +482,10 @@
                 if (peerID_1 != 'default') {
                     console.log('send1');
                     conn_1.send(data);
+                    conn_1.on('error', function (error) {
+                        alert(error);
+                        console.log(error);
+                    });
                 }
                 if (peerID_2 != 'default') {
                     console.log('send2');
