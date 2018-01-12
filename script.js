@@ -276,6 +276,7 @@
 
     function hoshou() {
         var nestHoshou = function () {
+        console.log(conn_1.open + ', ' +conn_master.open);
             var tmp_hoshou = setTimeout(nestHoshou, 100);
             if (conn_master !== undefined) {
                 switch (array_partnerKey.length) {
