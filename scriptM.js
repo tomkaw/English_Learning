@@ -104,12 +104,13 @@
         } else {
             console.log(connection.metadata.score);
             // 学習者のデータを配列に格納
-            if (connection.open === true) {
-                array_entries[array_entries.length] = [connection.metadata.name, connection.metadata.score, connection.peer];
-            }
-            $('#token_registed').text(array_entries.length);
-            displayWaiting();
-            changeStartBtn();
+            loopRegist(connection);
+            //if (connection.open === true) {
+            //    array_entries[array_entries.length] = [connection.metadata.name, connection.metadata.score, connection.peer];
+            //}
+            //$('#token_registed').text(array_entries.length);
+            //displayWaiting();
+            //changeStartBtn();
         }
         connection.on('data', operateScore);
         // 切断された時の処理
@@ -125,6 +126,27 @@
             connection.close();
         });
     });
+
+    function loopRegist(conn1) {
+        var tmplimit = 0;
+        var nestRegist = function (conn) {
+            if (tmplimit < 10) {
+                var tmpRegist = setTimeout(nestRegist, 100);
+            } else {
+                clearTimeout(tmpRegist);
+            }
+            if (conn.open === true) {
+                array_entries[array_entries.length] = [conn.metadata.name, conn.metadata.score, conn.peer];
+                $('#token_registed').text(array_entries.length);
+                displayWaiting();
+                changeStartBtn();
+                clearTimeout(tmpRegist);
+            } else {
+                tmplimit++;
+            }
+        }
+        nestRegist(conn1);
+    }    
 
     //////////  //////////
     // 学習チームの人数が変更された時の関数
