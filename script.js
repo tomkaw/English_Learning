@@ -276,9 +276,9 @@
 
     function hoshou() {
         var nestHoshou = function () {
-        console.log(conn_1.open + ', ' +conn_master.open);
             var tmp_hoshou = setTimeout(nestHoshou, 100);
             if (conn_master !== undefined) {
+                console.log('conn1: ' + conn_1.open + ', mas: ' + conn_master.open);
                 switch (array_partnerKey.length) {
                     case 2:
                         if (conn_1 !== undefined) {
@@ -563,6 +563,7 @@
             } else {
                 operateScore(-5);
             }
+            console.log('check');
             resolve(text);
         });
     }
@@ -809,6 +810,7 @@
     }
 
     function operateScore(value) {
+        console.log('check');
         // スコアを変更
         data_score = parseInt(data_score) + value;
         // 表示スコアの更新
@@ -821,6 +823,7 @@
         // 管理者へ送信
         var data = { 'name': data_username, 'score': data_score, 'progress': tmp_progress , 'peerid': data_peerID};
         conn_master.send(data);
+        console.log('check');
     }
 
     $(document).on('click', '#send-restart', function () {
