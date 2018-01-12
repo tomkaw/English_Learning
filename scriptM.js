@@ -127,9 +127,10 @@
         });
     });
 
-    function loopRegist(conn1) {
+    function loopRegist(conn) {
         var tmplimit = 0;
-        var nestRegist = function (conn) {
+        //console.log(conn1);
+        var nestRegist = function () {
             if (tmplimit < 10) {
                 var tmpRegist = setTimeout(nestRegist, 100);
             } else {
@@ -145,7 +146,7 @@
                 tmplimit++;
             }
         }
-        nestRegist(conn1);
+        nestRegist();
     }    
 
     //////////  //////////
