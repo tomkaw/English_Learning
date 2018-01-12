@@ -104,7 +104,9 @@
         } else {
             console.log(connection.metadata.score);
             // 学習者のデータを配列に格納
-            array_entries[array_entries.length] = [connection.metadata.name, connection.metadata.score, connection.peer];
+            if (connection.open === true) {
+                array_entries[array_entries.length] = [connection.metadata.name, connection.metadata.score, connection.peer];
+            }
             $('#token_registed').text(array_entries.length);
             displayWaiting();
             changeStartBtn();
@@ -491,7 +493,7 @@
                 console.log('7');
                 array_changeUser.length = 0;
                 token_changeuser = 0;
-             });
+            });
     }
 
     function ChangeUserData(iframe, name, score) {
