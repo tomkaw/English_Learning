@@ -99,10 +99,8 @@
                 .then(function (iframe) {
                     RegistUserData(iframe, connection.metadata.name, connection.metadata.score);
                 });
-        } else if (connection.metadata.token == 2) {
-            //operateScore(connection.metadata);
         } else {
-            console.log(connection.metadata.score);
+            console.log('Student\'s ID: ' + connection.peer);
             // 学習者のデータを配列に格納
             loopRegist(connection);
             //if (connection.open === true) {
@@ -111,8 +109,8 @@
             //$('#token_registed').text(array_entries.length);
             //displayWaiting();
             //changeStartBtn();
+            connection.on('data', operateScore);
         }
-        connection.on('data', operateScore);
         // 切断された時の処理
         connection.on('close', function () {
             for (var i = 0; i < array_entries.length; i++) {
@@ -131,7 +129,7 @@
         var tmplimit = 0;
         //console.log(conn1);
         var nestRegist = function () {
-            if (tmplimit < 10) {
+            if (tmplimit < 100) {
                 var tmpRegist = setTimeout(nestRegist, 100);
             } else {
                 clearTimeout(tmpRegist);
@@ -208,7 +206,7 @@
     function Start() {
         func_start()
             .then(function () {
-                // スコアの降順にソート
+                // スコアの昇順にソート
                 array_entries.sort(function (a, b) {
                     console.log(a[1]);
                     return a[1] - b[1];

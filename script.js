@@ -446,6 +446,7 @@
         $('#loading').addClass('hidden');
         $('#wrapper_order').removeClass('hidden');
         $('#wrapper-message').removeClass('hidden');
+        window_load();
         nestCount();
     }
 
@@ -870,6 +871,16 @@
     $(document).on('click', '#send-restart', function () {
         restart();
     });
+
+    window.onresize = window_load;
+
+    function window_load() {
+        var tmpwidth = $('.no-overflow').width() - 5;//window.innerWidth;
+        //console.log($('.no-overflow').width())
+        //if (tmpwidth >= 768) tmpwidth -= 368;
+        //else tmpwidth -= 50;
+        $('#ELmessage').css('width', tmpwidth);
+    }
 
     function restart() {
         $('#partnerdata_name').text('');
