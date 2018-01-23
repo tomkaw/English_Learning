@@ -374,7 +374,7 @@
             if (tmpflagLWP > 0 && tmp_sync >= array_partnerKey.length) {
                 clearTimeout(tmpLWP);
                 startCountdown();
-            } else if (tmplimit > 15) {
+            } else if (tmplimit > 100) {
                 alert('ERROR: 通信を確立できませんでした');
                 clearTimeout(tmpLWP);
             } else if (tmpflagLWP === 0){
