@@ -111,7 +111,7 @@
                     })
                     .then(function (data) {
                         if (data['name'] == undefined || data['score'] == undefined) {
-                            data_score = 500;
+                            data_score = 1000;
                             conn_master = peer.connect(peerID_master, {
                                 metadata: {
                                     'name': data_username,
@@ -129,6 +129,7 @@
                     .then(function () {
                         // 画面表示
                         $('#mydata').removeClass('hidden');
+                        $('#myscore').removeClass('hidden');
                         $('#mydata_name').text(data_displayname + ' (' + peer.id + ')');
                         $('#mydata_score').text(data_score);
                     });
@@ -180,6 +181,7 @@
                     DisplayString();
                     // 学習者同士での通信
                     conn_master.on('data', operateScore);
+                    $('#menu1').css('display', 'none');
                     Peer4Student();
                 }).catch(function (error) {
                     alert(error.type + '; ' + error.message);
@@ -854,7 +856,9 @@
     function operateScore(value) {
         console.log('check');
         // スコアを変更
-        data_score = parseInt(data_score) + value;
+        if (data_score > 0) {
+            data_score = parseInt(data_score) + value;  
+        }
         // 表示スコアの更新
         $('#mydata_score').text(data_score);
         // 管理者へ送信する学習進捗の設定
