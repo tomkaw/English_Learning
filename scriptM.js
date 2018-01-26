@@ -20,6 +20,8 @@
     var tmp_array_team = new Array();
     var tmp_last_question = new Array();
 
+    var audioElement = $('#sound');
+
     ////// PeerJS初期設定 //////
     // 新規PeerJSインスタンス
     var peer = new Peer({
@@ -302,6 +304,10 @@
             })
             .then(function () {
                 displayProgress();
+                var url = "https://rawgit.com/tomkaw/English_Learning/master/resource/sound/" + array_question[var_question][0] + ".mp3";
+                console.log(url);
+                audioElement[0].src = url;
+                audioElement[0].play();
                 // リセット
                 array_entries.length = 0;
                 tmp_array_team.length = 0;

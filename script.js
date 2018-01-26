@@ -111,7 +111,7 @@
                     })
                     .then(function (data) {
                         if (data['name'] == undefined || data['score'] == undefined) {
-                            data_score = 1000;
+                            data_score = 0;
                             conn_master = peer.connect(peerID_master, {
                                 metadata: {
                                     'name': data_username,
@@ -219,7 +219,7 @@
             console.log(conn.peer);
             if (conn.peer != conn_master.peer && array_strings.length > learnValue_progress) {
                 var disconnectedmessage = timestamp() + conn.metadata.username + ' (' + conn.peer + ') さんとの通信が切断されました';
-                $('#ELmessage').prepend('<ul>' + disconnectedmessage + '</ul>');
+                $('#ELmessage').prepend(disconnectedmessage);
                 // 残り3人、2人の場合
                 array_skippedUser.push(conn.metadata.flag);
                 if (conn.peer === peerID_1) {
@@ -621,20 +621,21 @@
             console.log('check');
             var text = $('#message').val();
             if (processString(text) == processString(array_strings[learnValue_progress])) {
-                var tmp_addScore = 5;
+                var tmp_addScore = 10;
                 switch (learnValue_mistake) {
                     case 0:
-                        tmp_addScore += Math.floor((define_timerLimit - learnValue_timer) / 2);    
+                        tmp_addScore += Math.floor((define_timerLimit - learnValue_timer) / 4);    
                         break;
                     case 1:
-                        tmp_addScore += Math.floor((define_timerLimit - learnValue_timer) / 4);
+                        tmp_addScore += Math.floor((define_timerLimit - learnValue_timer) / 8);
                         break;
                     default:
                         break;    
                 }
+                console.log(tmp_addScore);
                 operateScore(tmp_addScore);
             } else {
-                operateScore(-5);
+                //operateScore(-5);
             }
             console.log('check');
             resolve(text);
@@ -867,9 +868,9 @@
     function operateScore(value) {
         console.log('check');
         // スコアを変更
-        if (data_score > 0) {
+        //if (data_score >= 0) {
             data_score = parseInt(data_score) + value;  
-        }
+        //}
         // 表示スコアの更新
         $('#mydata_score').text(data_score);
         // 管理者へ送信する学習進捗の設定
@@ -880,7 +881,7 @@
         // 管理者へ送信
         var data = { 'name': data_username, 'score': data_score, 'progress': tmp_progress , 'peerid': data_peerID};
         conn_master.send(data);
-        console.log('check');
+        console.log(data);
     }
 
     $(document).on('click', '#send-restart', function () {
