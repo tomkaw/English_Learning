@@ -918,7 +918,7 @@
         //console.log(conn_1);
         //console.log(conn_2);
         //console.log(conn_3);
-
+        $('#questiontimer_end').addClass('hidden');
         $('#questionstring_translation').text('');
 
         $('#partnerdata').addClass('hidden');
